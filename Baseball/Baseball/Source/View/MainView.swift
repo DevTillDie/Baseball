@@ -26,9 +26,7 @@ struct MainView: View {
             .padding(16)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        // action
-                    } label: {
+                    NavigationLink(destination: TeamSelectionView()) {
                         Text("선호 구단")
                             .bold()
                     }
