@@ -17,7 +17,6 @@
 		0E7EE54D2B5F92E6004F6BAF /* ViewModelInitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE54C2B5F92E6004F6BAF /* ViewModelInitFile.swift */; };
 		0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */; };
 		5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4152A2B85DA61006EE79B /* MainView.swift */; };
-		5BE4152D2B85E2E7006EE79B /* TicketCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4152C2B85E2E7006EE79B /* TicketCarouselView.swift */; };
 		5BE4152F2B85E69D006EE79B /* TeamSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4152E2B85E69D006EE79B /* TeamSelectionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		0E7EE54C2B5F92E6004F6BAF /* ViewModelInitFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInitFile.swift; sourceTree = "<group>"; };
 		0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		5BE4152A2B85DA61006EE79B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		5BE4152C2B85E2E7006EE79B /* TicketCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCarouselView.swift; sourceTree = "<group>"; };
 		5BE4152E2B85E69D006EE79B /* TeamSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +87,6 @@
 			children = (
 				0E7EE5322B5F91F0004F6BAF /* ContentView.swift */,
 				5BE4152A2B85DA61006EE79B /* MainView.swift */,
-				5BE4152C2B85E2E7006EE79B /* TicketCarouselView.swift */,
 				5BE4152E2B85E69D006EE79B /* TeamSelectionView.swift */,
 			);
 			path = View;
@@ -248,7 +245,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BE4152D2B85E2E7006EE79B /* TicketCarouselView.swift in Sources */,
 				0E7EE5472B5F92C9004F6BAF /* ComponentInitFile.swift in Sources */,
 				5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */,
 				5BE4152F2B85E69D006EE79B /* TeamSelectionView.swift in Sources */,
