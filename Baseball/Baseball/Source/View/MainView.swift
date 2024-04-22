@@ -8,130 +8,104 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var sortingType = "최신순"
-    
-    private let sortingByNewLabel = "최신순"
-    private let sortingByOldLabel = "오래된순"
+    // TODO: 티켓 개수에 대한 임시 변수 -> Realm 연결 후 삭제
+    private let ticketCount = 0
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 12) {
+            ZStack {
+                Color(.background)
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    mainHeader
+                    
                     addTicketSection
-                        .background {
-                            RoundedRectangle(cornerRadius: 15.0)
-                                .fill(Color(UIColor.secondarySystemBackground))
-                        }
+                    
+                    
+                    divider
                     
                     ticketDisplayView
-                        .background {
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(Color(UIColor.secondarySystemBackground))
-                        }
                 }
                 .padding(16)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Text("RUSH!")
-                            .fontWeight(.heavy)
-                            .italic()
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink(destination: TeamSelectionView()) {
-                            Text("선호 구단")
-                                .bold()
-                        }
-                    }
-                }
             }
         }
     }
 }
 
 extension MainView {
+    @ViewBuilder private var mainHeader: some View {
+        Text("최강 삼성!")
+            .font(.system(size: 20))
+            .fontWeight(.bold)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 12)
+            .padding(.bottom, 15)
+    }
+}
+
+extension MainView {
     @ViewBuilder private var addTicketSection: some View {
-            VStack(spacing: 12) {
-                Text("새로운 경기를 봤나요?")
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Image(.ticket)
-                
-                Button {
-                    // action
-                } label: {
-                    Text("티켓 추가하기")
-                        .foregroundColor(.black)
-                        .padding(4)
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(Color(UIColor.lightGray))
-            }
-            .padding(20)
+        VStack {
+            Text("새로운 경기를 봤나요?")
+                .font(.system(size: 16))
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 20)
+            
+            Spacer()
+        }
+        .frame(height: 180)
+        .background {
+            RoundedRectangle(cornerRadius: 15.0)
+                .fill(.box)
+        }
+        .padding(.bottom, 28)
+    }
+}
+
+extension MainView {
+    @ViewBuilder private var divider: some View {
+        Rectangle()
+            .fill(.divder)
+            .frame(height: 1)
+            .padding(.bottom, 20)
     }
 }
 
 extension MainView {
     @ViewBuilder private var ticketDisplayView: some View {
-            VStack(spacing: 12) {
-                HStack {
-                    Text("티켓")
-                        .bold()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Menu {
-                        Button {
-                            sortingType = sortingByOldLabel
-                        } label: {
-                            Text(sortingByOldLabel)
-                        }
-                        
-                        Button {
-                            sortingType = sortingByNewLabel
-                        } label: {
-                            Text(sortingByNewLabel)
-                        }
-                    } label: {
-                        Label(sortingType, systemImage: "chevron.down")
-                    }
-                }
-                
-                ForEach(0..<5) { _ in
-                    smallTicket
-                }
-            }
-            .padding(20)
+        VStack {
+            Text("티켓")
+                .font(.system(size: 20))
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 12)
+            
+            ticketPreview
+        }
     }
 }
 
-
 extension MainView {
-    // TODO: 컴포넌트화
-    @ViewBuilder private var smallTicket: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 4.0)
-            
-            HStack(spacing: 32) {
-                VStack(spacing: 12) {
-                    Image(.team)
-                    Text("패-오예주")
-                }
+    //TODO: Realm 연결
+    @ViewBuilder private var ticketPreview: some View {
+        if ticketCount == 0 {
+            VStack {
+                Spacer()
                 
-                VStack {
-                    Text("1 : 3")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                    Text("24.02.22")
-                }
+                Text("아직 저장된 티켓이 없어요!")
+                Text("야구 경기를 보러 갈까요?")
                 
-                VStack(spacing: 12) {
-                    Image(.team)
-                    Text("승-유혜빈")
-                }
+                Spacer()
+                Spacer()
             }
-            .foregroundColor(.white)
-            .padding()
+            .foregroundColor(.caption)
+            .font(.system(size: 16))
+            .frame(maxHeight: .infinity)
+        } else {
+            Text("티켓 있당")
         }
     }
 }
