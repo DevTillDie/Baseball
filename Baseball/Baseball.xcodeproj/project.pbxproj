@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */; };
+		0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */; };
+		0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */; };
+		0E4AB2582BD1251700ADB623 /* ThirdInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2572BD1251700ADB623 /* ThirdInputTicketView.swift */; };
+		0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2592BD1251F00ADB623 /* FourthInputTicketView.swift */; };
+		0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */; };
+		0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25D2BD12BE900ADB623 /* TicketView.swift */; };
 		0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */; };
 		0E7EE5332B5F91F0004F6BAF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5322B5F91F0004F6BAF /* ContentView.swift */; };
 		0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */; };
@@ -20,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTicketView.swift; sourceTree = "<group>"; };
+		0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInputTicketView.swift; sourceTree = "<group>"; };
+		0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInputTicketView.swift; sourceTree = "<group>"; };
+		0E4AB2572BD1251700ADB623 /* ThirdInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInputTicketView.swift; sourceTree = "<group>"; };
+		0E4AB2592BD1251F00ADB623 /* FourthInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInputTicketView.swift; sourceTree = "<group>"; };
+		0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteTicketView.swift; sourceTree = "<group>"; };
+		0E4AB25D2BD12BE900ADB623 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		0E7EE52D2B5F91EF004F6BAF /* Baseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballApp.swift; sourceTree = "<group>"; };
 		0E7EE5322B5F91F0004F6BAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +58,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E4AB2502BD124DF00ADB623 /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				0E4AB25F2BD12BEF00ADB623 /* InputTicket */,
+				0E4AB25D2BD12BE900ADB623 /* TicketView.swift */,
+			);
+			path = Ticket;
+			sourceTree = "<group>";
+		};
+		0E4AB25F2BD12BEF00ADB623 /* InputTicket */ = {
+			isa = PBXGroup;
+			children = (
+				0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */,
+				0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */,
+				0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */,
+				0E4AB2572BD1251700ADB623 /* ThirdInputTicketView.swift */,
+				0E4AB2592BD1251F00ADB623 /* FourthInputTicketView.swift */,
+				0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */,
+			);
+			path = InputTicket;
+			sourceTree = "<group>";
+		};
 		0E7EE5242B5F91EF004F6BAF = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +119,7 @@
 		0E7EE53E2B5F922D004F6BAF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E4AB2502BD124DF00ADB623 /* Ticket */,
 				0E7EE5322B5F91F0004F6BAF /* ContentView.swift */,
 				5BE4152A2B85DA61006EE79B /* MainView.swift */,
 			);
@@ -244,8 +281,15 @@
 			files = (
 				0E7EE5472B5F92C9004F6BAF /* ComponentInitFile.swift in Sources */,
 				5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */,
+				0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */,
+				0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */,
+				0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */,
+				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
+				0E4AB2582BD1251700ADB623 /* ThirdInputTicketView.swift in Sources */,
 				0E7EE54B2B5F92DC004F6BAF /* ModelInitFile.swift in Sources */,
 				0E7EE5332B5F91F0004F6BAF /* ContentView.swift in Sources */,
+				0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */,
+				0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */,
 				0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */,
 				0E7EE54D2B5F92E6004F6BAF /* ViewModelInitFile.swift in Sources */,
 				0E7EE5492B5F92D3004F6BAF /* ExtensionInitFile.swift in Sources */,
@@ -384,6 +428,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Baseball/Preview Content\"";
 				DEVELOPMENT_TEAM = HQS8MXQ7B5;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -413,6 +458,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Baseball/Preview Content\"";
 				DEVELOPMENT_TEAM = HQS8MXQ7B5;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
