@@ -30,6 +30,24 @@ struct MainView: View {
                     }
                     .padding(16)
                 }
+                
+                VStack {
+                    Spacer()
+                    
+                    VisualEffectView(effect: UIBlurEffect(style: .dark))
+                        .mask(LinearGradient(colors: [
+                            Color.black,
+                            Color.black,
+                            Color.black.opacity(0.9),
+                            Color.black.opacity(0.8),
+                            Color.black.opacity(0.6),
+                            Color.black.opacity(0.4),
+                            Color.black.opacity(0.2),
+                            Color.clear
+                        ], startPoint: .bottom, endPoint: .top))
+                        .frame(height: 154)
+                }
+                .ignoresSafeArea()
             }
         }
     }
@@ -38,10 +56,11 @@ struct MainView: View {
 // MARK: - mainHeader
 
 extension MainView {
-    @ViewBuilder private var mainHeader: some View {
+    private var mainHeader: some View {
         Text("최강 삼성!")
             .font(.system(size: 20))
-            .fontWeight(.bold)
+            .bold()
+            .foregroundStyle(.text)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 12)
             .padding(.bottom, 16)
@@ -51,45 +70,73 @@ extension MainView {
 // MARK: - addTicketSection
 
 extension MainView {
-    @ViewBuilder private var addTicketSection: some View {
-        VStack {
-            Text("새로운 경기를 봤나요?")
-                .font(.system(size: 16))
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 24)
-                .padding(.vertical, 20)
+    private var addTicketSection: some View {
+        ZStack {
+            Path { path in
+                path.move(to: CGPoint(x: 15, y: 0))
+                
+                path.addLine(to: CGPoint(x: 343, y: 0))
+                path.addArc(center: CGPoint(x: 343, y: 15), radius: 15, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+                
+                path.addLine(to: CGPoint(x: 358, y: 160))
+                path.addArc(center: CGPoint(x: 343, y: 160), radius: 15, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+                
+                path.addLine(to: CGPoint(x: 194, y: 175))
+                path.addArc(center: CGPoint(x: 209, y: 160), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+                
+                path.addLine(to: CGPoint(x: 194, y: 129))
+                path.addArc(center: CGPoint(x: 167, y: 156), radius: 27, startAngle: .degrees(0), endAngle: .degrees(-90), clockwise: true)
+                
+                path.addLine(to: CGPoint(x: 15, y: 129))
+                path.addArc(center: CGPoint(x: 15, y: 114), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+                
+                path.addLine(to: CGPoint(x: 0, y: 15))
+                path.addArc(center: CGPoint(x: 15, y: 15), radius: 15, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+                
+                path.closeSubpath()
+            }
+            .fill(.box)
             
-            Spacer()
+            VStack {
+                Spacer()
+                
+                Text("경기 기록하기")
+                    .foregroundStyle(.label)
+                    .padding(.horizontal, 47)
+                    .padding(.vertical, 8)
+                    .background {
+                        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                            .fill(.clear)
+                            .stroke(.stroke)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .bottomLeading)
+            }
+            .frame(height: 175)
         }
-        .frame(height: 180)
-        .background {
-            RoundedRectangle(cornerRadius: 15.0)
-                .fill(.box)
-        }
-        .padding(.bottom, 28)
+        .padding(.bottom, 21)
     }
 }
 
 // MARK: - divider
 
 extension MainView {
-    @ViewBuilder private var divider: some View {
+    private var divider: some View {
         Rectangle()
             .fill(.divder)
             .frame(height: 1)
-            .padding(.bottom, 20)
+            .padding(.bottom, 10)
     }
 }
 
 // MARK: - ticketDisplayView
 
 extension MainView {
-    @ViewBuilder private var ticketDisplayView: some View {
+private var ticketDisplayView: some View {
         VStack {
             Text("티켓")
                 .font(.system(size: 20))
-                .fontWeight(.bold)
+                .fontWeight(.medium)
+                .foregroundStyle(.text)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 12)
             
@@ -108,24 +155,23 @@ extension MainView {
 // MARK: - noTicketView
 
 extension MainView {
-    //TODO: Realm 연결
-    @ViewBuilder private var noTicketView: some View {
+    private var noTicketView: some View {
         VStack {
             Spacer(minLength: 160)
             
             Text("아직 저장된 티켓이 없어요!")
             Text("야구 경기를 보러 갈까요?")
         }
-        .foregroundColor(.caption)
+        .foregroundColor(.text)
         .font(.system(size: 16))
         .frame(maxHeight: .infinity)
     }
 }
 
-// MARK: - ticket
+// MARK: - ticketTags
 
 extension MainView {
-    @ViewBuilder private var ticketTags: some View {
+    private var ticketTags: some View {
         HStack {
             Button {
                 // action
@@ -137,7 +183,8 @@ extension MainView {
             .buttonStyle(.plain)
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
-                    .fill(.tag)
+                    .fill(.clear)
+                    .stroke(.stroke)
             }
             
             Button {
@@ -150,9 +197,11 @@ extension MainView {
             .buttonStyle(.plain)
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
-                    .fill(.tag)
+                    .fill(.clear)
+                    .stroke(.stroke)
             }
         }
+        .foregroundStyle(.text)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
@@ -162,44 +211,98 @@ extension MainView {
 // MARK: - ticketPreviewStack
 
 extension MainView {
-    @ViewBuilder private var ticketPreviewStack: some View {
+    private var ticketPreviewStack: some View {
         ForEach(ticketData) { data in
             VStack(spacing: 0) {
-                HStack {
-                    Text(data.ourTeam)
-                        .font(.system(size: 15))
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Text(data.opponentTeam)
-                        .font(.system(size: 15))
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-                .padding(.bottom, 20)
-                
                 VStack(spacing: 0) {
-                    Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
-                        .font(.system(size: 48))
-                        .fontWeight(.heavy)
-                    
                     Text(data.date)
                         .font(.system(size: 15))
                         .fontWeight(.medium)
-                }
-            }
-            .foregroundColor(.white)
-            .padding(.horizontal, 14)
-            .padding(.top, 16)
-            .padding(.bottom, 28)
-            .background {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(.team)
                     
+                    Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
+                        .font(.system(size: 48))
+                        .fontWeight(.heavy)
+                }
+                
+                HStack {
+                    Text(data.ourTeam.rawValue)
+                        .font(.system(size: 15))
+                        .fontWeight(.semibold)
+                        .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    
+                    HLine()
+                        .stroke(style: .init(dash: [3]))
+                        .foregroundStyle(.line)
+                        .frame(height: 1)
+                        .padding(.horizontal, 16)
+                    
+                    Text(data.opponentTeam.rawValue)
+                        .font(.system(size: 15))
+                        .fontWeight(.semibold)
+                        .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                }
+                .padding(.top, 13)
             }
+            .foregroundColor(.text)
+            .padding(.horizontal, 14)
+            .padding(.top, 38)
+            .padding(.bottom, 17)
+            .background {
+                LinearGradient(gradient: Gradient(colors: [data.ourTeam.colorTeam(), data.opponentTeam.colorTeam()]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            }
+            .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
+            .frame(height: 160)
             .padding(.horizontal, 9)
-            .padding(.bottom, 12)
+            .padding(.bottom, 16)
         }
+    }
+}
+
+struct HLine: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: rect.minX, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
+        
+        return path
+    }
+}
+
+struct TicketShape: Shape {
+    var cornerRadius: CGFloat
+    var cutRadius: CGFloat
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let cutCenter = CGPoint(x: rect.midX, y: rect.minY - 20)
+        
+        path.move(to: CGPoint(x: rect.minX + cornerRadius, y: rect.minY))
+        path.addArc(center: CGPoint(x: rect.minX + cornerRadius, y: rect.minY + cornerRadius), radius: cornerRadius, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+        path.addLine(to: CGPoint(x: cutCenter.x - cutRadius, y: rect.minY))
+        path.addArc(center: cutCenter, radius: cutRadius, startAngle: .degrees(180), endAngle: .degrees(0), clockwise: true)
+        path.addLine(to: CGPoint(x: cutCenter.x + cutRadius, y: rect.minY))
+        path.addArc(center: CGPoint(x: rect.maxX - cornerRadius, y: rect.minY + cornerRadius), radius: cornerRadius, startAngle: .degrees(270), endAngle: .degrees(0), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - cornerRadius))
+        path.addArc(center: CGPoint(x: rect.maxX - cornerRadius, y: rect.maxY - cornerRadius), radius: cornerRadius, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.minX + cornerRadius, y: rect.maxY))
+        path.addArc(center: CGPoint(x: rect.minX + cornerRadius, y: rect.maxY - cornerRadius), radius: cornerRadius, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + cornerRadius))
+        path.closeSubpath()
+        
+        return path
+    }
+}
+
+struct VisualEffectView: UIViewRepresentable {
+    var effect: UIVisualEffect?
+    
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView {
+        return UIVisualEffectView()
+    }
+    
+    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) {
+        uiView.effect = effect
     }
 }
 
@@ -210,12 +313,38 @@ extension MainView {
         let id = UUID()
         let date: String = "24.02.02"
         let place: String = "고척"
-        let ourTeam: String = "SAMSUNG LIONS"
-        let opponentTeam: String = "LG TWINS"
+        let ourTeam: Team = .lions
+        let opponentTeam: Team = .twins
         let ourTeamScore: Int = 3
         let opponentTeamScore: Int = 1
         let feeling: String = "Good"
         let review: String = "NICE"
+    }
+    
+    enum Team: String {
+        case lions = "SAMSUNG LIONS"
+        case eagles = "HANHWA EAGLES"
+        case twins = "LG TWINS"
+        case giants = "LOTTE GIANTS"
+        case tigers = "KIA TIGERS"
+        case bears = "DUSAN BEARS"
+        
+        func colorTeam() -> Color {
+            switch self {
+            case .lions:
+                return Color(.lions)
+            case .eagles:
+                return Color(.eagles)
+            case .twins:
+                return Color(.twins)
+            case .giants:
+                return Color(.giants)
+            case .tigers:
+                return Color(.tigers)
+            case .bears:
+                return Color(.bears)
+            }
+        }
     }
 }
 
