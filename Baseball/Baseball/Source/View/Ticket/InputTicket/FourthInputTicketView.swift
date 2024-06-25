@@ -7,7 +7,14 @@
 
 import SwiftUI
 
+enum Field {
+        case ourTeamScore
+        case opponentTeamScore
+    }
+
 struct FourthInputTicketView: View {
+    @FocusState private var isFocused: Field?
+    
     @State private var ourTeamScore = ""
     @State private var opponentTeamScore = ""
     
@@ -27,15 +34,20 @@ struct FourthInputTicketView: View {
                     TextField("", text: $ourTeamScore)
                         .multilineTextAlignment(.center)
                         .keyboardType(.numberPad)
+                        .focused($isFocused, equals: .ourTeamScore)
                         .colorScheme(.dark)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(.gray)
                         )
+                        .onTapGesture {
+                            isFocused = .ourTeamScore
+                        }
                 }
                 
                 Text(":")
+                    .foregroundColor(.white)
                     .padding()
                 
                 VStack {
@@ -45,12 +57,16 @@ struct FourthInputTicketView: View {
                     TextField("", text: $opponentTeamScore)
                         .multilineTextAlignment(.center)
                         .keyboardType(.numberPad)
+                        .focused($isFocused, equals: .opponentTeamScore)
                         .colorScheme(.dark)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(.gray)
                         )
+                        .onTapGesture {
+                            isFocused = .opponentTeamScore
+                        }
                 }
             }
             .padding()
@@ -58,8 +74,13 @@ struct FourthInputTicketView: View {
             Spacer()
             
             NextButton(isActive: !ourTeamScore.isEmpty && !opponentTeamScore.isEmpty) {
+                isFocused = nil
                 currentPage += 1
             }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            isFocused = nil
         }
     }
 }

@@ -59,6 +59,9 @@ struct InputTicketView: View {
                         .tag(4)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
+                .onAppear {
+                      UIScrollView.appearance().isScrollEnabled = false
+                }
                 .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

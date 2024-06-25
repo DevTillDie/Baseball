@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FirstInputTicketView: View {
+    @FocusState private var isFocused: Bool
+    
     @State private var date = Date()
     @State private var place = ""
     @State private var isShowDatePicker = false
@@ -27,6 +29,7 @@ struct FirstInputTicketView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.gray.opacity(0.4))
                         .onTapGesture {
+                            isFocused = false
                             isShowDatePicker = true
                         }
                 }
@@ -35,6 +38,7 @@ struct FirstInputTicketView: View {
                 .foregroundColor(.white)
             
             TextField("고척돔", text: $place)
+                .focused($isFocused)
                 .padding()
                 .colorScheme(.dark)
                 .background {
@@ -45,6 +49,7 @@ struct FirstInputTicketView: View {
             Spacer()
             
             NextButton(isActive: !place.isEmpty) {
+                isFocused = false
                 currentPage += 1
             }
             
@@ -56,9 +61,11 @@ struct FirstInputTicketView: View {
                     .frame(maxWidth: .infinity)
             }
         }
+        .contentShape(Rectangle())
         .onTapGesture {
-            isShowDatePicker = false
-        }
+           isFocused = false
+           isShowDatePicker = false
+       }
     }
 }
 
