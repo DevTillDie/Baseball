@@ -8,50 +8,56 @@
 import SwiftUI
 
 struct ThirdInputTicketView: View {
-    @State private var ourTeamScore = ""
-    @State private var opponentTeamScore = ""
-    
+    @State private var selectedTeam = ""
     @Binding var currentPage: Int
     
+    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    var teams: [Team] = [
+        Team(imageName: "house", teamName: "삼성 라이온즈"),
+        Team(imageName: "house", teamName: "LG 트윈스"),
+        Team(imageName: "house", teamName: "롯데 자이언트"),
+        Team(imageName: "house", teamName: "기아 타이거즈"),
+        Team(imageName: "house", teamName: "한화 이글스"),
+        Team(imageName: "house", teamName: "두산 베어스")
+    ]
+    
     var body: some View {
-        VStack {
-            Text("점수가 어떻게 되었나요?")
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            HStack(alignment: .bottom) {
-                VStack {
-                    Text("삼성 라이온즈")
-                    
-                    TextField("", text: $ourTeamScore)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.numberPad)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(.gray)
-                        )
-                }
-                
-                Text(":")
-                    .padding()
-                
-                VStack {
-                    Text("LG 트윈스")
-                    TextField("", text: $opponentTeamScore)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.numberPad)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(.gray)
-                        )
+        VStack(alignment: .leading) {
+            Text("어떤 팀과 경기를 했나요?")
+                .foregroundColor(.white)
+            
+            Text("상대팀을 선택해주세요.")
+                .foregroundColor(.white)
+            
+            LazyVGrid(columns: columns) {
+                ForEach(teams, id: \.self) { team in
+                    VStack {
+                        Image(systemName: team.imageName)
+                            .resizable()
+                            .scaledToFit()
+                            .padding()
+                            .background(
+                                Circle()
+                                    .fill(.gray.opacity(0.4))
+                                    .stroke(selectedTeam == team.teamName ? .white : .clear)
+                            )
+                        
+                        Text(team.teamName)
+                            .foregroundColor(.white)
+                    }
+                    .onTapGesture {
+                        if selectedTeam == team.teamName {
+                            selectedTeam = ""
+                        } else {
+                            selectedTeam = team.teamName
+                        }
+                    }
                 }
             }
-            .padding()
             
             Spacer()
             
-            NextButton(isActive: !(ourTeamScore.isEmpty && opponentTeamScore.isEmpty)) {
+            NextButton(isActive: !selectedTeam.isEmpty) {
                 currentPage += 1
             }
         }

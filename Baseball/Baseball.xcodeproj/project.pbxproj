@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E0B16462C2A984A00452B2B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16452C2A984A00452B2B /* Date+.swift */; };
 		0E0B164A2C2A98F700452B2B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16492C2A98F700452B2B /* NextButton.swift */; };
+		0E0B164C2C2A9FFB00452B2B /* FifthInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B164B2C2A9FFB00452B2B /* FifthInputTicketView.swift */; };
 		0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */; };
 		0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */; };
 		0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		0E0B16452C2A984A00452B2B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		0E0B16492C2A98F700452B2B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		0E0B164B2C2A9FFB00452B2B /* FifthInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthInputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInputTicketView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */,
 				0E4AB2572BD1251700ADB623 /* ThirdInputTicketView.swift */,
 				0E4AB2592BD1251F00ADB623 /* FourthInputTicketView.swift */,
+				0E0B164B2C2A9FFB00452B2B /* FifthInputTicketView.swift */,
 				0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */,
 			);
 			path = InputTicket;
@@ -287,6 +290,7 @@
 				0E7EE5332B5F91F0004F6BAF /* ContentView.swift in Sources */,
 				0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */,
 				0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */,
+				0E0B164C2C2A9FFB00452B2B /* FifthInputTicketView.swift in Sources */,
 				0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */,
 				0E7EE54D2B5F92E6004F6BAF /* ViewModelInitFile.swift in Sources */,
 			);

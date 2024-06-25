@@ -38,7 +38,7 @@ struct InputTicketView: View {
                 }
                 .padding(.horizontal)
                 
-                ProgressView(value: Double(currentPage), total: 5)
+                ProgressView(value: Double(currentPage), total: 4)
                     .progressViewStyle(LinearProgressViewStyle(tint: .white))
                     .padding(.horizontal)
                 
@@ -54,6 +54,9 @@ struct InputTicketView: View {
                     
                     FourthInputTicketView(currentPage: $currentPage)
                         .tag(3)
+                    
+                    FifthInputTicketView(currentPage: $currentPage)
+                        .tag(4)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .padding()

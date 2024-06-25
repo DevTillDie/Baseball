@@ -13,7 +13,7 @@ struct Team: Hashable {
 }
 
 struct SecondInputTicketView: View {
-    @State private var selectedTeam = ""
+    @State private var selectedTeam = "삼성 라이온즈"
     @Binding var currentPage: Int
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
@@ -29,7 +29,10 @@ struct SecondInputTicketView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("어떤 팀과 경기를 했나요?")
-            Text("상대팀을 선택해주세요.")
+                .foregroundColor(.white)
+            
+            Text("우리팀을 선택해주세요.")
+                .foregroundColor(.white)
             
             LazyVGrid(columns: columns) {
                 ForEach(teams, id: \.self) { team in
@@ -40,11 +43,12 @@ struct SecondInputTicketView: View {
                             .padding()
                             .background(
                                 Circle()
-                                    .fill(selectedTeam == team.teamName ? .gray.opacity(0.8) : .gray.opacity(0.4))
-                                    .stroke(selectedTeam == team.teamName ? .black : .clear)
+                                    .fill(.gray.opacity(0.4))
+                                    .stroke(selectedTeam == team.teamName ? .white : .clear)
                             )
                         
                         Text(team.teamName)
+                            .foregroundColor(.white)
                     }
                     .onTapGesture {
                         if selectedTeam == team.teamName {
@@ -58,7 +62,7 @@ struct SecondInputTicketView: View {
             
             Spacer()
             
-            NextButton(isActive: selectedTeam.isEmpty) {
+            NextButton(isActive: !selectedTeam.isEmpty) {
                 currentPage += 1
             }
         }
