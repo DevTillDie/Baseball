@@ -32,9 +32,12 @@ struct FirstInputTicketView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-           isFocused = false
-           isShowDatePicker = false
-       }
+            isFocused = false
+            isShowDatePicker = false
+        }
+        .onAppear {
+            UIScrollView.appearance().isScrollEnabled = true
+        }
     }
 }
 
