@@ -58,13 +58,9 @@ struct SecondInputTicketView: View {
             
             Spacer()
             
-            Button {
+            NextButton(isActive: selectedTeam.isEmpty) {
                 currentPage += 1
-            } label: {
-                Text("다음")
-                    .frame(maxWidth: .infinity)
             }
-            .disabled(selectedTeam.isEmpty)
         }
     }
 }

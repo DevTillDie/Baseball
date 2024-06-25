@@ -51,11 +51,8 @@ struct ThirdInputTicketView: View {
             
             Spacer()
             
-            Button {
+            NextButton(isActive: !(ourTeamScore.isEmpty && opponentTeamScore.isEmpty)) {
                 currentPage += 1
-            } label: {
-                Text("다음")
-                    .frame(maxWidth: .infinity)
             }
         }
     }

@@ -17,10 +17,12 @@ struct FirstInputTicketView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("언제 경기를 봤나요?")
-            Text("24.03.07")
+                .foregroundColor(.white)
+            
+            Text(date.dateToString())
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundStyle(.gray)
+                .foregroundStyle(.white)
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.gray.opacity(0.4))
@@ -30,27 +32,32 @@ struct FirstInputTicketView: View {
                 }
             
             Text("어디서 봤나요?")
+                .foregroundColor(.white)
+            
             TextField("고척돔", text: $place)
                 .padding()
+                .colorScheme(.dark)
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.gray.opacity(0.4))
                 }
             
             Spacer()
-            Button {
+            
+            NextButton(isActive: !place.isEmpty) {
                 currentPage += 1
-            } label: {
-                Text("다음")
-                    .frame(maxWidth: .infinity)
             }
             
             if isShowDatePicker {
                 DatePicker("", selection: $date, displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
+                    .colorScheme(.dark)
                     .frame(maxWidth: .infinity)
             }
+        }
+        .onTapGesture {
+            isShowDatePicker = false
         }
     }
 }

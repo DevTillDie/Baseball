@@ -59,12 +59,9 @@ struct FourthInputTicketView: View {
                 
             Spacer()
             
-            Button {
+            NextButton(isActive: true, text: "저장하기") {
                 // TODO: Save Data
                 // TODO: Move To ComplteTicketView
-            } label: {
-                Text("저장하기")
-                    .frame(maxWidth: .infinity)
             }
         }
     }
