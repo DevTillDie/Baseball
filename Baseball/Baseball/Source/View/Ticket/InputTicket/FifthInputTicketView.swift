@@ -14,6 +14,7 @@ struct FifthInputTicketView: View {
     @State private var currentEmotion = ""
     
     @Binding var currentPage: Int
+    @Binding var currentStatus: InputStatus
     
     private let characterLimit = 95
     
@@ -80,9 +81,8 @@ struct FifthInputTicketView: View {
             
             NextButton(isActive: true, text: "저장하기") {
                 // TODO: Save Data
-                // TODO: Move To ComplteTicketView
                 isFocused = false
-                currentPage += 1
+                currentStatus = .saving
             }
             
         }

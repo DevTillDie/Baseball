@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum Field {
-        case ourTeamScore
-        case opponentTeamScore
-    }
+    case ourTeamScore
+    case opponentTeamScore
+}
 
 struct FourthInputTicketView: View {
     @FocusState private var isFocused: Field?
