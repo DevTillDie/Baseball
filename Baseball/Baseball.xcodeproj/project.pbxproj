@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0B16462C2A984A00452B2B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16452C2A984A00452B2B /* Date+.swift */; };
+		0E0B164A2C2A98F700452B2B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16492C2A98F700452B2B /* NextButton.swift */; };
 		0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */; };
 		0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */; };
 		0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */; };
@@ -18,14 +20,14 @@
 		0E7EE5332B5F91F0004F6BAF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5322B5F91F0004F6BAF /* ContentView.swift */; };
 		0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */; };
 		0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */; };
-		0E7EE5472B5F92C9004F6BAF /* ComponentInitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5462B5F92C9004F6BAF /* ComponentInitFile.swift */; };
-		0E7EE5492B5F92D3004F6BAF /* ExtensionInitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5482B5F92D3004F6BAF /* ExtensionInitFile.swift */; };
 		0E7EE54B2B5F92DC004F6BAF /* ModelInitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE54A2B5F92DC004F6BAF /* ModelInitFile.swift */; };
 		0E7EE54D2B5F92E6004F6BAF /* ViewModelInitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE54C2B5F92E6004F6BAF /* ViewModelInitFile.swift */; };
 		0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0B16452C2A984A00452B2B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		0E0B16492C2A98F700452B2B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInputTicketView.swift; sourceTree = "<group>"; };
@@ -38,8 +40,6 @@
 		0E7EE5322B5F91F0004F6BAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0E7EE5462B5F92C9004F6BAF /* ComponentInitFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInitFile.swift; sourceTree = "<group>"; };
-		0E7EE5482B5F92D3004F6BAF /* ExtensionInitFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionInitFile.swift; sourceTree = "<group>"; };
 		0E7EE54A2B5F92DC004F6BAF /* ModelInitFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInitFile.swift; sourceTree = "<group>"; };
 		0E7EE54C2B5F92E6004F6BAF /* ViewModelInitFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInitFile.swift; sourceTree = "<group>"; };
 		0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		0E7EE5442B5F9284004F6BAF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0E7EE5482B5F92D3004F6BAF /* ExtensionInitFile.swift */,
+				0E0B16452C2A984A00452B2B /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -178,7 +178,7 @@
 		0E7EE5452B5F92B8004F6BAF /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				0E7EE5462B5F92C9004F6BAF /* ComponentInitFile.swift */,
+				0E0B16492C2A98F700452B2B /* NextButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -276,19 +276,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E7EE5472B5F92C9004F6BAF /* ComponentInitFile.swift in Sources */,
+				0E0B164A2C2A98F700452B2B /* NextButton.swift in Sources */,
 				0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */,
 				0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */,
 				0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */,
 				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
 				0E4AB2582BD1251700ADB623 /* ThirdInputTicketView.swift in Sources */,
 				0E7EE54B2B5F92DC004F6BAF /* ModelInitFile.swift in Sources */,
+				0E0B16462C2A984A00452B2B /* Date+.swift in Sources */,
 				0E7EE5332B5F91F0004F6BAF /* ContentView.swift in Sources */,
 				0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */,
 				0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */,
 				0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */,
 				0E7EE54D2B5F92E6004F6BAF /* ViewModelInitFile.swift in Sources */,
-				0E7EE5492B5F92D3004F6BAF /* ExtensionInitFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
