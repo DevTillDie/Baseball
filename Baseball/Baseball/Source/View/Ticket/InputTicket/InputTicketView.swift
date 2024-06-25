@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum InputStatus {
-    case writing
-    case saving
-    case done
-}
-
 struct InputTicketView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var inputTicketViewModel = InputTicketViewModel()
@@ -34,6 +28,8 @@ struct InputTicketView: View {
         }
     }
 }
+
+// MARK: - UI
 
 extension InputTicketView {
     private var writingView: some View {

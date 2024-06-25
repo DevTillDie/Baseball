@@ -24,51 +24,8 @@ struct FourthInputTicketView: View {
             Text("점수가 어떻게 되었나요?")
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
-
-            HStack(alignment: .bottom) {
-                VStack {
-                    Text("삼성 라이온즈")
-                        .foregroundColor(.white)
-                    
-                    TextField("", text: $ourTeamScore)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.numberPad)
-                        .focused($isFocused, equals: .ourTeamScore)
-                        .colorScheme(.dark)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(.gray)
-                        )
-                        .onTapGesture {
-                            isFocused = .ourTeamScore
-                        }
-                }
-                
-                Text(":")
-                    .foregroundColor(.white)
-                    .padding()
-                
-                VStack {
-                    Text("LG 트윈스")
-                        .foregroundColor(.white)
-                    
-                    TextField("", text: $opponentTeamScore)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.numberPad)
-                        .focused($isFocused, equals: .opponentTeamScore)
-                        .colorScheme(.dark)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(.gray)
-                        )
-                        .onTapGesture {
-                            isFocused = .opponentTeamScore
-                        }
-                }
-            }
-            .padding()
+            
+            inputScoreView
             
             Spacer()
             
@@ -80,6 +37,45 @@ struct FourthInputTicketView: View {
         .contentShape(Rectangle())
         .onTapGesture {
             isFocused = nil
+        }
+    }
+}
+
+// MARK: - UI
+
+extension FourthInputTicketView {
+    private var inputScoreView: some View {
+        HStack(alignment: .bottom) {
+            inputTeamScore(text: "삼성 라이온즈", score: $ourTeamScore, team: .ourTeamScore)
+            
+            Text(":")
+                .foregroundColor(.white)
+                .padding()
+            
+            inputTeamScore(text: "LG 트윈스", score: $opponentTeamScore, team: .opponentTeamScore)
+        }
+        .padding()
+    }
+    
+    @ViewBuilder
+    private func inputTeamScore(text: String, score: Binding<String>, team: Field) -> some View {
+        VStack {
+            Text(text)
+                .foregroundColor(.white)
+            
+            TextField("", text: score)
+                .multilineTextAlignment(.center)
+                .keyboardType(.numberPad)
+                .focused($isFocused, equals: team)
+                .colorScheme(.dark)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(.gray)
+                )
+                .onTapGesture {
+                    isFocused = team
+                }
         }
     }
 }
