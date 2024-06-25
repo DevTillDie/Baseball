@@ -57,6 +57,14 @@ struct InputTicketView: View {
                     
                     FifthInputTicketView(currentPage: $currentPage)
                         .tag(4)
+                    
+                    CompleteTicketView()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                        .tag(5)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .onAppear {

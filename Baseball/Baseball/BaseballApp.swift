@@ -11,7 +11,7 @@ import SwiftUI
 struct BaseballApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TestMainView()
         }
     }
 }
