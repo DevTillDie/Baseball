@@ -16,9 +16,6 @@ struct FourthInputTicketView: View {
     @EnvironmentObject var viewModel: InputTicketViewModel
     @FocusState private var isFocused: Field?
     
-    @State private var ourTeamScore = ""
-    @State private var opponentTeamScore = ""
-    
     var body: some View {
         VStack {
             Text("점수가 어떻게 되었나요?")
@@ -29,7 +26,7 @@ struct FourthInputTicketView: View {
             
             Spacer()
             
-            NextButton(isActive: !ourTeamScore.isEmpty && !opponentTeamScore.isEmpty) {
+            NextButton(isActive: !viewModel.ourTeamScore.isEmpty && !viewModel.opponentTeamScore.isEmpty) {
                 isFocused = nil
                 viewModel.currentPage += 1
             }
@@ -46,13 +43,13 @@ struct FourthInputTicketView: View {
 extension FourthInputTicketView {
     private var inputScoreView: some View {
         HStack(alignment: .bottom) {
-            inputTeamScore(text: "삼성 라이온즈", score: $ourTeamScore, team: .ourTeamScore)
+            inputTeamScore(text: viewModel.ourTeam, score: $viewModel.ourTeamScore, team: .ourTeamScore)
             
             Text(":")
                 .foregroundColor(.white)
                 .padding()
             
-            inputTeamScore(text: "LG 트윈스", score: $opponentTeamScore, team: .opponentTeamScore)
+            inputTeamScore(text: viewModel.opponentTeam, score: $viewModel.opponentTeamScore, team: .opponentTeamScore)
         }
         .padding()
     }

@@ -10,8 +10,6 @@ import SwiftUI
 struct ThirdInputTicketView: View {
     @EnvironmentObject var viewModel: InputTicketViewModel
     
-    @State private var selectedTeam = ""
-    
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     var body: some View {
@@ -22,7 +20,7 @@ struct ThirdInputTicketView: View {
             
             Spacer()
             
-            NextButton(isActive: !selectedTeam.isEmpty) {
+            NextButton(isActive: !viewModel.opponentTeam.isEmpty) {
                 viewModel.currentPage += 1
             }
         }
@@ -52,17 +50,17 @@ extension ThirdInputTicketView {
                         .background(
                             Circle()
                                 .fill(.gray.opacity(0.4))
-                                .stroke(selectedTeam == team.teamName ? .white : .clear)
+                                .stroke(viewModel.opponentTeam == team.teamName ? .white : .clear)
                         )
                     
                     Text(team.teamName)
                         .foregroundColor(.white)
                 }
                 .onTapGesture {
-                    if selectedTeam == team.teamName {
-                        selectedTeam = ""
+                    if viewModel.opponentTeam == team.teamName {
+                        viewModel.opponentTeam = ""
                     } else {
-                        selectedTeam = team.teamName
+                        viewModel.opponentTeam = team.teamName
                     }
                 }
             }

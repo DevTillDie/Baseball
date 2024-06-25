@@ -11,8 +11,6 @@ struct FirstInputTicketView: View {
     @EnvironmentObject var viewModel: InputTicketViewModel
     @FocusState private var isFocused: Bool
     
-    @State private var date = Date()
-    @State private var place = ""
     @State private var isShowDatePicker = false
     
     var body: some View {
@@ -23,7 +21,7 @@ struct FirstInputTicketView: View {
             
             Spacer()
             
-            NextButton(isActive: !place.isEmpty) {
+            NextButton(isActive: !viewModel.place.isEmpty) {
                 isFocused = false
                 viewModel.currentPage += 1
             }
@@ -48,7 +46,7 @@ extension FirstInputTicketView {
             Text("언제 경기를 봤나요?")
                 .foregroundColor(.white)
             
-            Text(date.dateToString())
+            Text(viewModel.date.dateToString())
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.white)
@@ -68,7 +66,7 @@ extension FirstInputTicketView {
             Text("어디서 봤나요?")
                 .foregroundColor(.white)
             
-            TextField("고척돔", text: $place)
+            TextField("고척돔", text: $viewModel.place)
                 .focused($isFocused)
                 .padding()
                 .colorScheme(.dark)
@@ -80,7 +78,7 @@ extension FirstInputTicketView {
     }
     
     private var datePicker: some View {
-        DatePicker("", selection: $date, displayedComponents: .date)
+        DatePicker("", selection: $viewModel.date, displayedComponents: .date)
             .datePickerStyle(WheelDatePickerStyle())
             .labelsHidden()
             .colorScheme(.dark)

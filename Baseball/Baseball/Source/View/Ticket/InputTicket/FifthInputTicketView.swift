@@ -10,10 +10,7 @@ import SwiftUI
 struct FifthInputTicketView: View {
     @EnvironmentObject var viewModel: InputTicketViewModel
     @FocusState private var isFocused: Bool
-    
-    @State private var todayComment: String = ""
-    @State private var currentEmotion = ""
-    
+
     @Binding var currentStatus: InputStatus
     
     private let characterLimit = 95
@@ -33,8 +30,8 @@ struct FifthInputTicketView: View {
             Spacer()
             
             NextButton(isActive: true, text: "저장하기") {
-                // TODO: Save Data
                 isFocused = false
+                viewModel.saveData()
                 currentStatus = .saving
             }
             
@@ -59,16 +56,16 @@ extension FifthInputTicketView {
                         .background(
                             Circle()
                                 .fill(.gray.opacity(0.4))
-                                .stroke(currentEmotion == viewModel.emotions[index].text ? .white : .clear)
+                                .stroke(viewModel.currentEmotion == viewModel.emotions[index].text ? .white : .clear)
                         )
                     
                     Text(viewModel.emotions[index].text)
                 }
                 .onTapGesture {
-                    if currentEmotion == viewModel.emotions[index].text {
-                        currentEmotion = ""
+                    if viewModel.currentEmotion == viewModel.emotions[index].text {
+                        viewModel.currentEmotion = ""
                     } else {
-                        currentEmotion = viewModel.emotions[index].text
+                        viewModel.currentEmotion = viewModel.emotions[index].text
                     }
                 }
                 .padding()
@@ -82,16 +79,19 @@ extension FifthInputTicketView {
         RoundedRectangle(cornerRadius: 8)
             .fill(.gray.opacity(0.5))
             .overlay(alignment: .top) {
-                TextField("", text: $todayComment, axis: .vertical)
+                TextField("", text: $viewModel.todayComment, axis: .vertical)
                     .focused($isFocused)
                     .colorScheme(.dark)
                     .padding()
-                    .onReceive(todayComment.publisher.collect()) {
-                        todayComment = String($0.prefix(characterLimit))
+                    .onChange(of: viewModel.todayComment) {
+                        if viewModel.todayComment.count > characterLimit {
+                            viewModel.todayComment = String(viewModel.todayComment.prefix(characterLimit))
+                        }
                     }
+                
             }
             .overlay(alignment: .bottomTrailing) {
-                Text("\(todayComment.count)/95")
+                Text("\(viewModel.todayComment.count)/95")
                     .foregroundColor(.white)
                     .padding()
             }

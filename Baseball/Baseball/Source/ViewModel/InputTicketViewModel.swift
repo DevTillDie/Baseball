@@ -13,8 +13,18 @@ enum InputStatus {
     case done
 }
 
+// TODO: ourTeam appstorage 에서 가져오기
+
 class InputTicketViewModel: ObservableObject {
     @Published var currentPage = 0
+    @Published var date = Date()
+    @Published var place = ""
+    @Published var ourTeam = "삼성 라이온즈"
+    @Published var opponentTeam = ""
+    @Published var ourTeamScore = ""
+    @Published var opponentTeamScore = ""
+    @Published var todayComment = ""
+    @Published var currentEmotion = ""
     
     let teams: [Team] = [
         Team(imageName: "house", teamName: "삼성 라이온즈"),
@@ -30,4 +40,17 @@ class InputTicketViewModel: ObservableObject {
         ("", "평범해요"),
         ("", "신나요")
     ]
+    
+    func saveData() {
+        //TODO: Realm 저장
+        
+        print("date: \(date.dateToString())")
+        print("place: \(place)")
+        print("ourTeam: \(ourTeam)")
+        print("opponentTeam: \(opponentTeam)")
+        print("ourTeamScore: \(ourTeamScore)")
+        print("opponentTeamScore: \(opponentTeamScore)")
+        print("todayComment: \(todayComment)")
+        print("currentEmotion: \(currentEmotion)")
+    }
 }
