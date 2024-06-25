@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct FirstInputTicketView: View {
+    @EnvironmentObject var viewModel: InputTicketViewModel
     @FocusState private var isFocused: Bool
     
     @State private var date = Date()
     @State private var place = ""
     @State private var isShowDatePicker = false
-    
-    @Binding var currentPage: Int
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -50,7 +49,7 @@ struct FirstInputTicketView: View {
             
             NextButton(isActive: !place.isEmpty) {
                 isFocused = false
-                currentPage += 1
+                viewModel.currentPage += 1
             }
             
             if isShowDatePicker {

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct FifthInputTicketView: View {
+    @EnvironmentObject var viewModel: InputTicketViewModel
     @FocusState private var isFocused: Bool
     
     @State private var todayCommet: String = ""
     @State private var currentEmotion = ""
     
-    @Binding var currentPage: Int
     @Binding var currentStatus: InputStatus
     
     private let characterLimit = 95

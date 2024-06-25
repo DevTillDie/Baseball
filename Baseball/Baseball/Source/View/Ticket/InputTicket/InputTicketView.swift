@@ -15,7 +15,8 @@ enum InputStatus {
 
 struct InputTicketView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var currentPage = 0
+    @StateObject private var inputTicketViewModel = InputTicketViewModel()
+    
     @State private var currentStatus = InputStatus.writing
     
     var body: some View {
@@ -24,67 +25,90 @@ struct InputTicketView: View {
                 .ignoresSafeArea()
             
             if currentStatus == .writing {
-                VStack {
-                    HStack {
-                        Button {
-                            if currentPage == 0 {
-                                self.presentationMode.wrappedValue.dismiss()
-                            } else {
-                                currentPage -= 1
-                            }
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(.white)
-                        }
-                        
-                        Spacer()
-                        
-                        Text("티켓 추가하기")
-                            .bold()
-                            .foregroundColor(.white)
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    
-                    ProgressView(value: Double(currentPage), total: 4)
-                        .progressViewStyle(LinearProgressViewStyle(tint: .white))
-                        .padding(.horizontal)
-                    
-                    TabView(selection: $currentPage) {
-                        FirstInputTicketView(currentPage: $currentPage)
-                            .tag(0)
-                        
-                        SecondInputTicketView(currentPage: $currentPage)
-                            .tag(1)
-                        
-                        ThirdInputTicketView(currentPage: $currentPage)
-                            .tag(2)
-                        
-                        FourthInputTicketView(currentPage: $currentPage)
-                            .tag(3)
-                        
-                        FifthInputTicketView(currentPage: $currentPage, currentStatus: $currentStatus)
-                            .tag(4)
-                    }
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-                    .onAppear {
-                        UIScrollView.appearance().isScrollEnabled = false
-                    }
-                    .padding()
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                writingView
             } else if currentStatus == .saving {
-                CompleteTicketView()
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
-                            currentStatus = .done
-                        }
-                    }
+                completeView
             } else {
                 TicketView()
             }
         }
+    }
+}
+
+extension InputTicketView {
+    private var writingView: some View {
+        VStack {
+            writingViewHeader
+            
+            ProgressView(value: Double(inputTicketViewModel.currentPage), total: 4)
+                .progressViewStyle(LinearProgressViewStyle(tint: .white))
+                .padding(.horizontal)
+            
+            writingTabView
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var writingViewHeader: some View {
+        HStack {
+            Button {
+                if inputTicketViewModel.currentPage == 0 {
+                    self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    inputTicketViewModel.currentPage -= 1
+                }
+            } label: {
+                Image(systemName: "chevron.left")
+                    .foregroundColor(.white)
+            }
+            
+            Spacer()
+            
+            Text("티켓 추가하기")
+                .bold()
+                .foregroundColor(.white)
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+    
+    private var writingTabView: some View {
+        TabView(selection: $inputTicketViewModel.currentPage) {
+            FirstInputTicketView()
+                .environmentObject(inputTicketViewModel)
+                .tag(0)
+            
+            SecondInputTicketView()
+                .environmentObject(inputTicketViewModel)
+                .tag(1)
+            
+            ThirdInputTicketView()
+                .environmentObject(inputTicketViewModel)
+                .tag(2)
+            
+            FourthInputTicketView()
+                .environmentObject(inputTicketViewModel)
+                .tag(3)
+            
+            FifthInputTicketView(currentStatus: $currentStatus)
+                .environmentObject(inputTicketViewModel)
+                .tag(4)
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .onAppear {
+            UIScrollView.appearance().isScrollEnabled = false
+        }
+        .padding()
+    }
+    
+    private var completeView: some View {
+        CompleteTicketView()
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
+                    currentStatus = .done
+                }
+            }
     }
 }
 

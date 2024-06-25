@@ -13,12 +13,11 @@ enum Field {
 }
 
 struct FourthInputTicketView: View {
+    @EnvironmentObject var viewModel: InputTicketViewModel
     @FocusState private var isFocused: Field?
     
     @State private var ourTeamScore = ""
     @State private var opponentTeamScore = ""
-    
-    @Binding var currentPage: Int
     
     var body: some View {
         VStack {
@@ -75,7 +74,7 @@ struct FourthInputTicketView: View {
             
             NextButton(isActive: !ourTeamScore.isEmpty && !opponentTeamScore.isEmpty) {
                 isFocused = nil
-                currentPage += 1
+                viewModel.currentPage += 1
             }
         }
         .contentShape(Rectangle())

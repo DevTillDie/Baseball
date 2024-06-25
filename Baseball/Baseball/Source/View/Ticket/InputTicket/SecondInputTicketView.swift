@@ -13,8 +13,8 @@ struct Team: Hashable {
 }
 
 struct SecondInputTicketView: View {
+    @EnvironmentObject var viewModel: InputTicketViewModel
     @State private var selectedTeam = "삼성 라이온즈"
-    @Binding var currentPage: Int
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     var teams: [Team] = [
@@ -63,7 +63,7 @@ struct SecondInputTicketView: View {
             Spacer()
             
             NextButton(isActive: !selectedTeam.isEmpty) {
-                currentPage += 1
+                viewModel.currentPage += 1
             }
         }
     }
