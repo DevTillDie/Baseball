@@ -25,6 +25,7 @@
 		0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */; };
 		0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */; };
 		0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */; };
+		5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4152A2B85DA61006EE79B /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		5BE4152A2B85DA61006EE79B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				0E4AB2502BD124DF00ADB623 /* Ticket */,
 				0E7EE5322B5F91F0004F6BAF /* ContentView.swift */,
 				0E0B16522C2AB54300452B2B /* TestMainView.swift */,
+				5BE4152A2B85DA61006EE79B /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E0B164A2C2A98F700452B2B /* NextButton.swift in Sources */,
+				5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */,
 				0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */,
 				0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */,
 				0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */,
@@ -340,7 +344,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -403,7 +407,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
