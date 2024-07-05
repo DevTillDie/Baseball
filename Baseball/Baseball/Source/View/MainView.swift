@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var moveInputTicketView = false
+    @State private var moveTicketView = false
+    @State private var data: TicketData?
+    
     // TODO: 티켓 데이터 대한 임시 변수 -> Realm 연결 후 삭제
     private let ticketData = [TicketData(), TicketData(), TicketData(), TicketData(), TicketData()]
 //    private let ticketData: [TicketData] = []
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color(.background)
                     .ignoresSafeArea()
@@ -48,6 +52,16 @@ struct MainView: View {
                         .frame(height: 154)
                 }
                 .ignoresSafeArea()
+                
+                if moveTicketView {
+                    ZStack {
+                        Color(.background)
+                            .ignoresSafeArea()
+                        
+                        TicketView()
+                    }
+                    .transition(.push(from: .bottom))
+                }
             }
         }
     }
@@ -100,16 +114,24 @@ extension MainView {
             VStack {
                 Spacer()
                 
-                Text("경기 기록하기")
-                    .foregroundStyle(.label)
-                    .padding(.horizontal, 47)
-                    .padding(.vertical, 8)
-                    .background {
-                        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                            .fill(.clear)
-                            .stroke(.stroke)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .bottomLeading)
+                Button {
+                    moveInputTicketView = true
+                } label: {
+                    Text("경기 기록하기")
+                        .foregroundStyle(.label)
+                        .padding(.horizontal, 47)
+                        .padding(.vertical, 8)
+                        .background {
+                            RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                                .fill(.clear)
+                                .stroke(.stroke)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .bottomLeading)
+                }
+                .navigationDestination(isPresented: $moveInputTicketView) {
+                    InputTicketView()
+                        .navigationBarBackButtonHidden()
+                }
             }
             .frame(height: 175)
         }
@@ -213,96 +235,55 @@ extension MainView {
 extension MainView {
     private var ticketPreviewStack: some View {
         ForEach(ticketData) { data in
-            VStack(spacing: 0) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    moveTicketView = true
+                }
+                self.data = data
+            } label: {
                 VStack(spacing: 0) {
-                    Text(data.date)
-                        .font(.system(size: 15))
-                        .fontWeight(.medium)
+                    VStack(spacing: 0) {
+                        Text(data.date)
+                            .font(.system(size: 15))
+                            .fontWeight(.medium)
+                        
+                        Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
+                            .font(.system(size: 48))
+                            .fontWeight(.heavy)
+                    }
                     
-                    Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
-                        .font(.system(size: 48))
-                        .fontWeight(.heavy)
+                    HStack {
+                        Text(data.ourTeam.rawValue)
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        
+                        HLine()
+                            .stroke(style: .init(dash: [3]))
+                            .foregroundStyle(.line)
+                            .frame(height: 1)
+                            .padding(.horizontal, 16)
+                        
+                        Text(data.opponentTeam.rawValue)
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    }
+                    .padding(.top, 13)
                 }
-                
-                HStack {
-                    Text(data.ourTeam.rawValue)
-                        .font(.system(size: 15))
-                        .fontWeight(.semibold)
-                        .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    
-                    HLine()
-                        .stroke(style: .init(dash: [3]))
-                        .foregroundStyle(.line)
-                        .frame(height: 1)
-                        .padding(.horizontal, 16)
-                    
-                    Text(data.opponentTeam.rawValue)
-                        .font(.system(size: 15))
-                        .fontWeight(.semibold)
-                        .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                .foregroundColor(.text)
+                .padding(.horizontal, 14)
+                .padding(.top, 38)
+                .padding(.bottom, 17)
+                .background {
+                    LinearGradient(gradient: Gradient(colors: [data.ourTeam.colorTeam(), data.opponentTeam.colorTeam()]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                 }
-                .padding(.top, 13)
+                .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
+                .frame(height: 160)
+                .padding(.horizontal, 9)
+                .padding(.bottom, 16)
             }
-            .foregroundColor(.text)
-            .padding(.horizontal, 14)
-            .padding(.top, 38)
-            .padding(.bottom, 17)
-            .background {
-                LinearGradient(gradient: Gradient(colors: [data.ourTeam.colorTeam(), data.opponentTeam.colorTeam()]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
-            }
-            .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
-            .frame(height: 160)
-            .padding(.horizontal, 9)
-            .padding(.bottom, 16)
         }
-    }
-}
-
-struct HLine: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        path.move(to: CGPoint(x: rect.minX, y: 0))
-        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
-        
-        return path
-    }
-}
-
-struct TicketShape: Shape {
-    var cornerRadius: CGFloat
-    var cutRadius: CGFloat
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let cutCenter = CGPoint(x: rect.midX, y: rect.minY - 20)
-        
-        path.move(to: CGPoint(x: rect.minX + cornerRadius, y: rect.minY))
-        path.addArc(center: CGPoint(x: rect.minX + cornerRadius, y: rect.minY + cornerRadius), radius: cornerRadius, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
-        path.addLine(to: CGPoint(x: cutCenter.x - cutRadius, y: rect.minY))
-        path.addArc(center: cutCenter, radius: cutRadius, startAngle: .degrees(180), endAngle: .degrees(0), clockwise: true)
-        path.addLine(to: CGPoint(x: cutCenter.x + cutRadius, y: rect.minY))
-        path.addArc(center: CGPoint(x: rect.maxX - cornerRadius, y: rect.minY + cornerRadius), radius: cornerRadius, startAngle: .degrees(270), endAngle: .degrees(0), clockwise: false)
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - cornerRadius))
-        path.addArc(center: CGPoint(x: rect.maxX - cornerRadius, y: rect.maxY - cornerRadius), radius: cornerRadius, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
-        path.addLine(to: CGPoint(x: rect.minX + cornerRadius, y: rect.maxY))
-        path.addArc(center: CGPoint(x: rect.minX + cornerRadius, y: rect.maxY - cornerRadius), radius: cornerRadius, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + cornerRadius))
-        path.closeSubpath()
-        
-        return path
-    }
-}
-
-struct VisualEffectView: UIViewRepresentable {
-    var effect: UIVisualEffect?
-    
-    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView {
-        return UIVisualEffectView()
-    }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) {
-        uiView.effect = effect
     }
 }
 
