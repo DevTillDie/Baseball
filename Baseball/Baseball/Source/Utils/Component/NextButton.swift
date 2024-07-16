@@ -10,6 +10,7 @@ import SwiftUI
 struct NextButton: View {
     let isActive: Bool
     let action: () -> Void
+    let gradients: [Color] = [.gradient1, .gradient2, .gradient3, .gradient4, .gradient5]
     
     var text = "다음으로"
     
@@ -21,10 +22,17 @@ struct NextButton: View {
                 .foregroundStyle(isActive ? .white : .gray)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(.clear)
-                        .stroke(isActive ? .white : .gray, lineWidth: 1.5)
+                        .fill(Color.clear)
+                        .stroke(LinearGradient(colors: gradients, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 8)
+                        .blur(radius: 8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(Color.black)
+                                .stroke(LinearGradient(colors: gradients, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2)
+                        )
                 )
         }
+        .padding()
         .disabled(!isActive)
     }
 }

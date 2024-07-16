@@ -13,6 +13,8 @@ struct InputTicketView: View {
     
     @State private var currentStatus = InputStatus.writing
     
+    private let gradients: [Color] = [.gradient1, .gradient2, .gradient3, .gradient4, .gradient5]
+    
     var body: some View {
         ZStack {
             Color.black
@@ -35,9 +37,10 @@ extension InputTicketView {
     private var writingView: some View {
         VStack {
             writingViewHeader
-            
+        
             ProgressView(value: Double(inputTicketViewModel.currentPage), total: 4)
-                .progressViewStyle(LinearProgressViewStyle(tint: .white))
+                .progressViewStyle(
+                    GradientProgressStyle(fill: LinearGradient(colors: gradients, startPoint: .topLeading, endPoint: .bottomTrailing), height: 4))
                 .padding(.horizontal)
             
             writingTabView

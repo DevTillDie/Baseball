@@ -36,9 +36,9 @@ class InputTicketViewModel: ObservableObject {
     ]
     
     let emotions: [(img: String, text: String)] = [
-        ("", "화나요"),
-        ("", "평범해요"),
-        ("", "신나요")
+        ("😡", "화나요"),
+        ("😗", "평범해요"),
+        ("😆", "신나요")
     ]
     
     func saveData() {

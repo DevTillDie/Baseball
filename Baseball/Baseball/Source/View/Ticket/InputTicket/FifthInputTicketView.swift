@@ -50,16 +50,13 @@ extension FifthInputTicketView {
         LazyHGrid(rows: [GridItem(.flexible())]) {
             ForEach(0..<3, id: \.self) { index in
                 VStack {
-                    Image(systemName: viewModel.emotions[index].img)
-                        .resizable()
-                        .scaledToFit()
-                        .background(
-                            Circle()
-                                .fill(.gray.opacity(0.4))
-                                .stroke(viewModel.currentEmotion == viewModel.emotions[index].text ? .white : .clear)
-                        )
-                    
+                    Text(viewModel.emotions[index].img)
+                        .font(.system(size: 32))
+                        .padding()
+                        .modifier(SelectedCircle(isSelected: viewModel.currentEmotion == viewModel.emotions[index].text))
+
                     Text(viewModel.emotions[index].text)
+                        .foregroundStyle(.white)
                 }
                 .onTapGesture {
                     if viewModel.currentEmotion == viewModel.emotions[index].text {

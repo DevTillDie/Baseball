@@ -47,11 +47,7 @@ extension ThirdInputTicketView {
                         .resizable()
                         .scaledToFit()
                         .padding()
-                        .background(
-                            Circle()
-                                .fill(.gray.opacity(0.4))
-                                .stroke(viewModel.opponentTeam == team.teamName ? .white : .clear)
-                        )
+                        .modifier(SelectedCircle(isSelected: viewModel.opponentTeam == team.teamName))
                     
                     Text(team.teamName)
                         .foregroundColor(.white)
