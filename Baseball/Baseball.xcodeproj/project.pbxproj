@@ -25,6 +25,8 @@
 		0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */; };
 		0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */; };
 		0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */; };
+		0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */; };
+		0E804A052C46290000582121 /* SelectedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A042C46290000582121 /* SelectedCircle.swift */; };
 		5B626DAB2C38569C006D5578 /* HLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAA2C38569C006D5578 /* HLine.swift */; };
 		5B626DAD2C3856D9006D5578 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAC2C3856D9006D5578 /* Ticket.swift */; };
 		5B626DAF2C385724006D5578 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAE2C385724006D5578 /* VisualEffectView.swift */; };
@@ -51,6 +53,8 @@
 		0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressStyle.swift; sourceTree = "<group>"; };
+		0E804A042C46290000582121 /* SelectedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCircle.swift; sourceTree = "<group>"; };
 		5B626DAA2C38569C006D5578 /* HLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLine.swift; sourceTree = "<group>"; };
 		5B626DAC2C3856D9006D5578 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		5B626DAE2C385724006D5578 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		0E7EE5432B5F9275004F6BAF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0E804A012C4628DC00582121 /* ViewModifier */,
 				0E7EE5452B5F92B8004F6BAF /* Component */,
 				0E7EE5442B5F9284004F6BAF /* Extension */,
 			);
@@ -197,8 +202,17 @@
 				5B626DAA2C38569C006D5578 /* HLine.swift */,
 				5B626DAC2C3856D9006D5578 /* Ticket.swift */,
 				5B626DAE2C385724006D5578 /* VisualEffectView.swift */,
+				0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		0E804A012C4628DC00582121 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				0E804A042C46290000582121 /* SelectedCircle.swift */,
+			);
+			path = ViewModifier;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,11 +310,13 @@
 			files = (
 				0E0B164A2C2A98F700452B2B /* NextButton.swift in Sources */,
 				5B626DAD2C3856D9006D5578 /* Ticket.swift in Sources */,
+				0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */,
 				5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */,
 				5B626DAB2C38569C006D5578 /* HLine.swift in Sources */,
 				0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */,
 				0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */,
 				0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */,
+				0E804A052C46290000582121 /* SelectedCircle.swift in Sources */,
 				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
 				0E0B16552C2ABA4900452B2B /* InputTicketViewModel.swift in Sources */,
 				0E4AB2582BD1251700ADB623 /* ThirdInputTicketView.swift in Sources */,
