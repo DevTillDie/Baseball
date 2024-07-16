@@ -27,6 +27,7 @@
 		0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */; };
 		0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */; };
 		0E804A052C46290000582121 /* SelectedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A042C46290000582121 /* SelectedCircle.swift */; };
+		0E804A072C46557200582121 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A062C46557200582121 /* TicketViewModel.swift */; };
 		5B626DAB2C38569C006D5578 /* HLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAA2C38569C006D5578 /* HLine.swift */; };
 		5B626DAD2C3856D9006D5578 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAC2C3856D9006D5578 /* Ticket.swift */; };
 		5B626DAF2C385724006D5578 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAE2C385724006D5578 /* VisualEffectView.swift */; };
@@ -55,6 +56,7 @@
 		0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressStyle.swift; sourceTree = "<group>"; };
 		0E804A042C46290000582121 /* SelectedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCircle.swift; sourceTree = "<group>"; };
+		0E804A062C46557200582121 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		5B626DAA2C38569C006D5578 /* HLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLine.swift; sourceTree = "<group>"; };
 		5B626DAC2C3856D9006D5578 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		5B626DAE2C385724006D5578 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				0E0B16542C2ABA4900452B2B /* InputTicketViewModel.swift */,
+				0E804A062C46557200582121 /* TicketViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */,
 				0E804A052C46290000582121 /* SelectedCircle.swift in Sources */,
 				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
+				0E804A072C46557200582121 /* TicketViewModel.swift in Sources */,
 				0E0B16552C2ABA4900452B2B /* InputTicketViewModel.swift in Sources */,
 				0E4AB2582BD1251700ADB623 /* ThirdInputTicketView.swift in Sources */,
 				0E0B16572C2ABD2900452B2B /* Team.swift in Sources */,
