@@ -23,6 +23,7 @@ class InputTicketViewModel: ObservableObject {
     @Published var opponentTeam = ""
     @Published var ourTeamScore = ""
     @Published var opponentTeamScore = ""
+    @Published var todayTitle = ""
     @Published var todayComment = ""
     @Published var currentEmotion = ""
     
