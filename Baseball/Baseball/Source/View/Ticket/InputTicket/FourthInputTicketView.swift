@@ -47,6 +47,7 @@ extension FourthInputTicketView {
             
             Text(":")
                 .foregroundColor(.white)
+                .font(.system(size: 40))
                 .padding()
             
             inputTeamScore(text: viewModel.opponentTeam, score: $viewModel.opponentTeamScore, team: .opponentTeamScore)
@@ -60,16 +61,13 @@ extension FourthInputTicketView {
             Text(text)
                 .foregroundColor(.white)
             
-            TextField("", text: score)
+            TextField("0", text: score)
                 .multilineTextAlignment(.center)
                 .keyboardType(.numberPad)
                 .focused($isFocused, equals: team)
                 .colorScheme(.dark)
+                .font(.system(size: 40))
                 .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(.gray)
-                )
                 .onTapGesture {
                     isFocused = team
                 }
