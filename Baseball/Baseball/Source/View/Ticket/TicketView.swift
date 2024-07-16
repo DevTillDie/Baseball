@@ -8,104 +8,134 @@
 import SwiftUI
 
 struct TicketView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        ZStack {
-            Color.gray.opacity(0.5)
-                .ignoresSafeArea()
-            
-            VStack {
-                ZStack {
-                    Rectangle()
-                        .fill(.white)
-                       
-                    VStack {
-                        Image(systemName: "baseball")
-                            .font(.system(size: 100))
+        VStack {
+            VStack(spacing: 0) {
+                VStack {
+                    Text("24.02.22")
+                        .font(.system(size: 15))
+                    
+                    Text("3 : 1")
+                        .font(.system(size: 48))
+                    
+                    HStack {
+                        Text("SAMSUNG LIONS")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                         
-                        Divider()
+                        HLine()
+                            .stroke(style: .init(dash: [3]))
+                            .foregroundStyle(.line)
+                            .frame(height: 1)
                         
-                        HStack {
-                            Text("Date.")
-                            Spacer()
-                            Text("24.02.12")
-                        }
-                        
-                        Divider()
-                        
-                        HStack {
-                            Text("Location.")
-                            
-                            Spacer()
-                            
-                            Text("대구 경기장")
-                        }
-                        
-                        Divider()
-                        
-                        HStack {
-                            Text("삼성\n라이온즈")
-                                .lineLimit(2)
-                                .fixedSize(horizontal: false, vertical: true)
-                            
-                            Spacer()
-                            
-                            Text("vs")
-                            
-                            Spacer()
-                            
-                            Text("두산\n베어스")
-                                .lineLimit(2)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.trailing)
-                        }
-                        .padding()
-                        .foregroundStyle(.white)
-                        .background(Rectangle())
-                        
-                        HStack {
-                            Text("Wins!")
-                            
-                            Spacer()
-                            
-                            Text("lose")
-                        }
-                        
-                        Divider()
-                        
-                        Text("49 : 17")
-                        
-                        Divider()
-                        Divider()
-                        
-                        Text("경기 한마디")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Text("아 오늘 경기 찢었다.")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                            .frame(height: 100)
+                        Text("LG TWINS")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     }
+                    .padding(.horizontal)
+                    
+                    Divider()
+                        .frame(minHeight: 1)
+                        .background(.white)
+                        .padding()
+                       
+                    HStack {
+                        Spacer()
+                        
+                        VStack(spacing: 8) {
+                            Text("Our team")
+                                .font(.system(size: 20))
+                            Text("Samsung Lions")
+                                .font(.system(size: 16))
+                            Image(systemName: "cloud.sleet")
+                                .font(.system(size: 30))
+                                .padding(.bottom, 30)
+                            
+                            Text("Location")
+                                .font(.system(size: 20))
+                            Text("고척돔")
+                                .font(.system(size: 16))
+                            
+                        }
+                        
+                        Spacer(minLength: 30)
+                        
+                        VStack(spacing: 8) {
+                            Text("Opposing team")
+                                .font(.system(size: 20))
+                            Text("LG TWINS")
+                                .font(.system(size: 16))
+                            Image(systemName: "envelope.open")
+                                .font(.system(size: 30))
+                                .padding(.bottom, 30)
+                            
+                            Text("Lucky")
+                                .font(.system(size: 20))
+                            
+                            Text("승요")
+                                .font(.system(size: 16))
+                        }
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
                     .padding()
                 }
-                .padding(.top, 92)
-                .padding(.bottom, 61)
-                .padding(.horizontal)
-                
-                Button {
-                    // TODO: 인스타 공유
-                } label: {
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(.gray)
-                        .overlay {
-                            Text("공유하기")
-                                .foregroundStyle(.black)
-                        }
+                .padding(.top, 60)
+                .padding(.bottom, 30)
+                .background {
+                    LinearGradient(gradient: Gradient(colors: [.blue, .red]), startPoint: .leading, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                 }
+                .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
+                
+                HLine()
+                    .stroke(style: .init(dash: [6]))
+                    .foregroundStyle(.line)
+                    .frame(height: 3)
+                    .background {
+                        LinearGradient(gradient: Gradient(colors: [.blue, .red]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                    }
+                    .padding(.horizontal, 6)
+                
+                VStack {
+                    Text("제목")
+                        .padding(.bottom, 4)
+                    
+                    Text("내용")
+                        .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(28)
+                .background {
+                    LinearGradient(gradient: Gradient(colors: [.blue, .red]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                }
+                .clipShape(TicketShape(cornerRadius: 8, cutRadius: 0))
+                .padding(.bottom, 36)
             }
-            .padding(.horizontal)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            Button {
+                
+            } label: {
+                Text("공유하기")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(.white, lineWidth: 2)
+                    }
+            }
         }
+        .padding()
+        .foregroundColor(.text)
     }
 }
 
 #Preview {
-    TicketView()
+    MainView()
 }
