@@ -86,8 +86,7 @@ extension TicketView {
         .background {
             LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
         }
-        .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
-        
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
     }
     
     private var teamInfoView: some View {
@@ -146,6 +145,7 @@ extension TicketView {
                 LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
             }
             .padding(.horizontal, 8)
+            .zIndex(1)
     }
     
     private var reviewView: some View {
@@ -163,7 +163,7 @@ extension TicketView {
         .background {
             LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
         }
-        .clipShape(TicketShape(cornerRadius: 8, cutRadius: 0))
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0))
         .padding(.bottom, 36)
     }
 }

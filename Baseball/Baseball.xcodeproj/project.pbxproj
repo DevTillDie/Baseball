@@ -13,6 +13,7 @@
 		0E0B16532C2AB54300452B2B /* TestMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16522C2AB54300452B2B /* TestMainView.swift */; };
 		0E0B16552C2ABA4900452B2B /* InputTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16542C2ABA4900452B2B /* InputTicketViewModel.swift */; };
 		0E0B16572C2ABD2900452B2B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16562C2ABD2900452B2B /* Team.swift */; };
+		0E3028632C5A0D40008E038C /* TicketStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3028622C5A0D3F008E038C /* TicketStroke.swift */; };
 		0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */; };
 		0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */; };
 		0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */; };
@@ -41,6 +42,7 @@
 		0E0B16522C2AB54300452B2B /* TestMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMainView.swift; sourceTree = "<group>"; };
 		0E0B16542C2ABA4900452B2B /* InputTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTicketViewModel.swift; sourceTree = "<group>"; };
 		0E0B16562C2ABD2900452B2B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		0E3028622C5A0D3F008E038C /* TicketStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStroke.swift; sourceTree = "<group>"; };
 		0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB2532BD1250300ADB623 /* FirstInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB2552BD1250E00ADB623 /* SecondInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInputTicketView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				0E804A042C46290000582121 /* SelectedCircle.swift */,
+				0E3028622C5A0D3F008E038C /* TicketStroke.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */,
 				0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */,
 				0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */,
+				0E3028632C5A0D40008E038C /* TicketStroke.swift in Sources */,
 				0E804A052C46290000582121 /* SelectedCircle.swift in Sources */,
 				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
 				0E804A072C46557200582121 /* TicketViewModel.swift in Sources */,
