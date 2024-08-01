@@ -65,5 +65,5 @@ extension ThirdInputTicketView {
 }
 
 #Preview {
-    InputTicketView()
+    InputTicketView(moveTicketView: .constant(false))
 }
