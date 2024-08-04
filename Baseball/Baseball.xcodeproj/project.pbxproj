@@ -34,6 +34,7 @@
 		5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4152A2B85DA61006EE79B /* MainView.swift */; };
 		5BE672782C5F65FE00D9F0E8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE672772C5F65FE00D9F0E8 /* OnboardingView.swift */; };
 		5BE6727A2C5F691400D9F0E8 /* OnboardingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE672792C5F691400D9F0E8 /* OnboardingTag.swift */; };
+		5BE6727D2C5F76DF00D9F0E8 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BE6727C2C5F76DF00D9F0E8 /* Pretendard-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		5BE4152A2B85DA61006EE79B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5BE672772C5F65FE00D9F0E8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5BE672792C5F691400D9F0E8 /* OnboardingTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTag.swift; sourceTree = "<group>"; };
+		5BE6727C2C5F76DF00D9F0E8 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		5BE6727E2C5F774000D9F0E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 		0E7EE52F2B5F91EF004F6BAF /* Baseball */ = {
 			isa = PBXGroup;
 			children = (
+				5BE6727E2C5F774000D9F0E8 /* Info.plist */,
 				0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */,
 				0E7EE53F2B5F9238004F6BAF /* Source */,
 				0E7EE5402B5F9241004F6BAF /* Resource */,
@@ -163,6 +167,7 @@
 		0E7EE5402B5F9241004F6BAF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5BE6727B2C5F76A700D9F0E8 /* fonts */,
 				0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -222,6 +227,14 @@
 				0E804A042C46290000582121 /* SelectedCircle.swift */,
 			);
 			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		5BE6727B2C5F76A700D9F0E8 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5BE6727C2C5F76DF00D9F0E8 /* Pretendard-Bold.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */,
+				5BE6727D2C5F76DF00D9F0E8 /* Pretendard-Bold.otf in Resources */,
 				0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */,
 				0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */,
 			);
@@ -478,6 +492,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Baseball/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -508,6 +523,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Baseball/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
