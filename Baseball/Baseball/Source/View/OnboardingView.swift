@@ -11,6 +11,7 @@ struct OnboardingView: View {
     @State private var isMoveToLast = false
     @State private var isButtonVisible: Bool = true
     @State private var timer: Timer?
+    @State private var scrollOffset: CGFloat = 0
     
     var body: some View {
         ZStack {
@@ -19,7 +20,7 @@ struct OnboardingView: View {
             
             ScrollViewReader { proxy in
                 ScrollView {
-                    VStack(spacing: 0) {
+                    VStack {
                         onboardingMain
                         
                         onboardingDescriptionOne
@@ -64,7 +65,7 @@ extension OnboardingView {
             Image(.baseball)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 243, height: 227)
+                .frame(maxWidth: 243, maxHeight: 227)
                 .padding(.top, 40)
             
             Spacer()
@@ -87,7 +88,7 @@ extension OnboardingView {
             Spacer()
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height - 40)
+        .frame(height: UIScreen.main.bounds.height - 65)
     }
     
     private var onboardingTags: some View {
@@ -110,34 +111,182 @@ extension OnboardingView {
     private var onboardingDescriptionOne: some View {
         VStack {
             Text("오늘 본 경기\n간편하게 기록해봐요")
-                .font(.system(size: 24))
+                .font(.custom("Pretendard-Bold", size: 24))
                 .bold()
                 .multilineTextAlignment(.center)
             
+            Text("간단한 기록으로 경기 티켓을\n모을 수 있어요")
+                .foregroundStyle(.body)
+                .multilineTextAlignment(.center)
+                .padding(.top, 20)
+            
+            Spacer()
+            
+            Image(.record)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 275, maxHeight: 212)
             
             Spacer()
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height * 1/2)
+        .frame(height: UIScreen.main.bounds.height - 65)
     }
     
     private var onboardingDescriptionTwo: some View {
         VStack {
+            Text("기록해서 모은\n내 경기 티켓 공유해봐요")
+                .font(.custom("Pretendard-Bold", size: 24))
+                .bold()
+                .multilineTextAlignment(.center)
+            
+            Text("인스타그램 스토리에 공유하면\n근사한 결과물을 볼 수 있어요!")
+                .foregroundStyle(.body)
+                .multilineTextAlignment(.center)
+                .padding(.top, 20)
+            
             Spacer()
             
-            Text("기록해서 모은")
-            Text("내 경기 티켓 공유해봐요")
+            Image(.share)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 287, maxHeight: 277)
             
             Spacer()
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height * 1/2)
+        .frame(height: UIScreen.main.bounds.height - 65)
     }
     
     private var onboardingTeamSelection: some View {
-        Text("가장 응원하는 구단은 어디인가요?")
-            .foregroundStyle(.text)
-            .frame(height: UIScreen.main.bounds.height * 1/2)
+        VStack {
+            Text("가장 응원하는 구단은\n어디인가요?")
+                .font(.custom("Pretendard-Bold", size: 24))
+                .bold()
+                .multilineTextAlignment(.center)
+            
+            Text("선호 구단에 맞추어 콘텐츠를\n제공받을 수 있어요!")
+                .foregroundStyle(.body)
+                .multilineTextAlignment(.center)
+                .padding(.top, 20)
+            
+            Spacer()
+            
+            teamSelectionButtons
+            
+            Spacer()
+            
+            Button {
+                // action
+            } label: {
+                Text("시작하기")
+                    .fontWeight(.medium)
+                    .padding(.vertical, 16)
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        RoundedRectangle(cornerRadius: 15.0)
+                            .fill(.clear)
+                            .stroke(.text, lineWidth: 1.5)
+                    }
+            }
+            .padding(.horizontal, 36)
+            
+            Spacer()
+        }
+        .foregroundStyle(.text)
+        .frame(height: UIScreen.main.bounds.height - 65)
+    }
+    
+    private var teamSelectionButtons: some View {
+        VStack(spacing: 18) {
+            HStack {
+                VStack {
+                    Image(systemName: "flag.checkered")
+                        .font(.system(size: 36))
+                        .padding(33)
+                        .background {
+                            Circle()
+                                .fill(.test)
+                        }
+                    
+                    Text("삼성 라이온즈")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.caption)
+                }
+                
+                VStack {
+                    Image(systemName: "flag.checkered")
+                        .font(.system(size: 36))
+                        .padding(33)
+                        .background {
+                            Circle()
+                                .fill(.test)
+                        }
+                    
+                    Text("삼성 라이온즈")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.caption)
+                }
+                
+                VStack {
+                    Image(systemName: "flag.checkered")
+                        .font(.system(size: 36))
+                        .padding(33)
+                        .background {
+                            Circle()
+                                .fill(.test)
+                        }
+                    
+                    Text("삼성 라이온즈")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.caption)
+                }
+            }
+            
+            HStack {
+                VStack {
+                    Image(systemName: "flag.checkered")
+                        .font(.system(size: 36))
+                        .padding(33)
+                        .background {
+                            Circle()
+                                .fill(.test)
+                        }
+                    
+                    Text("삼성 라이온즈")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.caption)
+                }
+                
+                VStack {
+                    Image(systemName: "flag.checkered")
+                        .font(.system(size: 36))
+                        .padding(33)
+                        .background {
+                            Circle()
+                                .fill(.test)
+                        }
+                    
+                    Text("삼성 라이온즈")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.caption)
+                }
+                
+                VStack {
+                    Image(systemName: "flag.checkered")
+                        .font(.system(size: 36))
+                        .padding(33)
+                        .background {
+                            Circle()
+                                .fill(.test)
+                        }
+                    
+                    Text("삼성 라이온즈")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.caption)
+                }
+            }
+        }
     }
     
     private func startBlinking() {
