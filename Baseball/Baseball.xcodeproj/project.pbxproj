@@ -21,15 +21,17 @@
 		0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */; };
 		0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25D2BD12BE900ADB623 /* TicketView.swift */; };
 		0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */; };
-		0E7EE5332B5F91F0004F6BAF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5322B5F91F0004F6BAF /* ContentView.swift */; };
 		0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */; };
 		0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */; };
 		0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */; };
 		0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */; };
 		0E804A052C46290000582121 /* SelectedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A042C46290000582121 /* SelectedCircle.swift */; };
 		0E804A072C46557200582121 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A062C46557200582121 /* TicketViewModel.swift */; };
+		0EDAC0502C60B56800B87437 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDAC04F2C60B56800B87437 /* RealmManager.swift */; };
+		0EDAC05E2C60B6FC00B87437 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDAC05D2C60B6FC00B87437 /* RealmSwift */; };
+		0EDAC0602C60B74F00B87437 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDAC05F2C60B74F00B87437 /* Ticket.swift */; };
 		5B626DAB2C38569C006D5578 /* HLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAA2C38569C006D5578 /* HLine.swift */; };
-		5B626DAD2C3856D9006D5578 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAC2C3856D9006D5578 /* Ticket.swift */; };
+		5B626DAD2C3856D9006D5578 /* TicketShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAC2C3856D9006D5578 /* TicketShape.swift */; };
 		5B626DAF2C385724006D5578 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B626DAE2C385724006D5578 /* VisualEffectView.swift */; };
 		5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE4152A2B85DA61006EE79B /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -50,15 +52,16 @@
 		0E4AB25D2BD12BE900ADB623 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		0E7EE52D2B5F91EF004F6BAF /* Baseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballApp.swift; sourceTree = "<group>"; };
-		0E7EE5322B5F91F0004F6BAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0E7EE5532B5F93CF004F6BAF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressStyle.swift; sourceTree = "<group>"; };
 		0E804A042C46290000582121 /* SelectedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCircle.swift; sourceTree = "<group>"; };
 		0E804A062C46557200582121 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
+		0EDAC04F2C60B56800B87437 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		0EDAC05F2C60B74F00B87437 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		5B626DAA2C38569C006D5578 /* HLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLine.swift; sourceTree = "<group>"; };
-		5B626DAC2C3856D9006D5578 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		5B626DAC2C3856D9006D5578 /* TicketShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketShape.swift; sourceTree = "<group>"; };
 		5B626DAE2C385724006D5578 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		5BE4152A2B85DA61006EE79B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDAC05E2C60B6FC00B87437 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				0E4AB2502BD124DF00ADB623 /* Ticket */,
-				0E7EE5322B5F91F0004F6BAF /* ContentView.swift */,
 				5BE4152A2B85DA61006EE79B /* MainView.swift */,
 			);
 			path = View;
@@ -175,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				0E0B16562C2ABD2900452B2B /* Team.swift */,
+				0EDAC05F2C60B74F00B87437 /* Ticket.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +186,7 @@
 		0E7EE5432B5F9275004F6BAF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0EDAC04E2C60B55300B87437 /* Manager */,
 				0E804A012C4628DC00582121 /* ViewModifier */,
 				0E7EE5452B5F92B8004F6BAF /* Component */,
 				0E7EE5442B5F9284004F6BAF /* Extension */,
@@ -202,7 +207,7 @@
 			children = (
 				0E0B16492C2A98F700452B2B /* NextButton.swift */,
 				5B626DAA2C38569C006D5578 /* HLine.swift */,
-				5B626DAC2C3856D9006D5578 /* Ticket.swift */,
+				5B626DAC2C3856D9006D5578 /* TicketShape.swift */,
 				5B626DAE2C385724006D5578 /* VisualEffectView.swift */,
 				0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */,
 			);
@@ -216,6 +221,14 @@
 				0E3028622C5A0D3F008E038C /* TicketStroke.swift */,
 			);
 			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		0EDAC04E2C60B55300B87437 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0EDAC04F2C60B56800B87437 /* RealmManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +248,9 @@
 			dependencies = (
 			);
 			name = Baseball;
+			packageProductDependencies = (
+				0EDAC05D2C60B6FC00B87437 /* RealmSwift */,
+			);
 			productName = Baseball;
 			productReference = 0E7EE52D2B5F91EF004F6BAF /* Baseball.app */;
 			productType = "com.apple.product-type.application";
@@ -263,6 +279,9 @@
 				Base,
 			);
 			mainGroup = 0E7EE5242B5F91EF004F6BAF;
+			packageReferences = (
+				0EDAC05C2C60B6FC00B87437 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 0E7EE52E2B5F91EF004F6BAF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -312,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E0B164A2C2A98F700452B2B /* NextButton.swift in Sources */,
-				5B626DAD2C3856D9006D5578 /* Ticket.swift in Sources */,
+				5B626DAD2C3856D9006D5578 /* TicketShape.swift in Sources */,
 				0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */,
 				5BE4152B2B85DA61006EE79B /* MainView.swift in Sources */,
 				5B626DAB2C38569C006D5578 /* HLine.swift in Sources */,
@@ -324,13 +343,14 @@
 				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
 				0E804A072C46557200582121 /* TicketViewModel.swift in Sources */,
 				0E0B16552C2ABA4900452B2B /* InputTicketViewModel.swift in Sources */,
+				0EDAC0502C60B56800B87437 /* RealmManager.swift in Sources */,
 				0E4AB2582BD1251700ADB623 /* ThirdInputTicketView.swift in Sources */,
 				0E0B16572C2ABD2900452B2B /* Team.swift in Sources */,
 				0E0B16462C2A984A00452B2B /* Date+.swift in Sources */,
-				0E7EE5332B5F91F0004F6BAF /* ContentView.swift in Sources */,
 				0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */,
 				0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */,
 				0E0B164C2C2A9FFB00452B2B /* FifthInputTicketView.swift in Sources */,
+				0EDAC0602C60B74F00B87437 /* Ticket.swift in Sources */,
 				5B626DAF2C385724006D5578 /* VisualEffectView.swift in Sources */,
 				0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */,
 			);
@@ -540,6 +560,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0EDAC05C2C60B6FC00B87437 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0EDAC05D2C60B6FC00B87437 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EDAC05C2C60B6FC00B87437 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0E7EE5252B5F91EF004F6BAF /* Project object */;
 }
