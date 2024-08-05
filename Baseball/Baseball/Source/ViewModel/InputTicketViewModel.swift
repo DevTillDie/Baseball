@@ -53,7 +53,8 @@ class InputTicketViewModel: ObservableObject {
                 opponentTeamScore: Int(opponentTeamScore) ?? 0,
                 feeling: currentEmotion, 
                 title: todayTitle,
-                review: currentEmotion)
+                review: todayComment
+            )
         )
     }
 }
