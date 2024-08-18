@@ -26,12 +26,11 @@ struct OnboardingView: View {
                         onboardingDescriptionOne
                         
                         onboardingDescriptionTwo
-                        
+
                         onboardingTeamSelection
                             .id("TeamSelection")
                     }
                 }
-                .scrollTargetBehavior(.paging)
                 .onChange(of: isMoveToLast) {
                     withAnimation {
                         proxy.scrollTo("TeamSelection", anchor: .bottom)
@@ -68,7 +67,7 @@ extension OnboardingView {
                 .frame(maxWidth: 243, maxHeight: 227)
                 .padding(.top, 40)
             
-            Spacer()
+            Spacer(minLength: 100)
             
             Button { isMoveToLast.toggle() }
         label: {
@@ -85,10 +84,10 @@ extension OnboardingView {
             stopBlinking()
         }
             
-            Spacer()
+            Spacer(minLength: 20)
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height - 65)
+        .frame(height: UIScreen.main.bounds.height - 60)
     }
     
     private var onboardingTags: some View {
@@ -120,17 +119,17 @@ extension OnboardingView {
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
             
-            Spacer()
+            Spacer(minLength: 100)
             
             Image(.record)
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: 275, maxHeight: 212)
             
-            Spacer()
+            Spacer(minLength: 100)
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height - 65)
+        .frame(height: UIScreen.main.bounds.height * 0.7)
     }
     
     private var onboardingDescriptionTwo: some View {
@@ -145,17 +144,17 @@ extension OnboardingView {
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
             
-            Spacer()
+            Spacer(minLength: 100)
             
             Image(.share)
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: 287, maxHeight: 277)
             
-            Spacer()
+            Spacer(minLength: 100)
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height - 65)
+        .frame(height: UIScreen.main.bounds.height * 0.7)
     }
     
     private var onboardingTeamSelection: some View {
@@ -170,9 +169,8 @@ extension OnboardingView {
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
             
-            Spacer()
-            
             teamSelectionButtons
+                .padding(.top, 60)
             
             Spacer()
             
@@ -190,11 +188,9 @@ extension OnboardingView {
                     }
             }
             .padding(.horizontal, 36)
-            
-            Spacer()
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height - 65)
+        .frame(height: UIScreen.main.bounds.height * 0.85)
     }
     
     private var teamSelectionButtons: some View {
