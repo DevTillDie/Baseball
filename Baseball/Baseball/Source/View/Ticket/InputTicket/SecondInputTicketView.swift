@@ -65,5 +65,5 @@ extension SecondInputTicketView {
 }
 
 #Preview {
-    InputTicketView()
+    InputTicketView(moveTicketView: .constant(false))
 }

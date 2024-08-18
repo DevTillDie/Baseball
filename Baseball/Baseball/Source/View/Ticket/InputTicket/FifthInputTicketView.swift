@@ -118,5 +118,5 @@ extension FifthInputTicketView {
 }
 
 #Preview {
-    InputTicketView()
+    InputTicketView(moveTicketView: .constant(false))
 }

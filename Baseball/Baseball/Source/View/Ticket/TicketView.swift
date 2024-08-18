@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TicketView: View {
-    @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = TicketViewModel()
+    @Binding var moveTicketView: Bool
     
     //TODO: Model로 처리하기
     private let date = "24.02.22"
@@ -25,18 +25,40 @@ struct TicketView: View {
     private let opponentTeamColor: Color = .twins
     
     var body: some View {
-        VStack {
-            ticket
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
             
-            shareButton
+            VStack {
+               backButton
+                
+                ticket
+                
+                shareButton
+            }
+            .padding(.horizontal, 24)
+            .foregroundColor(.text)
         }
-        .padding()
-        .foregroundColor(.text)
     }
 }
 
 // MARK: - UI
 extension TicketView {
+    private var backButton: some View {
+        Button {
+            withAnimation {
+                moveTicketView = false
+            }
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: "chevron.left")
+                Text("메인화면")
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.bottom, 40)
+    }
+    
     private var ticket: some View {
         VStack(spacing: 0) {
             resultview
@@ -65,7 +87,7 @@ extension TicketView {
 
 extension TicketView {
     private var resultview: some View {
-        VStack {
+        VStack(spacing: 6) {
             Text(date)
                 .font(.system(size: 15))
             
@@ -86,8 +108,7 @@ extension TicketView {
         .background {
             LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
         }
-        .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
-        
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
     }
     
     private var teamInfoView: some View {
@@ -134,18 +155,19 @@ extension TicketView {
             Spacer()
         }
         .frame(maxWidth: .infinity)
-        .padding()
+        
     }
     
     private var dividerView: some View {
         HLine()
             .stroke(style: .init(dash: [6]))
             .foregroundStyle(.line)
-            .frame(height: 3)
+            .frame(height: 1)
             .background {
                 LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
             }
             .padding(.horizontal, 8)
+            .zIndex(1)
     }
     
     private var reviewView: some View {
@@ -163,8 +185,8 @@ extension TicketView {
         .background {
             LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
         }
-        .clipShape(TicketShape(cornerRadius: 8, cutRadius: 0))
-        .padding(.bottom, 36)
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0))
+        .padding(.bottom, 32)
     }
 }
 
@@ -175,7 +197,7 @@ extension TicketView {
         teamTitle: String, team: String, image: String,
         infoTitle: String, info: String
     ) -> some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 6) {
             Text(teamTitle)
                 .font(.system(size: 20))
             
@@ -191,7 +213,6 @@ extension TicketView {
             
             Text(info)
                 .font(.system(size: 16))
-            
         }
     }
 }
