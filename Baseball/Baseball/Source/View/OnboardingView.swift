@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @StateObject private var viewModel = OnboardingViewModel()
+    
+    @Binding var isFirstLaunching: Bool
     @State private var isMoveToLast = false
     @State private var isButtonVisible: Bool = true
     @State private var timer: Timer?
     @State private var scrollOffset: CGFloat = 0
+    
+    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     var body: some View {
         ZStack {
@@ -175,16 +180,17 @@ extension OnboardingView {
             Spacer()
             
             Button {
-                // action
+                isFirstLaunching = false
             } label: {
                 Text("시작하기")
                     .fontWeight(.medium)
+                    .foregroundStyle(viewModel.myTeam.isEmpty ? .caption : .text)
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
                     .background {
                         RoundedRectangle(cornerRadius: 15.0)
                             .fill(.clear)
-                            .stroke(.text, lineWidth: 1.5)
+                            .stroke(viewModel.myTeam.isEmpty ? .caption : .text, lineWidth: 1.5)
                     }
             }
             .padding(.horizontal, 36)
@@ -194,95 +200,31 @@ extension OnboardingView {
     }
     
     private var teamSelectionButtons: some View {
-        VStack(spacing: 18) {
-            HStack {
+        LazyVGrid(columns: columns) {
+            ForEach(viewModel.teams, id: \.self) { team in
                 VStack {
-                    Image(systemName: "flag.checkered")
-                        .font(.system(size: 36))
-                        .padding(33)
-                        .background {
-                            Circle()
-                                .fill(.test)
-                        }
+                    Image(systemName: team.imageName)
+                        .resizable()
+                        .padding(32)
+                        .scaledToFit()
+                        .modifier(SelectedCircle(isSelected: viewModel.myTeam == team.teamName))
+                        .frame(width: 100, height: 100)
                     
-                    Text("삼성 라이온즈")
+                    Text(team.teamName)
                         .font(.system(size: 12))
-                        .foregroundStyle(.caption)
+                        .foregroundColor(.caption)
                 }
-                
-                VStack {
-                    Image(systemName: "flag.checkered")
-                        .font(.system(size: 36))
-                        .padding(33)
-                        .background {
-                            Circle()
-                                .fill(.test)
-                        }
-                    
-                    Text("삼성 라이온즈")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.caption)
-                }
-                
-                VStack {
-                    Image(systemName: "flag.checkered")
-                        .font(.system(size: 36))
-                        .padding(33)
-                        .background {
-                            Circle()
-                                .fill(.test)
-                        }
-                    
-                    Text("삼성 라이온즈")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.caption)
+                .onTapGesture {
+                    if viewModel.myTeam == team.teamName {
+                        viewModel.myTeam = ""
+                    } else {
+                        viewModel.myTeam = team.teamName
+                    }
                 }
             }
-            
-            HStack {
-                VStack {
-                    Image(systemName: "flag.checkered")
-                        .font(.system(size: 36))
-                        .padding(33)
-                        .background {
-                            Circle()
-                                .fill(.test)
-                        }
-                    
-                    Text("삼성 라이온즈")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.caption)
-                }
-                
-                VStack {
-                    Image(systemName: "flag.checkered")
-                        .font(.system(size: 36))
-                        .padding(33)
-                        .background {
-                            Circle()
-                                .fill(.test)
-                        }
-                    
-                    Text("삼성 라이온즈")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.caption)
-                }
-                
-                VStack {
-                    Image(systemName: "flag.checkered")
-                        .font(.system(size: 36))
-                        .padding(33)
-                        .background {
-                            Circle()
-                                .fill(.test)
-                        }
-                    
-                    Text("삼성 라이온즈")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.caption)
-                }
-            }
+            .padding(.vertical, 4)
         }
+        .padding(.horizontal, 33)
     }
     
     private func startBlinking() {
@@ -300,5 +242,5 @@ extension OnboardingView {
 }
 
 #Preview {
-    OnboardingView()
+    OnboardingView(isFirstLaunching: .constant(true))
 }

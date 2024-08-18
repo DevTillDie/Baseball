@@ -35,6 +35,7 @@
 		5BE672782C5F65FE00D9F0E8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE672772C5F65FE00D9F0E8 /* OnboardingView.swift */; };
 		5BE6727A2C5F691400D9F0E8 /* OnboardingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE672792C5F691400D9F0E8 /* OnboardingTag.swift */; };
 		5BE6727D2C5F76DF00D9F0E8 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BE6727C2C5F76DF00D9F0E8 /* Pretendard-Bold.otf */; };
+		5BE672822C71D24600D9F0E8 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE672812C71D24600D9F0E8 /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		5BE672792C5F691400D9F0E8 /* OnboardingTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTag.swift; sourceTree = "<group>"; };
 		5BE6727C2C5F76DF00D9F0E8 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		5BE6727E2C5F774000D9F0E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5BE672812C71D24600D9F0E8 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				0E0B16542C2ABA4900452B2B /* InputTicketViewModel.swift */,
+				5BE672812C71D24600D9F0E8 /* OnboardingViewModel.swift */,
 				0E804A062C46557200582121 /* TicketViewModel.swift */,
 			);
 			path = ViewModel;
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE672822C71D24600D9F0E8 /* OnboardingViewModel.swift in Sources */,
 				0E0B164A2C2A98F700452B2B /* NextButton.swift in Sources */,
 				5B626DAD2C3856D9006D5578 /* Ticket.swift in Sources */,
 				0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */,
