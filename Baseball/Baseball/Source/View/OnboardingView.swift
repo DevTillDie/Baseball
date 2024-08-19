@@ -74,20 +74,21 @@ extension OnboardingView {
             
             Spacer(minLength: 100)
             
-            Button { isMoveToLast.toggle() }
-        label: {
-            Image(.onboardingSkipButton)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 74, height: 22)
-                .opacity(isButtonVisible ? 1 : 0)
-        }
-        .onAppear {
-            startBlinking()
-        }
-        .onDisappear {
-            stopBlinking()
-        }
+            Button {
+                isMoveToLast.toggle()
+            } label: {
+                Image(.onboardingSkipButton)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 74, height: 22)
+                    .opacity(isButtonVisible ? 1 : 0)
+            }
+            .onAppear {
+                startBlinking()
+            }
+            .onDisappear {
+                stopBlinking()
+            }
             
             Spacer(minLength: 20)
         }
@@ -110,7 +111,7 @@ extension OnboardingView {
                 OnboardingTag(content: .text("오늘의 기록 내일"))
             }
         }
-    }
+    } 
     
     private var onboardingDescriptionOne: some View {
         VStack {
