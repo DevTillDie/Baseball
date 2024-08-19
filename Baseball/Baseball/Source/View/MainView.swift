@@ -11,7 +11,6 @@ struct MainView: View {
     @State private var moveInputTicketView = false
     @State private var moveTicketView = false
     @State private var data: TicketData?
-    @State private var isAnimating = false
     
     // TODO: 티켓 데이터 대한 임시 변수 -> Realm 연결 후 삭제
     private let ticketData = [TicketData(), TicketData(), TicketData(), TicketData(), TicketData()]
@@ -55,10 +54,13 @@ struct MainView: View {
                 .ignoresSafeArea()
                 
                 if moveTicketView {
-                    TicketView(moveTicketView: $moveTicketView)
-                        .zIndex(2)
-                        .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .move(edge: .trailing).combined(with: .opacity)))
-                        .animation(.easeInOut, value: moveTicketView)
+                    ZStack {
+                        Color(.background)
+                            .ignoresSafeArea()
+                        
+                        TicketView()
+                    }
+                    .transition(.push(from: .bottom))
                 }
             }
         }
@@ -127,7 +129,7 @@ extension MainView {
                         .frame(maxWidth: .infinity, alignment: .bottomLeading)
                 }
                 .navigationDestination(isPresented: $moveInputTicketView) {
-                    InputTicketView(moveTicketView: $moveTicketView)
+                    InputTicketView()
                         .navigationBarBackButtonHidden()
                 }
             }
@@ -234,7 +236,7 @@ extension MainView {
     private var ticketPreviewStack: some View {
         ForEach(ticketData) { data in
             Button {
-                withAnimation {
+                withAnimation(.easeInOut(duration: 0.5)) {
                     moveTicketView = true
                 }
                 self.data = data

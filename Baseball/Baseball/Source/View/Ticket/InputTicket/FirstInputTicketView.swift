@@ -90,5 +90,5 @@ extension FirstInputTicketView {
 }
 
 #Preview {
-    InputTicketView(moveTicketView: .constant(false))
+    InputTicketView()
 }

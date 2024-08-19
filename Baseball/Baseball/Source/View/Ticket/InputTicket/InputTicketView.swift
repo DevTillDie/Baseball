@@ -11,15 +11,7 @@ struct InputTicketView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var inputTicketViewModel = InputTicketViewModel()
     
-    @State private var currentStatus = InputStatus.writing {
-         didSet {
-             if currentStatus == .done {
-                 moveTicketView = true
-                 presentationMode.wrappedValue.dismiss()
-             }
-        }
-    }
-    @Binding var moveTicketView: Bool
+    @State private var currentStatus = InputStatus.writing
     
     private let gradients: [Color] = [.gradient1, .gradient2, .gradient3, .gradient4, .gradient5]
     
@@ -33,8 +25,7 @@ struct InputTicketView: View {
             } else if currentStatus == .saving {
                 completeView
             } else {
-                EmptyView()
-//                TicketView()
+                TicketView()
             }
         }
     }
@@ -121,5 +112,5 @@ extension InputTicketView {
 }
 
 #Preview {
-    InputTicketView(moveTicketView: .constant(false))
+    InputTicketView()
 }
