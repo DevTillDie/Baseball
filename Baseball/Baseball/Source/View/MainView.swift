@@ -29,8 +29,6 @@ struct MainView: View {
                         
                         addTicketSection
                         
-                        divider
-                        
                         ticketDisplayView
                     }
                     .padding(16)
@@ -158,18 +156,7 @@ extension MainView {
             }
             .frame(height: 175)
         }
-        .padding(.bottom, 21)
-    }
-}
-
-// MARK: - divider
-
-extension MainView {
-    private var divider: some View {
-        Rectangle()
-            .fill(.divder)
-            .frame(height: 1)
-            .padding(.bottom, 10)
+        .padding(.bottom, 31)
     }
 }
 
