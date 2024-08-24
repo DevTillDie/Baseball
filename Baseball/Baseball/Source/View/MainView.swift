@@ -69,13 +69,14 @@ struct MainView: View {
 
 extension MainView {
     private var mainHeader: some View {
-        Text("최강 삼성!")
+        Text("RUSH!")
             .font(.system(size: 20))
-            .bold()
+            .italic()
+            .fontWeight(.heavy)
             .foregroundStyle(.text)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 12)
-            .padding(.bottom, 16)
+            .padding(.bottom, 20)
     }
 }
 
