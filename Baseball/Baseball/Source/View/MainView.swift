@@ -173,6 +173,7 @@ private var ticketDisplayView: some View {
                 .padding(.horizontal, 12)
             
             if ticketData.isEmpty {
+                ticketTags
                 noTicketView
             } else {
                 VStack(spacing: 0) {
@@ -189,14 +190,19 @@ private var ticketDisplayView: some View {
 extension MainView {
     private var noTicketView: some View {
         VStack {
-            Spacer(minLength: 160)
-            
-            Text("아직 저장된 티켓이 없어요!")
-            Text("야구 경기를 보러 갈까요?")
+            Text("아직 저장된 티켓이 없어요")
+            Text("경기를 기록해주세요!")
         }
-        .foregroundColor(.text)
-        .font(.system(size: 16))
-        .frame(maxHeight: .infinity)
+        .foregroundStyle(.caption)
+        .frame(height: 160)
+        .frame(maxWidth: .infinity)
+        .background {
+            LinearGradient(gradient: Gradient(colors: [.noTicketGradient1, .noTicketGradient2]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+        }
+        .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
+        .padding(.horizontal, 9)
+        .padding(.bottom, 16)
     }
 }
 
@@ -216,7 +222,7 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(.stroke)
+                    .stroke(ticketData.isEmpty ? .caption : .stroke)
             }
             
             Button {
@@ -230,10 +236,10 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(.stroke)
+                    .stroke(ticketData.isEmpty ? .caption : .stroke)
             }
         }
-        .foregroundStyle(.text)
+        .foregroundStyle(ticketData.isEmpty ? .caption : .text)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
@@ -285,12 +291,12 @@ extension MainView {
                 .padding(.horizontal, 14)
                 .padding(.top, 38)
                 .padding(.bottom, 17)
+                .frame(height: 160)
                 .background {
                     LinearGradient(gradient: Gradient(colors: [data.ourTeam.colorTeam(), data.opponentTeam.colorTeam()]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                 }
                 .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
                 .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
-                .frame(height: 160)
                 .padding(.horizontal, 9)
                 .padding(.bottom, 16)
             }
