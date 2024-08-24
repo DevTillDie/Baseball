@@ -58,6 +58,10 @@ struct MainView: View {
                         .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .move(edge: .trailing).combined(with: .opacity)))
                         .animation(.easeInOut, value: moveTicketView)
                 }
+                
+                addTicketButton
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .padding(.trailing, 17)
             }
         }
     }
@@ -300,6 +304,20 @@ extension MainView {
                 .padding(.horizontal, 9)
                 .padding(.bottom, 16)
             }
+        }
+    }
+}
+
+// MARK: - addTicketButton
+
+extension MainView {
+    private var addTicketButton: some View {
+        Button {
+            moveInputTicketView = true
+        } label: {
+            Image(.addTicketButton)
+                .resizable()
+                .frame(width: 68, height: 68)
         }
     }
 }
