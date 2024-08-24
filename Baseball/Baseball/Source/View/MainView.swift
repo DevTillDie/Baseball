@@ -85,30 +85,54 @@ extension MainView {
 extension MainView {
     private var addTicketSection: some View {
         ZStack {
-            Path { path in
-                path.move(to: CGPoint(x: 15, y: 0))
+            ZStack {
+                Path { path in
+                    path.move(to: CGPoint(x: 15, y: 0))
+                    
+                    path.addLine(to: CGPoint(x: 343, y: 0))
+                    path.addArc(center: CGPoint(x: 343, y: 15), radius: 15, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+                    
+                    path.addLine(to: CGPoint(x: 358, y: 160))
+                    path.addArc(center: CGPoint(x: 343, y: 160), radius: 15, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+                    
+                    path.addLine(to: CGPoint(x: 194, y: 175))
+                    path.addArc(center: CGPoint(x: 209, y: 160), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+                    
+                    path.addLine(to: CGPoint(x: 194, y: 129))
+                    path.addArc(center: CGPoint(x: 167, y: 156), radius: 27, startAngle: .degrees(0), endAngle: .degrees(-90), clockwise: true)
+                    
+                    path.addLine(to: CGPoint(x: 15, y: 129))
+                    path.addArc(center: CGPoint(x: 15, y: 114), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+                    
+                    path.addLine(to: CGPoint(x: 0, y: 15))
+                    path.addArc(center: CGPoint(x: 15, y: 15), radius: 15, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+                    
+                    path.closeSubpath()
+                }
+                .fill(.box)
                 
-                path.addLine(to: CGPoint(x: 343, y: 0))
-                path.addArc(center: CGPoint(x: 343, y: 15), radius: 15, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
-                
-                path.addLine(to: CGPoint(x: 358, y: 160))
-                path.addArc(center: CGPoint(x: 343, y: 160), radius: 15, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
-                
-                path.addLine(to: CGPoint(x: 194, y: 175))
-                path.addArc(center: CGPoint(x: 209, y: 160), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
-                
-                path.addLine(to: CGPoint(x: 194, y: 129))
-                path.addArc(center: CGPoint(x: 167, y: 156), radius: 27, startAngle: .degrees(0), endAngle: .degrees(-90), clockwise: true)
-                
-                path.addLine(to: CGPoint(x: 15, y: 129))
-                path.addArc(center: CGPoint(x: 15, y: 114), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
-                
-                path.addLine(to: CGPoint(x: 0, y: 15))
-                path.addArc(center: CGPoint(x: 15, y: 15), radius: 15, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
-                
-                path.closeSubpath()
+                ZStack {
+                    VStack(spacing: 8) {
+                        Text("새로운 경기를 봤나요?")
+                            .bold()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Text("기록해서 티켓을 만들어요!")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .foregroundStyle(.text)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .padding(.top, 12)
+                    
+                    Image(.addTicket)
+                        .resizable()
+                        .frame(maxWidth: 189, maxHeight: 137)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.top, 25)
+                }
+                .padding(.leading, 16)
+                .padding(.trailing, 5)
             }
-            .fill(.box)
             
             VStack {
                 Spacer()
