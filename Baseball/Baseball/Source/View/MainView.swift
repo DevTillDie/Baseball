@@ -289,6 +289,7 @@ extension MainView {
                     LinearGradient(gradient: Gradient(colors: [data.ourTeam.colorTeam(), data.opponentTeam.colorTeam()]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                 }
                 .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
+                .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
                 .frame(height: 160)
                 .padding(.horizontal, 9)
                 .padding(.bottom, 16)
