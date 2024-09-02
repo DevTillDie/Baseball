@@ -32,7 +32,7 @@ struct TicketView: View {
             VStack {
                backButton
                 
-                ticket
+                ticket(isShare: false)
                 
                 shareButton
             }
@@ -59,20 +59,23 @@ extension TicketView {
         .padding(.bottom, 40)
     }
     
-    private var ticket: some View {
+    @ViewBuilder
+    private func ticket(isShare: Bool) -> some View {
         VStack(spacing: 0) {
-            resultview
+            resultview(isShare)
             
-            dividerView
+            dividerView(isShare)
                       
-            reviewView
+            reviewView(isShare)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private var shareButton: some View {
         Button {
-            viewModel.shareInstagram()
+            if let img = renderShareView() {
+                viewModel.shareInstagram(image: img)
+            }
         } label: {
             Text("공유하기")
                 .padding()
@@ -86,7 +89,8 @@ extension TicketView {
 }
 
 extension TicketView {
-    private var resultview: some View {
+    @ViewBuilder
+    private func resultview(_ isShare: Bool) -> some View {
         VStack(spacing: 6) {
             Text(date)
                 .font(.system(size: 15))
@@ -106,9 +110,13 @@ extension TicketView {
         .padding(.top, 60)
         .padding(.bottom, 30)
         .background {
-            LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            if isShare {
+                Color.black.opacity(0.15)
+            } else {
+                LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            }
         }
-        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40, isShare: isShare))
     }
     
     private var teamInfoView: some View {
@@ -158,19 +166,25 @@ extension TicketView {
         
     }
     
-    private var dividerView: some View {
+    @ViewBuilder
+    private func dividerView(_ isShare: Bool) -> some View {
         HLine()
             .stroke(style: .init(dash: [6]))
             .foregroundStyle(.line)
             .frame(height: 1)
             .background {
-                LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                if isShare {
+                    Color.black.opacity(0.15)
+                } else {
+                    LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                }
             }
             .padding(.horizontal, 8)
             .zIndex(1)
     }
     
-    private var reviewView: some View {
+    @ViewBuilder
+    private func reviewView(_ isShare: Bool) -> some View {
         VStack {
             Text(title)
                 .padding(.bottom, 4)
@@ -183,9 +197,13 @@ extension TicketView {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(28)
         .background {
-            LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            if isShare {
+                Color.black.opacity(0.15)
+            } else {
+                LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            }
         }
-        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0))
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0, isShare: isShare))
         .padding(.bottom, 32)
     }
 }
@@ -214,6 +232,17 @@ extension TicketView {
             Text(info)
                 .font(.system(size: 16))
         }
+    }
+}
+
+// MARK: - Share Image
+extension TicketView {
+    private func renderShareView() -> UIImage? {
+        return ticket(isShare: true)
+            .foregroundColor(.text)
+            .padding()
+            .background(.clear)
+            .render(scale: 3)
     }
 }
 
