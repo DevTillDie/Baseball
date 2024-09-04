@@ -203,7 +203,7 @@ extension TicketView {
                 LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
             }
         }
-        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0, isShare: isShare))
+        .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0, isShare: isShare, isRemoveTop: true))
         .padding(.bottom, 32)
     }
 }
@@ -242,7 +242,7 @@ extension TicketView {
             .foregroundColor(.text)
             .padding()
             .background(.clear)
-            .render(scale: 3)
+            .render(scale: 2)
     }
 }
 
