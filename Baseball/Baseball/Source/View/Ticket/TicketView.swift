@@ -15,6 +15,8 @@ struct TicketView: View {
     private let date = "24.02.22"
     private let ourTeam = "SAMSUNG LIONS"
     private let opponentTeam = "LG TWINS"
+    private let ourTeamIcon = "lionsIcon"
+    private let opponentTeamIcon = "twinsIcon"
     private let ourTeamScore = "3"
     private let opponentTeamScore = "1"
     private let location = "고척돔"
@@ -138,7 +140,7 @@ extension TicketView {
             resultInfo(
                 teamTitle: "Our team",
                 team: ourTeam,
-                image: "cloud.sleet",
+                image: ourTeamIcon,
                 infoTitle: "Location",
                 info: location
             )
@@ -148,7 +150,7 @@ extension TicketView {
             resultInfo(
                 teamTitle: "Opposing team",
                 team: opponentTeam,
-                image: "envelope.open",
+                image: opponentTeamIcon,
                 infoTitle: "Lucky",
                 info: "승요"
             )
@@ -204,9 +206,10 @@ extension TicketView {
             Text(team)
                 .font(.system(size: 16))
             
-            Image(systemName: image)
-                .font(.system(size: 30))
-                .padding(.bottom, 30)
+            Image(image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70, height: 70)
             
             Text(infoTitle)
                 .font(.system(size: 20))
