@@ -243,8 +243,8 @@
 				0EDAC04F2C60B56800B87437 /* RealmManager.swift */,
 			);
 			path = Manager;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		5BE6727B2C5F76A700D9F0E8 /* fonts */ = {
 			isa = PBXGroup;
 			children = (

@@ -9,7 +9,11 @@ import SwiftUI
 
 struct TicketView: View {
     @StateObject private var viewModel = TicketViewModel()
+    
     @Binding var moveTicketView: Bool
+    
+    let id: UUID
+    let animation: Namespace.ID
     
     //TODO: Model로 처리하기
     private let date = "24.02.22"
@@ -30,7 +34,7 @@ struct TicketView: View {
                 .ignoresSafeArea()
             
             VStack {
-               backButton
+                backButton
                 
                 ticket
                 
@@ -46,7 +50,7 @@ struct TicketView: View {
 extension TicketView {
     private var backButton: some View {
         Button {
-            withAnimation {
+            withAnimation(.easeInOut(duration: 0.5)) {
                 moveTicketView = false
             }
         } label: {
@@ -67,6 +71,7 @@ extension TicketView {
                       
             reviewView
         }
+        .matchedGeometryEffect(id: id, in: animation)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
