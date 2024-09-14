@@ -8,7 +8,7 @@
 import Foundation
 
 class MainViewModel: ObservableObject {
-    @Published private var ticketData = [Ticket]()
+    @Published var ticketData = [Ticket]()
     
     func loadTicketData() {
         ticketData = RealmManager.shared.loadTicketData()

@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var viewModel = MainViewModel()
+    
     @State private var moveInputTicketView = false
     @State private var moveTicketView = false
-    @State private var data: TicketData?
+    @State private var selectedData: Ticket?
     @State private var isAnimating = false
-    
-    // TODO: 티켓 데이터 대한 임시 변수 -> Realm 연결 후 삭제
-    private let ticketData = [TicketData(), TicketData(), TicketData(), TicketData(), TicketData()]
-//    private let ticketData: [TicketData] = []
     
     var body: some View {
         NavigationStack {
@@ -52,8 +50,8 @@ struct MainView: View {
                 }
                 .ignoresSafeArea()
                 
-                if moveTicketView {
-                    TicketView(moveTicketView: $moveTicketView)
+                if let selectedData, moveTicketView {
+                    TicketView(moveTicketView: $moveTicketView, data: .constant(selectedData))
                         .zIndex(2)
                         .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .move(edge: .trailing).combined(with: .opacity)))
                         .animation(.easeInOut, value: moveTicketView)
@@ -62,6 +60,9 @@ struct MainView: View {
                 addTicketButton
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     .padding(.trailing, 17)
+            }
+            .onAppear {
+                viewModel.loadTicketData()
             }
         }
     }
@@ -156,6 +157,9 @@ extension MainView {
                 .navigationDestination(isPresented: $moveInputTicketView) {
                     InputTicketView(moveTicketView: $moveTicketView)
                         .navigationBarBackButtonHidden()
+                        .onDisappear {
+                            viewModel.loadTicketData()
+                        }
                 }
             }
             .frame(height: 175)
@@ -176,7 +180,7 @@ private var ticketDisplayView: some View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 12)
             
-            if ticketData.isEmpty {
+            if viewModel.ticketData.isEmpty {
                 ticketTags
                 noTicketView
             } else {
@@ -226,7 +230,7 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(ticketData.isEmpty ? .caption : .stroke)
+                    .stroke(viewModel.ticketData.isEmpty ? .caption : .stroke)
             }
             
             Button {
@@ -240,10 +244,10 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(ticketData.isEmpty ? .caption : .stroke)
+                    .stroke(viewModel.ticketData.isEmpty ? .caption : .stroke)
             }
         }
-        .foregroundStyle(ticketData.isEmpty ? .caption : .text)
+        .foregroundStyle(viewModel.ticketData.isEmpty ? .caption : .text)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
@@ -254,55 +258,57 @@ extension MainView {
 
 extension MainView {
     private var ticketPreviewStack: some View {
-        ForEach(ticketData) { data in
-            Button {
-                withAnimation {
-                    moveTicketView = true
-                }
-                self.data = data
-            } label: {
-                VStack(spacing: 0) {
+        LazyVStack {
+            ForEach(viewModel.ticketData, id: \.id) { data in
+                Button {
+                    withAnimation {
+                        moveTicketView = true
+                    }
+                    selectedData = data
+                } label: {
                     VStack(spacing: 0) {
-                        Text(data.date)
-                            .font(.system(size: 15))
-                            .fontWeight(.medium)
+                        VStack(spacing: 0) {
+                            Text(data.date)
+                                .font(.system(size: 15))
+                                .fontWeight(.medium)
+                            
+                            Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
+                                .font(.system(size: 48))
+                                .fontWeight(.heavy)
+                        }
                         
-                        Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
-                            .font(.system(size: 48))
-                            .fontWeight(.heavy)
+                        HStack {
+                            Text(data.ourTeam)
+                                .font(.system(size: 15))
+                                .fontWeight(.semibold)
+                                .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                            
+                            HLine()
+                                .stroke(style: .init(dash: [3]))
+                                .foregroundStyle(.line)
+                                .frame(height: 1)
+                                .padding(.horizontal, 16)
+                            
+                            Text(data.opponentTeam)
+                                .font(.system(size: 15))
+                                .fontWeight(.semibold)
+                                .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        }
+                        .padding(.top, 13)
                     }
-                    
-                    HStack {
-                        Text(data.ourTeam.rawValue)
-                            .font(.system(size: 15))
-                            .fontWeight(.semibold)
-                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                        
-                        HLine()
-                            .stroke(style: .init(dash: [3]))
-                            .foregroundStyle(.line)
-                            .frame(height: 1)
-                            .padding(.horizontal, 16)
-                        
-                        Text(data.opponentTeam.rawValue)
-                            .font(.system(size: 15))
-                            .fontWeight(.semibold)
-                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.text)
+                    .padding(.horizontal, 14)
+                    .padding(.top, 38)
+                    .padding(.bottom, 17)
+                    .frame(height: 160)
+                    .background {
+                        LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                     }
-                    .padding(.top, 13)
+                    .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
+                    .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
+                    .padding(.horizontal, 9)
+                    .padding(.bottom, 16)
                 }
-                .foregroundColor(.text)
-                .padding(.horizontal, 14)
-                .padding(.top, 38)
-                .padding(.bottom, 17)
-                .frame(height: 160)
-                .background {
-                    LinearGradient(gradient: Gradient(colors: [data.ourTeam.colorTeam(), data.opponentTeam.colorTeam()]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
-                }
-                .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
-                .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
-                .padding(.horizontal, 9)
-                .padding(.bottom, 16)
             }
         }
     }

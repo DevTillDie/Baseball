@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static func colorTeam(teamName: String) -> Color {
+    static func colorTeam(_ teamName: String) -> Color {
         switch teamName {
         case "삼성 라이온즈":
             return Color(.lions)
