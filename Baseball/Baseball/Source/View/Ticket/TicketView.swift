@@ -14,21 +14,7 @@ struct TicketView: View {
     
     let id: UUID
     let animation: Namespace.ID
-    
-    //TODO: Model로 처리하기
-    private let date = "24.02.22"
-    private let ourTeam = "SAMSUNG LIONS"
-    private let opponentTeam = "LG TWINS"
-    private let ourTeamIcon = "lionsIcon"
-    private let opponentTeamIcon = "twinsIcon"
-    private let ourTeamScore = "3"
-    private let opponentTeamScore = "1"
-    private let location = "고척돔"
-    private let title = "제목"
-    private let review = "내용"
-    
-    private let ourTeamColor: Color = .lions
-    private let opponentTeamColor: Color = .twins
+    let data: Ticket
     
     var body: some View {
         ZStack {
@@ -95,10 +81,10 @@ extension TicketView {
 extension TicketView {
     private var resultview: some View {
         VStack(spacing: 6) {
-            Text(date)
+            Text(data.date)
                 .font(.system(size: 15))
             
-            Text("\(ourTeamScore) : \(opponentTeamScore)")
+            Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
                 .font(.system(size: 48))
             
             teamInfoView
@@ -113,14 +99,14 @@ extension TicketView {
         .padding(.top, 60)
         .padding(.bottom, 30)
         .background {
-            LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
         }
         .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
     }
     
     private var teamInfoView: some View {
         HStack {
-            Text(ourTeam)
+            Text(data.ourTeam)
                 .font(.system(size: 15))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
@@ -130,7 +116,7 @@ extension TicketView {
                 .foregroundStyle(.line)
                 .frame(height: 1)
             
-            Text(opponentTeam)
+            Text(data.opponentTeam)
                 .font(.system(size: 15))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
@@ -144,18 +130,18 @@ extension TicketView {
             
             resultInfo(
                 teamTitle: "Our team",
-                team: ourTeam,
-                image: ourTeamIcon,
+                team: data.ourTeam,
+                image: "cloud.sleet",
                 infoTitle: "Location",
-                info: location
+                info: data.place
             )
             
             Spacer(minLength: 30)
             
             resultInfo(
                 teamTitle: "Opposing team",
-                team: opponentTeam,
-                image: opponentTeamIcon,
+                team: data.opponentTeam,
+                image: "envelope.open",
                 infoTitle: "Lucky",
                 info: "승요"
             )
@@ -171,7 +157,7 @@ extension TicketView {
             .foregroundStyle(.line)
             .frame(height: 1)
             .background {
-                LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
             }
             .padding(.horizontal, 8)
             .zIndex(1)
@@ -179,10 +165,10 @@ extension TicketView {
     
     private var reviewView: some View {
         VStack {
-            Text(title)
+            Text(data.title)
                 .padding(.bottom, 4)
             
-            Text(review)
+            Text(data.review)
                 .multilineTextAlignment(.leading)
             
             Spacer()
@@ -190,7 +176,7 @@ extension TicketView {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(28)
         .background {
-            LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+            LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
         }
         .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0))
         .padding(.bottom, 32)

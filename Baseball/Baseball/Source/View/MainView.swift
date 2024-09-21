@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var moveInputTicketView = false
-    @State private var moveTicketView = false
-    @State private var isAnimating = false
-    @State var id: UUID?
-    
+    @StateObject private var viewModel = MainViewModel()
     @Namespace var animation
     
-    // TODO: 티켓 데이터 대한 임시 변수 -> Realm 연결 후 삭제
-    private let ticketData = [TicketData(), TicketData(), TicketData(), TicketData(), TicketData()]
-//    private let ticketData: [TicketData] = []
+    @State private var moveInputTicketView = false
+    @State private var moveTicketView = false
+    @State private var selectedData: Ticket?
+    @State private var isAnimating = false
+    @State var id: UUID?
     
     var body: some View {
         NavigationStack {
@@ -54,15 +52,18 @@ struct MainView: View {
                 }
                 .ignoresSafeArea()
                 
-                addTicketButton
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    .padding(.trailing, 17)
-                
-                if let id, moveTicketView {
-                    TicketView(moveTicketView: $moveTicketView, id: id, animation: animation)
+                if let selectedData, let id, moveTicketView {
+                    TicketView(moveTicketView: $moveTicketView, id: id, animation: animation, data: selectedData)
                         .zIndex(1)
                         .transition(.opacity)
                 }
+                
+                addTicketButton
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .padding(.trailing, 17)
+            }
+            .onAppear {
+                viewModel.loadTicketData()
             }
         }
     }
@@ -157,6 +158,9 @@ extension MainView {
                 .navigationDestination(isPresented: $moveInputTicketView) {
                     InputTicketView(moveTicketView: $moveTicketView)
                         .navigationBarBackButtonHidden()
+                        .onDisappear {
+                            viewModel.loadTicketData()
+                        }
                 }
             }
             .frame(height: 175)
@@ -177,7 +181,7 @@ private var ticketDisplayView: some View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 12)
             
-            if ticketData.isEmpty {
+            if viewModel.ticketData.isEmpty {
                 ticketTags
                 noTicketView
             } else {
@@ -227,7 +231,7 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(ticketData.isEmpty ? .caption : .stroke)
+                    .stroke(viewModel.ticketData.isEmpty ? .caption : .stroke)
             }
             
             Button {
@@ -241,10 +245,10 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(ticketData.isEmpty ? .caption : .stroke)
+                    .stroke(viewModel.ticketData.isEmpty ? .caption : .stroke)
             }
         }
-        .foregroundStyle(ticketData.isEmpty ? .caption : .text)
+        .foregroundStyle(viewModel.ticketData.isEmpty ? .caption : .text)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
@@ -255,56 +259,59 @@ extension MainView {
 
 extension MainView {
     private var ticketPreviewStack: some View {
-        ForEach(ticketData) { data in
-            Button {
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    moveTicketView = true
-                    id = data.id
-                }
-            } label: {
-                VStack(spacing: 0) {
+        LazyVStack {
+            ForEach(viewModel.ticketData, id: \.id) { data in
+                Button {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        moveTicketView = true
+                        id = data.id
+                    }
+                    selectedData = data
+                } label: {
                     VStack(spacing: 0) {
-                        Text(data.date)
-                            .font(.system(size: 15))
-                            .fontWeight(.medium)
+                        VStack(spacing: 0) {
+                            Text(data.date)
+                                .font(.system(size: 15))
+                                .fontWeight(.medium)
+                            
+                            Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
+                                .font(.system(size: 48))
+                                .fontWeight(.heavy)
+                        }
                         
-                        Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
-                            .font(.system(size: 48))
-                            .fontWeight(.heavy)
+                        HStack {
+                            Text(data.ourTeam)
+                                .font(.system(size: 15))
+                                .fontWeight(.semibold)
+                                .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                            
+                            HLine()
+                                .stroke(style: .init(dash: [3]))
+                                .foregroundStyle(.line)
+                                .frame(height: 1)
+                                .padding(.horizontal, 16)
+                            
+                            Text(data.opponentTeam)
+                                .font(.system(size: 15))
+                                .fontWeight(.semibold)
+                                .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        }
+                        .padding(.top, 13)
                     }
-                    
-                    HStack {
-                        Text(data.ourTeam.rawValue)
-                            .font(.system(size: 15))
-                            .fontWeight(.semibold)
-                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                        
-                        HLine()
-                            .stroke(style: .init(dash: [3]))
-                            .foregroundStyle(.line)
-                            .frame(height: 1)
-                            .padding(.horizontal, 16)
-                        
-                        Text(data.opponentTeam.rawValue)
-                            .font(.system(size: 15))
-                            .fontWeight(.semibold)
-                            .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.text)
+                    .padding(.horizontal, 14)
+                    .padding(.top, 38)
+                    .padding(.bottom, 17)
+                    .frame(height: 160)
+                    .background {
+                        LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                     }
-                    .padding(.top, 13)
+                    .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
+                    .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
+                    .padding(.horizontal, 9)
+                    .padding(.bottom, 16)
+                    .matchedGeometryEffect(id: data.id, in: animation)
                 }
-                .foregroundColor(.text)
-                .padding(.horizontal, 14)
-                .padding(.top, 38)
-                .padding(.bottom, 17)
-                .frame(height: 160)
-                .background {
-                    LinearGradient(gradient: Gradient(colors: [data.ourTeam.colorTeam(), data.opponentTeam.colorTeam()]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
-                }
-                .clipShape(TicketShape(cornerRadius: 8, cutRadius: 40))
-                .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
-                .padding(.horizontal, 9)
-                .padding(.bottom, 16)
-                .matchedGeometryEffect(id: data.id, in: animation)
             }
         }
     }
@@ -320,48 +327,6 @@ extension MainView {
             Image(.addTicketButton)
                 .resizable()
                 .frame(width: 68, height: 68)
-        }
-    }
-}
-
-// MARK: - data
-
-extension MainView {
-    struct TicketData: Identifiable {
-        let id = UUID()
-        let date: String = "24.02.02"
-        let place: String = "고척"
-        let ourTeam: Team = .lions
-        let opponentTeam: Team = .twins
-        let ourTeamScore: Int = 3
-        let opponentTeamScore: Int = 1
-        let feeling: String = "Good"
-        let review: String = "NICE"
-    }
-    
-    enum Team: String {
-        case lions = "SAMSUNG LIONS"
-        case eagles = "HANHWA EAGLES"
-        case twins = "LG TWINS"
-        case giants = "LOTTE GIANTS"
-        case tigers = "KIA TIGERS"
-        case bears = "DUSAN BEARS"
-        
-        func colorTeam() -> Color {
-            switch self {
-            case .lions:
-                return Color(.lions)
-            case .eagles:
-                return Color(.eagles)
-            case .twins:
-                return Color(.twins)
-            case .giants:
-                return Color(.giants)
-            case .tigers:
-                return Color(.tigers)
-            case .bears:
-                return Color(.bears)
-            }
         }
     }
 }
