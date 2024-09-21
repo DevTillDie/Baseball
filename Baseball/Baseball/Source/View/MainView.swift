@@ -51,7 +51,7 @@ struct MainView: View {
                 .ignoresSafeArea()
                 
                 if let selectedData, moveTicketView {
-                    TicketView(moveTicketView: $moveTicketView, data: .constant(selectedData))
+                    TicketView(moveTicketView: $moveTicketView, data: selectedData)
                         .zIndex(2)
                         .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .move(edge: .trailing).combined(with: .opacity)))
                         .animation(.easeInOut, value: moveTicketView)

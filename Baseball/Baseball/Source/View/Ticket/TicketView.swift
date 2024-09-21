@@ -11,7 +11,8 @@ struct TicketView: View {
     @StateObject private var viewModel = TicketViewModel()
     
     @Binding var moveTicketView: Bool
-    @Binding var data: Ticket
+    
+    let data: Ticket
     
     var body: some View {
         ZStack {
