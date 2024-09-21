@@ -10,8 +10,10 @@ import SwiftUI
 struct MainView: View {
     @State private var moveInputTicketView = false
     @State private var moveTicketView = false
-    @State private var data: TicketData?
     @State private var isAnimating = false
+    @State var id: UUID?
+    
+    @Namespace var animation
     
     // TODO: 티켓 데이터 대한 임시 변수 -> Realm 연결 후 삭제
     private let ticketData = [TicketData(), TicketData(), TicketData(), TicketData(), TicketData()]
@@ -52,16 +54,15 @@ struct MainView: View {
                 }
                 .ignoresSafeArea()
                 
-                if moveTicketView {
-                    TicketView(moveTicketView: $moveTicketView)
-                        .zIndex(2)
-                        .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .move(edge: .trailing).combined(with: .opacity)))
-                        .animation(.easeInOut, value: moveTicketView)
-                }
-                
                 addTicketButton
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     .padding(.trailing, 17)
+                
+                if let id, moveTicketView {
+                    TicketView(moveTicketView: $moveTicketView, id: id, animation: animation)
+                        .zIndex(1)
+                        .transition(.opacity)
+                }
             }
         }
     }
@@ -256,10 +257,10 @@ extension MainView {
     private var ticketPreviewStack: some View {
         ForEach(ticketData) { data in
             Button {
-                withAnimation {
+                withAnimation(.easeInOut(duration: 0.5)) {
                     moveTicketView = true
+                    id = data.id
                 }
-                self.data = data
             } label: {
                 VStack(spacing: 0) {
                     VStack(spacing: 0) {
@@ -303,6 +304,7 @@ extension MainView {
                 .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
                 .padding(.horizontal, 9)
                 .padding(.bottom, 16)
+                .matchedGeometryEffect(id: data.id, in: animation)
             }
         }
     }
