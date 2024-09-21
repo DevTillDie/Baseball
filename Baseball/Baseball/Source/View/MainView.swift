@@ -9,11 +9,13 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var viewModel = MainViewModel()
+    @Namespace var animation
     
     @State private var moveInputTicketView = false
     @State private var moveTicketView = false
     @State private var selectedData: Ticket?
     @State private var isAnimating = false
+    @State var id: UUID?
     
     var body: some View {
         NavigationStack {
@@ -51,10 +53,9 @@ struct MainView: View {
                 .ignoresSafeArea()
                 
                 if let selectedData, moveTicketView {
-                    TicketView(moveTicketView: $moveTicketView, data: selectedData)
-                        .zIndex(2)
-                        .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .move(edge: .trailing).combined(with: .opacity)))
-                        .animation(.easeInOut, value: moveTicketView)
+                    TicketView(moveTicketView: $moveTicketView, id: id, animation: animation, data: selectedData)
+                        .zIndex(1)
+                        .transition(.opacity)
                 }
                 
                 addTicketButton
@@ -261,8 +262,9 @@ extension MainView {
         LazyVStack {
             ForEach(viewModel.ticketData, id: \.id) { data in
                 Button {
-                    withAnimation {
+                    withAnimation(.easeInOut(duration: 0.5)) {
                         moveTicketView = true
+                        id = data.id
                     }
                     selectedData = data
                 } label: {
@@ -308,6 +310,7 @@ extension MainView {
                     .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40))
                     .padding(.horizontal, 9)
                     .padding(.bottom, 16)
+                    .matchedGeometryEffect(id: data.id, in: animation)
                 }
             }
         }

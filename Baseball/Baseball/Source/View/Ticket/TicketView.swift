@@ -12,6 +12,8 @@ struct TicketView: View {
     
     @Binding var moveTicketView: Bool
     
+    let id: UUID
+    let animation: Namespace.ID
     let data: Ticket
     
     var body: some View {
@@ -20,7 +22,7 @@ struct TicketView: View {
                 .ignoresSafeArea()
             
             VStack {
-               backButton
+                backButton
                 
                 ticket
                 
@@ -36,7 +38,7 @@ struct TicketView: View {
 extension TicketView {
     private var backButton: some View {
         Button {
-            withAnimation {
+            withAnimation(.easeInOut(duration: 0.5)) {
                 moveTicketView = false
             }
         } label: {
@@ -57,6 +59,7 @@ extension TicketView {
                       
             reviewView
         }
+        .matchedGeometryEffect(id: id, in: animation)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
@@ -194,9 +197,10 @@ extension TicketView {
             Text(team)
                 .font(.system(size: 16))
             
-            Image(systemName: image)
-                .font(.system(size: 30))
-                .padding(.bottom, 30)
+            Image(image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70, height: 70)
             
             Text(infoTitle)
                 .font(.system(size: 20))
