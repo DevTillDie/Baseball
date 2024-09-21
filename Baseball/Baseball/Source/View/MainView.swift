@@ -52,7 +52,7 @@ struct MainView: View {
                 }
                 .ignoresSafeArea()
                 
-                if let selectedData, moveTicketView {
+                if let selectedData, let id, moveTicketView {
                     TicketView(moveTicketView: $moveTicketView, id: id, animation: animation, data: selectedData)
                         .zIndex(1)
                         .transition(.opacity)
@@ -327,48 +327,6 @@ extension MainView {
             Image(.addTicketButton)
                 .resizable()
                 .frame(width: 68, height: 68)
-        }
-    }
-}
-
-// MARK: - data
-
-extension MainView {
-    struct TicketData: Identifiable {
-        let id = UUID()
-        let date: String = "24.02.02"
-        let place: String = "고척"
-        let ourTeam: Team = .lions
-        let opponentTeam: Team = .twins
-        let ourTeamScore: Int = 3
-        let opponentTeamScore: Int = 1
-        let feeling: String = "Good"
-        let review: String = "NICE"
-    }
-    
-    enum Team: String {
-        case lions = "SAMSUNG LIONS"
-        case eagles = "HANHWA EAGLES"
-        case twins = "LG TWINS"
-        case giants = "LOTTE GIANTS"
-        case tigers = "KIA TIGERS"
-        case bears = "DUSAN BEARS"
-        
-        func colorTeam() -> Color {
-            switch self {
-            case .lions:
-                return Color(.lions)
-            case .eagles:
-                return Color(.eagles)
-            case .twins:
-                return Color(.twins)
-            case .giants:
-                return Color(.giants)
-            case .tigers:
-                return Color(.tigers)
-            case .bears:
-                return Color(.bears)
-            }
         }
     }
 }
