@@ -23,6 +23,7 @@
 		0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB2592BD1251F00ADB623 /* FourthInputTicketView.swift */; };
 		0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */; };
 		0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25D2BD12BE900ADB623 /* TicketView.swift */; };
+		0E6F42602C9E9E0800D533CE /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F425F2C9E9E0300D533CE /* Font+.swift */; };
 		0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */; };
 		0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */; };
 		0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		0E4AB2592BD1251F00ADB623 /* FourthInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInputTicketView.swift; sourceTree = "<group>"; };
 		0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteTicketView.swift; sourceTree = "<group>"; };
 		0E4AB25D2BD12BE900ADB623 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
+		0E6F425F2C9E9E0300D533CE /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		0E7EE52D2B5F91EF004F6BAF /* Baseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballApp.swift; sourceTree = "<group>"; };
 		0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		0E7EE5442B5F9284004F6BAF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0E6F425F2C9E9E0300D533CE /* Font+.swift */,
 				0E0B16452C2A984A00452B2B /* Date+.swift */,
 				0E2F50A52C85A5AF0054628F /* View+.swift */,
 			);
@@ -397,6 +400,7 @@
 				0E0B16572C2ABD2900452B2B /* Team.swift in Sources */,
 				0E0B16462C2A984A00452B2B /* Date+.swift in Sources */,
 				0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */,
+				0E6F42602C9E9E0800D533CE /* Font+.swift in Sources */,
 				0E4AB2542BD1250300ADB623 /* FirstInputTicketView.swift in Sources */,
 				0E0B164C2C2A9FFB00452B2B /* FifthInputTicketView.swift in Sources */,
 				0EDAC0602C60B74F00B87437 /* Ticket.swift in Sources */,
