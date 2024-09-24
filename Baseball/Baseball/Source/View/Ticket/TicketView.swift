@@ -39,6 +39,9 @@ struct TicketView: View {
             .padding(.horizontal, 24)
             .foregroundColor(.text)
         }
+        .sheet(isPresented: $viewModel.isShowInstaAlert) {
+            noInstaSheet
+        }
     }
 }
 
@@ -232,6 +235,44 @@ extension TicketView {
             Text(info)
                 .font(.system(size: 16))
         }
+    }
+}
+
+extension TicketView {
+    private var noInstaSheet: some View {
+        ZStack {
+            Color.clear
+                .ignoresSafeArea()
+                
+            VStack(spacing: 20) {
+                Text("인스타그램이 없어요!")
+                    .font(.instaSheetTitle)
+                
+                Text("인스타그램을 설치하면\n티켓을 인스타로 공유할 수 있어요")
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 16))
+                
+                Image("instaSheetImage")
+                    .padding()
+                
+            }
+            .foregroundColor(.white)
+        }
+        .overlay {
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(.white, lineWidth: 1.5)
+                .fill(.clear)
+                .ignoresSafeArea()
+                .mask(alignment: .top) {
+                    Rectangle()
+                        .frame(height: 10)
+                }
+                
+        }
+        .presentationDetents([.medium])
+        .presentationDragIndicator(.visible)
+        .presentationCornerRadius(20)
+        .presentationBackground(Color.black.opacity(0.85))
     }
 }
 

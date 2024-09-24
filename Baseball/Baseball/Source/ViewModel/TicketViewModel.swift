@@ -8,6 +8,8 @@
 import SwiftUI
 
 class TicketViewModel: ObservableObject {
+    @Published var isShowInstaAlert = false
+    
     func shareInstagram(image: UIImage) {
         guard let url = URL(string: "instagram-stories://share?source_application=Baseball"),
               let imageData = image.pngData() else { return }
@@ -20,6 +22,7 @@ class TicketViewModel: ObservableObject {
             UIApplication.shared.open(url)
         } else {
             print("인스타그램이 설치되어 있지 않습니다.")
+            isShowInstaAlert = true
         }
     }
 }
