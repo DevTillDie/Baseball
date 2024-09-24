@@ -12,6 +12,7 @@
 		0E0B164C2C2A9FFB00452B2B /* FifthInputTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B164B2C2A9FFB00452B2B /* FifthInputTicketView.swift */; };
 		0E0B16552C2ABA4900452B2B /* InputTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16542C2ABA4900452B2B /* InputTicketViewModel.swift */; };
 		0E0B16572C2ABD2900452B2B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B16562C2ABD2900452B2B /* Team.swift */; };
+		0E1C26302CA2F9B800E7745A /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1C262F2CA2F9B800E7745A /* BlurView.swift */; };
 		0E2F50A22C85A3190054628F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0E2F50A12C85A3190054628F /* RealmSwift */; };
 		0E2F50A32C85A3300054628F /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0E2F50A12C85A3190054628F /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0E2F50A62C85A5AF0054628F /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F50A52C85A5AF0054628F /* View+.swift */; };
@@ -64,6 +65,7 @@
 		0E0B164B2C2A9FFB00452B2B /* FifthInputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthInputTicketView.swift; sourceTree = "<group>"; };
 		0E0B16542C2ABA4900452B2B /* InputTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTicketViewModel.swift; sourceTree = "<group>"; };
 		0E0B16562C2ABD2900452B2B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		0E1C262F2CA2F9B800E7745A /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		0E2F50A52C85A5AF0054628F /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		0E3028622C5A0D3F008E038C /* TicketStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStroke.swift; sourceTree = "<group>"; };
 		0E4AB2512BD124FB00ADB623 /* InputTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTicketView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */,
 				5BE672792C5F691400D9F0E8 /* OnboardingTag.swift */,
 				0EDCCE4C2C882E1A00483919 /* ShareTicketShape.swift */,
+				0E1C262F2CA2F9B800E7745A /* BlurView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
 				0E804A072C46557200582121 /* TicketViewModel.swift in Sources */,
 				0E0B16552C2ABA4900452B2B /* InputTicketViewModel.swift in Sources */,
+				0E1C26302CA2F9B800E7745A /* BlurView.swift in Sources */,
 				0EDAC0502C60B56800B87437 /* RealmManager.swift in Sources */,
 				0E4AB2582BD1251700ADB623 /* ThirdInputTicketView.swift in Sources */,
 				0E0B16572C2ABD2900452B2B /* Team.swift in Sources */,

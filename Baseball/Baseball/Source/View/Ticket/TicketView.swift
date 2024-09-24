@@ -272,7 +272,9 @@ extension TicketView {
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
         .presentationCornerRadius(20)
-        .presentationBackground(Color.black.opacity(0.85))
+        .presentationBackground {
+            BlurView(style: .dark)
+        }
     }
 }
 
