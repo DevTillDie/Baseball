@@ -9,20 +9,12 @@ import SwiftUI
 
 struct TicketView: View {
     @StateObject private var viewModel = TicketViewModel()
+    
     @Binding var moveTicketView: Bool
     
-    //TODO: Model로 처리하기
-    private let date = "24.02.22"
-    private let ourTeam = "SAMSUNG LIONS"
-    private let opponentTeam = "LG TWINS"
-    private let ourTeamScore = "3"
-    private let opponentTeamScore = "1"
-    private let location = "고척돔"
-    private let title = "제목"
-    private let review = "내용"
-    
-    private let ourTeamColor: Color = .lions
-    private let opponentTeamColor: Color = .twins
+    let id: UUID
+    let animation: Namespace.ID
+    let data: Ticket
     
     var body: some View {
         ZStack {
@@ -30,7 +22,7 @@ struct TicketView: View {
                 .ignoresSafeArea()
             
             VStack {
-               backButton
+                backButton
                 
                 ticket(isShare: false)
                 
@@ -49,7 +41,7 @@ struct TicketView: View {
 extension TicketView {
     private var backButton: some View {
         Button {
-            withAnimation {
+            withAnimation(.easeInOut(duration: 0.5)) {
                 moveTicketView = false
             }
         } label: {
@@ -71,6 +63,7 @@ extension TicketView {
                       
             reviewView(isShare)
         }
+        .matchedGeometryEffect(id: id, in: animation)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
@@ -95,10 +88,10 @@ extension TicketView {
     @ViewBuilder
     private func resultview(_ isShare: Bool) -> some View {
         VStack(spacing: 6) {
-            Text(date)
+            Text(data.date)
                 .font(.system(size: 15))
             
-            Text("\(ourTeamScore) : \(opponentTeamScore)")
+            Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
                 .font(.system(size: 48))
             
             teamInfoView
@@ -116,7 +109,7 @@ extension TicketView {
             if isShare {
                 Color.black.opacity(0.15)
             } else {
-                LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
             }
         }
         .modifier(TicketStroke(cornerRadius: 8, cutRadius: 40, isShare: isShare))
@@ -124,7 +117,7 @@ extension TicketView {
     
     private var teamInfoView: some View {
         HStack {
-            Text(ourTeam)
+            Text(data.ourTeam)
                 .font(.system(size: 15))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
@@ -134,7 +127,7 @@ extension TicketView {
                 .foregroundStyle(.line)
                 .frame(height: 1)
             
-            Text(opponentTeam)
+            Text(data.opponentTeam)
                 .font(.system(size: 15))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
@@ -148,17 +141,17 @@ extension TicketView {
             
             resultInfo(
                 teamTitle: "Our team",
-                team: ourTeam,
+                team: data.ourTeam,
                 image: "cloud.sleet",
                 infoTitle: "Location",
-                info: location
+                info: data.place
             )
             
             Spacer(minLength: 30)
             
             resultInfo(
                 teamTitle: "Opposing team",
-                team: opponentTeam,
+                team: data.opponentTeam,
                 image: "envelope.open",
                 infoTitle: "Lucky",
                 info: "승요"
@@ -179,7 +172,7 @@ extension TicketView {
                 if isShare {
                     Color.black.opacity(0.15)
                 } else {
-                    LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                    LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
                 }
             }
             .padding(.horizontal, 8)
@@ -189,10 +182,10 @@ extension TicketView {
     @ViewBuilder
     private func reviewView(_ isShare: Bool) -> some View {
         VStack {
-            Text(title)
+            Text(data.title)
                 .padding(.bottom, 4)
             
-            Text(review)
+            Text(data.review)
                 .multilineTextAlignment(.leading)
             
             Spacer()
@@ -203,7 +196,7 @@ extension TicketView {
             if isShare {
                 Color.black.opacity(0.15)
             } else {
-                LinearGradient(gradient: Gradient(colors: [ourTeamColor, opponentTeamColor]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                LinearGradient(gradient: Gradient(colors: [Color.colorTeam(data.ourTeam), Color.colorTeam(data.opponentTeam)]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
             }
         }
         .modifier(TicketStroke(cornerRadius: 8, cutRadius: 0, isShare: isShare, isRemoveTop: true))
@@ -225,9 +218,10 @@ extension TicketView {
             Text(team)
                 .font(.system(size: 16))
             
-            Image(systemName: image)
-                .font(.system(size: 30))
-                .padding(.bottom, 30)
+            Image(image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70, height: 70)
             
             Text(infoTitle)
                 .font(.system(size: 20))

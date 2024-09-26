@@ -43,7 +43,7 @@ extension SecondInputTicketView {
         LazyVGrid(columns: columns) {
             ForEach(viewModel.teams, id: \.self) { team in
                 VStack {
-                    Image(systemName: team.imageName)
+                    Image(team.imageName)
                         .resizable()
                         .scaledToFit()
                         .padding()
