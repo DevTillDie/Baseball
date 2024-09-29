@@ -19,7 +19,7 @@ class InputTicketViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var date = Date()
     @Published var place = ""
-    @Published var ourTeam = "삼성 라이온즈"
+    @Published var ourTeam = UserDefaults.standard.string(forKey: "myTeam")!
     @Published var opponentTeam = ""
     @Published var ourTeamScore = ""
     @Published var opponentTeamScore = ""
@@ -42,6 +42,16 @@ class InputTicketViewModel: ObservableObject {
         ("😆", "신나요")
     ]
     
+    func setTodayResult() -> String {
+        if Int(ourTeamScore) ?? 0 > Int(opponentTeamScore) ?? 0 {
+            return "승요"
+        } else if Int(ourTeamScore) ?? 0 < Int(opponentTeamScore) ?? 0 {
+            return "패요"
+        } else {
+            return "동요"
+        }
+    }
+    
     func saveData() {
         RealmManager.shared.saveTicketData(
             Ticket(
@@ -52,6 +62,7 @@ class InputTicketViewModel: ObservableObject {
                 ourTeamScore: Int(ourTeamScore) ?? 0,
                 opponentTeamScore: Int(opponentTeamScore) ?? 0,
                 feeling: currentEmotion, 
+                result: setTodayResult(),
                 title: todayTitle,
                 review: todayComment
             )

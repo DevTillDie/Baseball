@@ -154,7 +154,7 @@ extension TicketView {
                 team: data.opponentTeam,
                 image: "envelope.open",
                 infoTitle: "Lucky",
-                info: "승요"
+                info: data.result
             )
             Spacer()
         }

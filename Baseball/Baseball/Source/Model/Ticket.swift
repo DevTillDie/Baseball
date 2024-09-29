@@ -31,6 +31,7 @@ class Ticket: Object {
     @Persisted var ourTeamScore: Int
     @Persisted var opponentTeamScore: Int
     @Persisted var feeling: String
+    @Persisted var result: String
     @Persisted var title: String
     @Persisted var review: String
     
@@ -38,7 +39,7 @@ class Ticket: Object {
         return ourTeamScore > opponentTeamScore
     }
     
-    convenience init(date: String, place: String, ourTeam: String, opponentTeam: String, ourTeamScore: Int, opponentTeamScore: Int, feeling: String, title: String, review: String) {
+    convenience init(date: String, place: String, ourTeam: String, opponentTeam: String, ourTeamScore: Int, opponentTeamScore: Int, feeling: String, result: String, title: String, review: String) {
         self.init()
         self.date = date
         self.place = place
@@ -47,6 +48,7 @@ class Ticket: Object {
         self.ourTeamScore = ourTeamScore
         self.opponentTeamScore = opponentTeamScore
         self.feeling = feeling
+        self.result = result
         self.title = title
         self.review = review
     }
