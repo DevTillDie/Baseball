@@ -34,4 +34,9 @@ class RealmManager {
         let tickets = realm.objects(Ticket.self)
         return Array(tickets)
     }
+    
+    func filterTicketData(item: String, condition: String) -> [Ticket] {
+        let filteredTickets = realm.objects(Ticket.self).filter("\(item) == %@", condition)
+        return Array(filteredTickets)
+    }
 }
