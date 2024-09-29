@@ -18,6 +18,7 @@ import RealmSwift
 /// - ourTeamScore: 우리 팀 점수
 /// - opponentTeamScore: 상대 팀 점수
 /// - feeling: 기분
+/// - result: 경기 결과 (승요/패요/동요 구분)
 /// - title: 관람 후기 제목
 /// - review: 관람 후기
 ///
