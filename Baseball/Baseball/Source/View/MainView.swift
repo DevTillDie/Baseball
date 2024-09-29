@@ -223,7 +223,9 @@ extension MainView {
     private var ticketTags: some View {
         HStack {
             Button {
-                isFilteredByResult.toggle()
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    isFilteredByResult.toggle()
+                }
                 if isFilteredByResult {
                     viewModel.filteTicketData(item: "result", condition: "승요")
                 }
@@ -244,7 +246,9 @@ extension MainView {
             .foregroundStyle(viewModel.ticketData.isEmpty || !isFilteredByResult ? .caption : .text)
             
             Button {
-                isFilteredByTeam.toggle()
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    isFilteredByTeam.toggle()
+                }
                 if isFilteredByTeam {
                     viewModel.filteTicketData(item: "ourTeam", condition: UserDefaults.standard.string(forKey: "myTeam")!)
                 }
