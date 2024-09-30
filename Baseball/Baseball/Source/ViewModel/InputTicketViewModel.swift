@@ -42,7 +42,7 @@ class InputTicketViewModel: ObservableObject {
         ("😆", "신나요")
     ]
     
-    func setTodayResult() -> String {
+    private func setTodayResult() -> String {
         if Int(ourTeamScore) ?? 0 > Int(opponentTeamScore) ?? 0 {
             return "승요"
         } else if Int(ourTeamScore) ?? 0 < Int(opponentTeamScore) ?? 0 {
