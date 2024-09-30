@@ -18,6 +18,7 @@ import RealmSwift
 /// - ourTeamScore: 우리 팀 점수
 /// - opponentTeamScore: 상대 팀 점수
 /// - feeling: 기분
+/// - result: 경기 결과 (승요/패요/동요 구분)
 /// - title: 관람 후기 제목
 /// - review: 관람 후기
 ///
@@ -31,6 +32,7 @@ class Ticket: Object {
     @Persisted var ourTeamScore: Int
     @Persisted var opponentTeamScore: Int
     @Persisted var feeling: String
+    @Persisted var result: String
     @Persisted var title: String
     @Persisted var review: String
     
@@ -38,7 +40,7 @@ class Ticket: Object {
         return ourTeamScore > opponentTeamScore
     }
     
-    convenience init(date: String, place: String, ourTeam: String, opponentTeam: String, ourTeamScore: Int, opponentTeamScore: Int, feeling: String, title: String, review: String) {
+    convenience init(date: String, place: String, ourTeam: String, opponentTeam: String, ourTeamScore: Int, opponentTeamScore: Int, feeling: String, result: String, title: String, review: String) {
         self.init()
         self.date = date
         self.place = place
@@ -47,6 +49,7 @@ class Ticket: Object {
         self.ourTeamScore = ourTeamScore
         self.opponentTeamScore = opponentTeamScore
         self.feeling = feeling
+        self.result = result
         self.title = title
         self.review = review
     }
