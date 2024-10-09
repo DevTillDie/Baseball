@@ -89,10 +89,10 @@ extension TicketView {
     private func resultview(_ isShare: Bool) -> some View {
         VStack(spacing: 6) {
             Text(data.date)
-                .font(.system(size: 15))
+                .font(.system(size: 15, weight: .medium))
             
             Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
-                .font(.system(size: 48))
+                .font(.system(size: 48, weight: .heavy))
             
             teamInfoView
             
@@ -118,7 +118,7 @@ extension TicketView {
     private var teamInfoView: some View {
         HStack {
             Text(data.ourTeam)
-                .font(.system(size: 15))
+                .font(.system(size: 15, weight: .medium))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             
@@ -128,7 +128,7 @@ extension TicketView {
                 .frame(height: 1)
             
             Text(data.opponentTeam)
-                .font(.system(size: 15))
+                .font(.system(size: 15, weight: .medium))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
         }
@@ -142,7 +142,7 @@ extension TicketView {
             resultInfo(
                 teamTitle: "Our team",
                 team: data.ourTeam,
-                image: "cloud.sleet",
+                image: viewModel.teamIcons[data.ourTeam] ?? "",
                 infoTitle: "Location",
                 info: data.place
             )
@@ -152,7 +152,7 @@ extension TicketView {
             resultInfo(
                 teamTitle: "Opposing team",
                 team: data.opponentTeam,
-                image: "envelope.open",
+                image: viewModel.teamIcons[data.opponentTeam] ?? "",
                 infoTitle: "Lucky",
                 info: "승요"
             )
@@ -183,9 +183,11 @@ extension TicketView {
     private func reviewView(_ isShare: Bool) -> some View {
         VStack {
             Text(data.title)
+                .font(.system(size: 16, weight: .medium))
                 .padding(.bottom, 4)
             
             Text(data.review)
+                .font(.system(size: 16))
                 .multilineTextAlignment(.leading)
             
             Spacer()
@@ -213,7 +215,7 @@ extension TicketView {
     ) -> some View {
         VStack(spacing: 6) {
             Text(teamTitle)
-                .font(.system(size: 20))
+                .font(.system(size: 20, weight: .semibold))
             
             Text(team)
                 .font(.system(size: 16))
@@ -224,7 +226,7 @@ extension TicketView {
                 .frame(width: 70, height: 70)
             
             Text(infoTitle)
-                .font(.system(size: 20))
+                .font(.system(size: 20, weight: .semibold))
             
             Text(info)
                 .font(.system(size: 16))
