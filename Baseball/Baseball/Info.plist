@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIImageName</key>
-		<string>launchScreen</string>
-		<key>UIColorName</key>
-		<string>backgroundColor</string>
-	</dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram-stories</string>
@@ -17,5 +10,12 @@
 	<array>
 		<string>Pretendard-Bold.otf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>backgroundColor</string>
+		<key>UIImageName</key>
+		<string>launchScreen</string>
+	</dict>
 </dict>
 </plist>
