@@ -147,7 +147,7 @@ extension TicketView {
                 info: data.place
             )
             
-            Spacer(minLength: 30)
+            Spacer()
             
             resultInfo(
                 teamTitle: "Opposing team",
@@ -156,10 +156,11 @@ extension TicketView {
                 infoTitle: "Lucky",
                 info: "승요"
             )
+            
             Spacer()
         }
-        .frame(maxWidth: .infinity)
-        
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -181,7 +182,7 @@ extension TicketView {
     
     @ViewBuilder
     private func reviewView(_ isShare: Bool) -> some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(data.title)
                 .font(.system(size: 16, weight: .medium))
                 .padding(.bottom, 4)
@@ -223,7 +224,8 @@ extension TicketView {
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 70, height: 70)
+                .frame(height: 50)
+                .padding(.bottom)
             
             Text(infoTitle)
                 .font(.system(size: 20, weight: .semibold))
@@ -231,6 +233,7 @@ extension TicketView {
             Text(info)
                 .font(.system(size: 16))
         }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
