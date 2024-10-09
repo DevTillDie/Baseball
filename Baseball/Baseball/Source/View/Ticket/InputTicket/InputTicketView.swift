@@ -10,12 +10,12 @@ import SwiftUI
 struct InputTicketView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var inputTicketViewModel = InputTicketViewModel()
+    @Namespace var animation
     
     @State private var currentStatus = InputStatus.writing {
          didSet {
              if currentStatus == .done {
                  moveTicketView = true
-                 presentationMode.wrappedValue.dismiss()
              }
         }
     }
@@ -33,7 +33,7 @@ struct InputTicketView: View {
             } else if currentStatus == .saving {
                 completeView
             } else {
-                EmptyView()
+                showTicket
             }
         }
     }
@@ -122,6 +122,15 @@ extension InputTicketView {
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
                     currentStatus = .done
+                }
+            }
+    }
+    
+    private var showTicket: some View {
+        TicketView(moveTicketView: $moveTicketView, id: UUID(), animation: animation, data: inputTicketViewModel.getTicketData())
+            .onChange(of: moveTicketView) { oldValue, newValue in
+                if oldValue, !newValue {
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
     }

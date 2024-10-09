@@ -40,6 +40,20 @@ class InputTicketViewModel: ObservableObject {
         ("😍", "신나요")
     ]
     
+    func getTicketData() -> Ticket {
+        return Ticket(
+            date: date.dateToString(),
+            place: place,
+            ourTeam: ourTeam,
+            opponentTeam: opponentTeam,
+            ourTeamScore: Int(ourTeamScore) ?? 0,
+            opponentTeamScore: Int(opponentTeamScore) ?? 0,
+            feeling: currentEmotion,
+            title: todayTitle,
+            review: todayComment
+        )
+    }
+    
     func saveData() {
         RealmManager.shared.saveTicketData(
             Ticket(
