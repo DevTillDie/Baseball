@@ -10,6 +10,15 @@ import SwiftUI
 class TicketViewModel: ObservableObject {
     @Published var isShowInstaAlert = false
     
+    let teamIcons: [String: String] = [
+        "삼성 라이온즈": "lionsIcon",
+        "LG 트윈스": "twinsIcon",
+        "롯데 자이언츠": "giantsIcon",
+        "기아 타이거즈": "tigersIcon",
+        "한화 이글스": "eaglesIcon",
+        "두산 베어스": "bearsIcon"
+    ]
+    
     func shareInstagram(image: UIImage) {
         guard let url = URL(string: "instagram-stories://share?source_application=Baseball"),
               let imageData = image.pngData() else { return }

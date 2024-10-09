@@ -18,9 +18,12 @@ struct FourthInputTicketView: View {
     
     var body: some View {
         VStack {
-            Text("점수가 어떻게 되었나요?")
+            Text("이번 경기는 몇 점인가요?")
                 .foregroundColor(.white)
+                .font(.system(size: 20, weight: .bold))
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 4)
+                .padding(.bottom, 40)
             
             inputScoreView
             
@@ -47,7 +50,7 @@ extension FourthInputTicketView {
             
             Text(":")
                 .foregroundColor(.white)
-                .font(.system(size: 40))
+                .font(.system(size: 40, weight: .bold))
                 .padding()
             
             inputTeamScore(text: viewModel.opponentTeam, score: $viewModel.opponentTeamScore, team: .opponentTeamScore)
@@ -60,13 +63,14 @@ extension FourthInputTicketView {
         VStack {
             Text(text)
                 .foregroundColor(.white)
+                .font(.system(size: 12, weight: .medium))
             
             TextField("0", text: score)
                 .multilineTextAlignment(.center)
                 .keyboardType(.numberPad)
                 .focused($isFocused, equals: team)
                 .colorScheme(.dark)
-                .font(.system(size: 40))
+                .font(.system(size: 40, weight: .bold))
                 .padding()
                 .onTapGesture {
                     isFocused = team

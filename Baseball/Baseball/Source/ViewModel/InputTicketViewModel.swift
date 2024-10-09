@@ -13,8 +13,6 @@ enum InputStatus {
     case done
 }
 
-// TODO: ourTeam appstorage 에서 가져오기
-
 class InputTicketViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var date = Date()
@@ -28,18 +26,18 @@ class InputTicketViewModel: ObservableObject {
     @Published var currentEmotion = ""
     
     let teams: [Team] = [
-        Team(imageName: "house", teamName: "삼성 라이온즈"),
-        Team(imageName: "house", teamName: "LG 트윈스"),
-        Team(imageName: "house", teamName: "롯데 자이언츠"),
-        Team(imageName: "house", teamName: "기아 타이거즈"),
-        Team(imageName: "house", teamName: "한화 이글스"),
-        Team(imageName: "house", teamName: "두산 베어스")
+        Team(imageName: "lionsIcon", teamName: "삼성 라이온즈"),
+        Team(imageName: "twinsIcon", teamName: "LG 트윈스"),
+        Team(imageName: "giantsIcon", teamName: "롯데 자이언츠"),
+        Team(imageName: "tigersIcon", teamName: "기아 타이거즈"),
+        Team(imageName: "eaglesIcon", teamName: "한화 이글스"),
+        Team(imageName: "bearsIcon", teamName: "두산 베어스")
     ]
     
     let emotions: [(img: String, text: String)] = [
         ("😡", "화나요"),
         ("😗", "평범해요"),
-        ("😆", "신나요")
+        ("😍", "신나요")
     ]
     
     func saveData() {

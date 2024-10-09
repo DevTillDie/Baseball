@@ -22,11 +22,15 @@ struct FifthInputTicketView: View {
         VStack(alignment: .leading) {
             Text("지금 기분이 어떤가요?")
                 .foregroundColor(.white)
+                .font(.system(size: 20, weight: .bold))
+                .padding(.leading, 4)
             
             emotionsGrid
             
-            Text("오늘의 경기 한마디!")
+            Text("오늘의 경기 기록!")
                 .foregroundColor(.white)
+                .font(.system(size: 20, weight: .bold))
+                .padding(.leading, 4)
             
             inputTitle
             
@@ -62,6 +66,7 @@ extension FifthInputTicketView {
 
                     Text(viewModel.emotions[index].text)
                         .foregroundStyle(.white)
+                        .font(.system(size: 16, weight: .medium))
                 }
                 .onTapGesture {
                     if viewModel.currentEmotion == viewModel.emotions[index].text {
@@ -75,6 +80,7 @@ extension FifthInputTicketView {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 100)
+        .padding(.bottom)
     }
     
     private var inputTitle: some View {

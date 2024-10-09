@@ -34,7 +34,6 @@ struct InputTicketView: View {
                 completeView
             } else {
                 EmptyView()
-//                TicketView()
             }
         }
     }
@@ -44,13 +43,14 @@ struct InputTicketView: View {
 
 extension InputTicketView {
     private var writingView: some View {
-        VStack {
+        VStack(spacing: 0) {
             writingViewHeader
         
             ProgressView(value: Double(inputTicketViewModel.currentPage), total: 4)
                 .progressViewStyle(
                     GradientProgressStyle(fill: LinearGradient(colors: gradients, startPoint: .topLeading, endPoint: .bottomTrailing), height: 4))
                 .padding(.horizontal)
+                .padding(.top, 20)
             
             writingTabView
         }
@@ -67,16 +67,22 @@ extension InputTicketView {
                 }
             } label: {
                 Image(systemName: "chevron.left")
+                    .font(.system(size: 20))
                     .foregroundColor(.white)
             }
             
             Spacer()
             
             Text("티켓 추가하기")
-                .bold()
+                .font(.system(size: 16))
                 .foregroundColor(.white)
             
             Spacer()
+            
+            Image(systemName: "chevron.left")
+                .font(.system(size: 20))
+                .opacity(0)
+            
         }
         .padding(.horizontal)
     }
@@ -107,7 +113,8 @@ extension InputTicketView {
         .onAppear {
             UIScrollView.appearance().isScrollEnabled = false
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.top, 42)
     }
     
     private var completeView: some View {
