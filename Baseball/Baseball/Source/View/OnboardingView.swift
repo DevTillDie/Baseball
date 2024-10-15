@@ -115,7 +115,7 @@ extension OnboardingView {
     private var onboardingDescriptionOne: some View {
         VStack {
             Text("오늘 본 경기\n간편하게 기록해봐요")
-                .font(.custom("Pretendard-Bold", size: 24))
+                .font(.customTitle)
                 .bold()
                 .multilineTextAlignment(.center)
             
@@ -140,7 +140,7 @@ extension OnboardingView {
     private var onboardingDescriptionTwo: some View {
         VStack {
             Text("기록해서 모은\n내 경기 티켓 공유해봐요")
-                .font(.custom("Pretendard-Bold", size: 24))
+                .font(.customTitle)
                 .bold()
                 .multilineTextAlignment(.center)
             
@@ -165,7 +165,7 @@ extension OnboardingView {
     private var onboardingTeamSelection: some View {
         VStack {
             Text("가장 응원하는 구단은\n어디인가요?")
-                .font(.custom("Pretendard-Bold", size: 24))
+                .font(.customTitle)
                 .bold()
                 .multilineTextAlignment(.center)
             
