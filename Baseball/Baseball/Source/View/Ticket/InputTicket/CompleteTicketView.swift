@@ -7,12 +7,30 @@
 
 import SwiftUI
 
-struct CompleteTicketView: View {
-    var body: some View {
-        Text("티켓 출력 로띠")
-    }
-}
+import Lottie
 
-#Preview {
-    CompleteTicketView()
+struct CompleteTicketView: View {
+    @Binding var currentStatus: InputStatus
+    
+    var emotion: String
+    
+    var body: some View {
+        LottieView(animation: .named(getAnimationFile()))
+            .playing()
+            .resizable()
+            .animationDidFinish { _ in
+                currentStatus = .done
+            }
+            .ignoresSafeArea()
+    }
+    
+    private func getAnimationFile() -> String {
+        if emotion == "화나요" {
+            return "angry.lottie"
+        } else if emotion == "신나요" {
+            return "happy.lottie"
+        } else {
+            return "soso.lottie"
+        }
+    }
 }
