@@ -10,5 +10,12 @@
 	<array>
 		<string>Pretendard-Bold.otf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>backgroundColor</string>
+		<key>UIImageName</key>
+		<string>launchScreen</string>
+	</dict>
 </dict>
 </plist>
