@@ -29,7 +29,10 @@ struct CompleteTicketView: View {
             return "angry.lottie"
         } else if emotion == "신나요" {
             return "happy.lottie"
+        } else if emotion == "평범해요" {
+            return "soso.lottie"
         } else {
+            //TODO: default lottie 변경
             return "soso.lottie"
         }
     }
