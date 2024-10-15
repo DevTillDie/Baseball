@@ -24,17 +24,22 @@ struct FifthInputTicketView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 20, weight: .bold))
                 .padding(.leading, 4)
+                .padding(.horizontal)
             
             emotionsGrid
+                .padding(.horizontal)
             
             Text("오늘의 경기 기록!")
                 .foregroundColor(.white)
                 .font(.system(size: 20, weight: .bold))
                 .padding(.leading, 4)
+                .padding(.horizontal)
             
             inputTitle
+                .padding(.horizontal)
             
             inputComment
+                .padding(.horizontal)
             
             Spacer()
             

@@ -32,6 +32,10 @@
 		0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */; };
 		0E804A052C46290000582121 /* SelectedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A042C46290000582121 /* SelectedCircle.swift */; };
 		0E804A072C46557200582121 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A062C46557200582121 /* TicketViewModel.swift */; };
+		0EAF0E102CB77C0B00030A13 /* soso.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0E0F2CB77C0A00030A13 /* soso.lottie.json */; };
+		0EAF0E112CB77C0B00030A13 /* angry.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0E0D2CB77C0A00030A13 /* angry.lottie.json */; };
+		0EAF0E122CB77C0B00030A13 /* happy.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0E0E2CB77C0A00030A13 /* happy.lottie.json */; };
+		0EAF0E152CB77D5F00030A13 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0EAF0E142CB77D5F00030A13 /* Lottie */; };
 		0EDAC0502C60B56800B87437 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDAC04F2C60B56800B87437 /* RealmManager.swift */; };
 		0EDAC0602C60B74F00B87437 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDAC05F2C60B74F00B87437 /* Ticket.swift */; };
 		0EDCCE4D2C882E1A00483919 /* ShareTicketShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCCE4C2C882E1A00483919 /* ShareTicketShape.swift */; };
@@ -86,6 +90,9 @@
 		0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressStyle.swift; sourceTree = "<group>"; };
 		0E804A042C46290000582121 /* SelectedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCircle.swift; sourceTree = "<group>"; };
 		0E804A062C46557200582121 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
+		0EAF0E0D2CB77C0A00030A13 /* angry.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = angry.lottie.json; sourceTree = "<group>"; };
+		0EAF0E0E2CB77C0A00030A13 /* happy.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = happy.lottie.json; sourceTree = "<group>"; };
+		0EAF0E0F2CB77C0A00030A13 /* soso.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = soso.lottie.json; sourceTree = "<group>"; };
 		0EDAC04F2C60B56800B87437 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0EDAC05F2C60B74F00B87437 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		0EDCCE4C2C882E1A00483919 /* ShareTicketShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTicketShape.swift; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E2F50A22C85A3190054628F /* RealmSwift in Frameworks */,
+				0EAF0E152CB77D5F00030A13 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +206,7 @@
 		0E7EE5402B5F9241004F6BAF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0EAF0E0C2CB77BFB00030A13 /* lottie */,
 				5BE6727B2C5F76A700D9F0E8 /* fonts */,
 				0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */,
 			);
@@ -270,6 +279,16 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
+		0EAF0E0C2CB77BFB00030A13 /* lottie */ = {
+			isa = PBXGroup;
+			children = (
+				0EAF0E0D2CB77C0A00030A13 /* angry.lottie.json */,
+				0EAF0E0E2CB77C0A00030A13 /* happy.lottie.json */,
+				0EAF0E0F2CB77C0A00030A13 /* soso.lottie.json */,
+			);
+			path = lottie;
+			sourceTree = "<group>";
+		};
 		0EDAC04E2C60B55300B87437 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +325,7 @@
 			name = Baseball;
 			packageProductDependencies = (
 				0E2F50A12C85A3190054628F /* RealmSwift */,
+				0EAF0E142CB77D5F00030A13 /* Lottie */,
 			);
 			productName = Baseball;
 			productReference = 0E7EE52D2B5F91EF004F6BAF /* Baseball.app */;
@@ -337,6 +357,7 @@
 			mainGroup = 0E7EE5242B5F91EF004F6BAF;
 			packageReferences = (
 				0E2F509E2C85A3190054628F /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0EAF0E132CB77D5F00030A13 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 0E7EE52E2B5F91EF004F6BAF /* Products */;
 			projectDirPath = "";
@@ -352,6 +373,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EAF0E102CB77C0B00030A13 /* soso.lottie.json in Resources */,
+				0EAF0E112CB77C0B00030A13 /* angry.lottie.json in Resources */,
+				0EAF0E122CB77C0B00030A13 /* happy.lottie.json in Resources */,
 				0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */,
 				5BE6727D2C5F76DF00D9F0E8 /* Pretendard-Bold.otf in Resources */,
 				0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */,
@@ -638,6 +662,14 @@
 				kind = branch;
 			};
 		};
+		0EAF0E132CB77D5F00030A13 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -645,6 +677,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0E2F509E2C85A3190054628F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		0EAF0E142CB77D5F00030A13 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EAF0E132CB77D5F00030A13 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -15,8 +15,10 @@ struct ThirdInputTicketView: View {
     var body: some View {
         VStack(alignment: .leading) {
             titleText
+                .padding(.horizontal)
             
             teamsGrid
+                .padding(.horizontal)
             
             Spacer()
             

@@ -12,13 +12,7 @@ struct InputTicketView: View {
     @StateObject private var inputTicketViewModel = InputTicketViewModel()
     @Namespace var animation
     
-    @State private var currentStatus = InputStatus.writing {
-         didSet {
-             if currentStatus == .done {
-                 moveTicketView = true
-             }
-        }
-    }
+    @State private var currentStatus = InputStatus.writing
     @Binding var moveTicketView: Bool
     
     private let gradients: [Color] = [.gradient1, .gradient2, .gradient3, .gradient4, .gradient5]
@@ -84,7 +78,7 @@ extension InputTicketView {
                 .opacity(0)
             
         }
-        .padding(.horizontal)
+        .padding()
     }
     
     private var writingTabView: some View {
@@ -113,21 +107,19 @@ extension InputTicketView {
         .onAppear {
             UIScrollView.appearance().isScrollEnabled = false
         }
-        .padding(.horizontal)
+//        .padding(.horizontal)
         .padding(.top, 42)
     }
     
     private var completeView: some View {
-        CompleteTicketView()
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
-                    currentStatus = .done
-                }
-            }
+        CompleteTicketView(currentStatus: $currentStatus, emotion: inputTicketViewModel.currentEmotion)
     }
     
     private var showTicket: some View {
         TicketView(moveTicketView: $moveTicketView, id: UUID(), animation: animation, data: inputTicketViewModel.getTicketData())
+            .onAppear {
+                moveTicketView = true
+            }
             .onChange(of: moveTicketView) { oldValue, newValue in
                 if oldValue, !newValue {
                     presentationMode.wrappedValue.dismiss()

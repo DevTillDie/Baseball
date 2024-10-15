@@ -24,8 +24,10 @@ struct FourthInputTicketView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 4)
                 .padding(.bottom, 40)
+                .padding(.horizontal)
             
             inputScoreView
+                .padding(.horizontal)
             
             Spacer()
             

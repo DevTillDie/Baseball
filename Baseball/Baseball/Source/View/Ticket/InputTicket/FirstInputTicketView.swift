@@ -16,8 +16,9 @@ struct FirstInputTicketView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 32) {
             inputDate
-            
+                .padding(.horizontal)
             inputPlace
+                .padding(.horizontal)
             
             Spacer()
             
@@ -82,6 +83,9 @@ extension FirstInputTicketView {
                 }
         }
         .padding(.leading, 4)
+        .onTapGesture {
+            isShowDatePicker = false
+        }
     }
     
     private var datePicker: some View {

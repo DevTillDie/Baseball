@@ -29,6 +29,7 @@ struct TicketView: View {
                 shareButton
             }
             .padding(.horizontal, 24)
+            .padding(.top)
             .foregroundColor(.text)
         }
         .sheet(isPresented: $viewModel.isShowInstaAlert) {
@@ -47,7 +48,9 @@ extension TicketView {
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
+                    .font(.system(size: 20))
                 Text("메인화면")
+                    .font(.system(size: 16))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -245,7 +248,7 @@ extension TicketView {
                 
             VStack(spacing: 20) {
                 Text("인스타그램이 없어요!")
-                    .font(.instaSheetTitle)
+                    .font(.customTitle)
                 
                 Text("인스타그램을 설치하면\n티켓을 인스타로 공유할 수 있어요")
                     .multilineTextAlignment(.center)
@@ -281,10 +284,10 @@ extension TicketView {
 extension TicketView {
     private func renderShareView() -> UIImage? {
         return ticket(isShare: true)
+            .frame(width: UIScreen.main.bounds.width * 0.9)
             .foregroundColor(.text)
-            .padding()
             .background(.clear)
-            .render(scale: 2)
+            .render(scale: UIScreen.main.scale)
     }
 }
 
