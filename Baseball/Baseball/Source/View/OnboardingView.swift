@@ -207,7 +207,7 @@ extension OnboardingView {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding()
+                        .padding(2)
                         .modifier(SelectedCircle(isSelected: viewModel.myTeam == team.teamName))
                     
                     Text(team.teamName)

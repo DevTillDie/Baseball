@@ -52,7 +52,7 @@ extension SecondInputTicketView {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding()
+                        .padding(2)
                         .modifier(SelectedCircle(isSelected: viewModel.ourTeam == team.teamName))
                     
                     Text(team.teamName)

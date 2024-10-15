@@ -227,7 +227,7 @@ extension TicketView {
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 50)
+                .frame(height: 70)
                 .padding(.bottom)
             
             Text(infoTitle)

@@ -182,8 +182,10 @@ private var ticketDisplayView: some View {
                 .padding(.horizontal, 12)
             
             if viewModel.ticketData.isEmpty {
-                ticketTags
-                noTicketView
+                VStack(spacing: 0) {
+                    ticketTags
+                    noTicketView
+                }
             } else {
                 VStack(spacing: 0) {
                     ticketTags
