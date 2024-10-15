@@ -107,7 +107,6 @@ extension InputTicketView {
         .onAppear {
             UIScrollView.appearance().isScrollEnabled = false
         }
-//        .padding(.horizontal)
         .padding(.top, 42)
     }
     

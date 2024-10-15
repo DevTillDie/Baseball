@@ -203,17 +203,18 @@ extension OnboardingView {
         LazyVGrid(columns: columns) {
             ForEach(viewModel.teams, id: \.self) { team in
                 VStack {
-                    Image(systemName: team.imageName)
+                    Image(team.imageName)
                         .resizable()
-                        .padding(32)
-                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding()
                         .modifier(SelectedCircle(isSelected: viewModel.myTeam == team.teamName))
-                        .frame(width: 100, height: 100)
                     
                     Text(team.teamName)
                         .font(.system(size: 12))
                         .foregroundColor(.caption)
                 }
+                .aspectRatio(1, contentMode: .fit)
                 .onTapGesture {
                     if viewModel.myTeam == team.teamName {
                         viewModel.myTeam = ""
