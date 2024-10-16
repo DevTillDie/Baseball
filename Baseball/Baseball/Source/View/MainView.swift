@@ -11,6 +11,8 @@ struct MainView: View {
     @StateObject private var viewModel = MainViewModel()
     @Namespace var animation
     
+    @State private var isFilteredByResult = false
+    @State private var isFilteredByTeam = false
     @State private var moveInputTicketView = false
     @State private var moveTicketView = false
     @State private var selectedData: Ticket?
@@ -223,7 +225,15 @@ extension MainView {
     private var ticketTags: some View {
         HStack {
             Button {
-                // action
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    isFilteredByResult.toggle()
+                }
+                if isFilteredByResult {
+                    viewModel.filteTicketData(item: "result", condition: "승요")
+                }
+                if isFilteredByTeam {
+                    isFilteredByTeam.toggle()
+                }
             } label: {
                 Text("승요")
                     .padding(.horizontal, 20)
@@ -233,11 +243,20 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(viewModel.ticketData.isEmpty ? .caption : .stroke)
+                    .stroke(viewModel.ticketData.isEmpty || !isFilteredByResult ? .caption : .stroke)
             }
+            .foregroundStyle(viewModel.ticketData.isEmpty || !isFilteredByResult ? .caption : .text)
             
             Button {
-                // action
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    isFilteredByTeam.toggle()
+                }
+                if isFilteredByTeam {
+                    viewModel.filteTicketData(item: "ourTeam", condition: UserDefaults.standard.string(forKey: "myTeam")!)
+                }
+                if isFilteredByResult {
+                    isFilteredByResult.toggle()
+                }
             } label: {
                 Text("우리팀")
                     .padding(.horizontal, 20)
@@ -247,10 +266,10 @@ extension MainView {
             .background {
                 RoundedRectangle(cornerRadius: 15.0)
                     .fill(.clear)
-                    .stroke(viewModel.ticketData.isEmpty ? .caption : .stroke)
+                    .stroke(viewModel.ticketData.isEmpty || !isFilteredByTeam ? .caption : .stroke)
             }
+            .foregroundStyle(viewModel.ticketData.isEmpty || !isFilteredByTeam ? .caption : .text)
         }
-        .foregroundStyle(viewModel.ticketData.isEmpty ? .caption : .text)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
@@ -262,7 +281,7 @@ extension MainView {
 extension MainView {
     private var ticketPreviewStack: some View {
         LazyVStack {
-            ForEach(viewModel.ticketData, id: \.id) { data in
+            ForEach(isFilteredByResult || isFilteredByTeam ? viewModel.filteredData : viewModel.ticketData, id: \.id) { data in
                 Button {
                     withAnimation(.easeInOut(duration: 0.5)) {
                         moveTicketView = true
