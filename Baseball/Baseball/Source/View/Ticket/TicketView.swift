@@ -29,6 +29,7 @@ struct TicketView: View {
                 shareButton
             }
             .padding(.horizontal, 24)
+            .padding(.top)
             .foregroundColor(.text)
         }
         .sheet(isPresented: $viewModel.isShowInstaAlert) {
@@ -47,7 +48,9 @@ extension TicketView {
         } label: {
             HStack(spacing: 4) {
                 Image(systemName: "chevron.left")
+                    .font(.system(size: 20))
                 Text("메인화면")
+                    .font(.system(size: 16))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -89,10 +92,10 @@ extension TicketView {
     private func resultview(_ isShare: Bool) -> some View {
         VStack(spacing: 6) {
             Text(data.date)
-                .font(.system(size: 15))
+                .font(.system(size: 15, weight: .medium))
             
             Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
-                .font(.system(size: 48))
+                .font(.system(size: 48, weight: .heavy))
             
             teamInfoView
             
@@ -118,7 +121,7 @@ extension TicketView {
     private var teamInfoView: some View {
         HStack {
             Text(data.ourTeam)
-                .font(.system(size: 15))
+                .font(.system(size: 15, weight: .medium))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             
@@ -128,7 +131,7 @@ extension TicketView {
                 .frame(height: 1)
             
             Text(data.opponentTeam)
-                .font(.system(size: 15))
+                .font(.system(size: 15, weight: .medium))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
         }
@@ -142,24 +145,25 @@ extension TicketView {
             resultInfo(
                 teamTitle: "Our team",
                 team: data.ourTeam,
-                image: "cloud.sleet",
+                image: viewModel.teamIcons[data.ourTeam] ?? "",
                 infoTitle: "Location",
                 info: data.place
             )
             
-            Spacer(minLength: 30)
+            Spacer()
             
             resultInfo(
                 teamTitle: "Opposing team",
                 team: data.opponentTeam,
-                image: "envelope.open",
+                image: viewModel.teamIcons[data.opponentTeam] ?? "",
                 infoTitle: "Lucky",
                 info: data.result
             )
+            
             Spacer()
         }
-        .frame(maxWidth: .infinity)
-        
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -181,11 +185,13 @@ extension TicketView {
     
     @ViewBuilder
     private func reviewView(_ isShare: Bool) -> some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(data.title)
+                .font(.system(size: 16, weight: .medium))
                 .padding(.bottom, 4)
             
             Text(data.review)
+                .font(.system(size: 16))
                 .multilineTextAlignment(.leading)
             
             Spacer()
@@ -213,7 +219,7 @@ extension TicketView {
     ) -> some View {
         VStack(spacing: 6) {
             Text(teamTitle)
-                .font(.system(size: 20))
+                .font(.system(size: 20, weight: .semibold))
             
             Text(team)
                 .font(.system(size: 16))
@@ -221,14 +227,16 @@ extension TicketView {
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 70, height: 70)
+                .frame(height: 70)
+                .padding(.bottom)
             
             Text(infoTitle)
-                .font(.system(size: 20))
+                .font(.system(size: 20, weight: .semibold))
             
             Text(info)
                 .font(.system(size: 16))
         }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
@@ -240,7 +248,7 @@ extension TicketView {
                 
             VStack(spacing: 20) {
                 Text("인스타그램이 없어요!")
-                    .font(.instaSheetTitle)
+                    .font(.customTitle)
                 
                 Text("인스타그램을 설치하면\n티켓을 인스타로 공유할 수 있어요")
                     .multilineTextAlignment(.center)
@@ -276,10 +284,10 @@ extension TicketView {
 extension TicketView {
     private func renderShareView() -> UIImage? {
         return ticket(isShare: true)
+            .frame(width: UIScreen.main.bounds.width * 0.9)
             .foregroundColor(.text)
-            .padding()
             .background(.clear)
-            .render(scale: 2)
+            .render(scale: UIScreen.main.scale)
     }
 }
 

@@ -8,5 +8,5 @@
 import SwiftUI
 
 extension Font {
-    static let instaSheetTitle = Font.custom("Pretendard-Bold", size: 24)
+    static let customTitle = Font.custom("Pretendard-Bold", size: 24)
 }

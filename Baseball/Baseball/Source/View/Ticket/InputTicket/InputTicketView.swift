@@ -10,15 +10,9 @@ import SwiftUI
 struct InputTicketView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var inputTicketViewModel = InputTicketViewModel()
+    @Namespace var animation
     
-    @State private var currentStatus = InputStatus.writing {
-         didSet {
-             if currentStatus == .done {
-                 moveTicketView = true
-                 presentationMode.wrappedValue.dismiss()
-             }
-        }
-    }
+    @State private var currentStatus = InputStatus.writing
     @Binding var moveTicketView: Bool
     
     private let gradients: [Color] = [.gradient1, .gradient2, .gradient3, .gradient4, .gradient5]
@@ -33,8 +27,7 @@ struct InputTicketView: View {
             } else if currentStatus == .saving {
                 completeView
             } else {
-                EmptyView()
-//                TicketView()
+                showTicket
             }
         }
     }
@@ -44,13 +37,14 @@ struct InputTicketView: View {
 
 extension InputTicketView {
     private var writingView: some View {
-        VStack {
+        VStack(spacing: 0) {
             writingViewHeader
         
             ProgressView(value: Double(inputTicketViewModel.currentPage), total: 4)
                 .progressViewStyle(
                     GradientProgressStyle(fill: LinearGradient(colors: gradients, startPoint: .topLeading, endPoint: .bottomTrailing), height: 4))
                 .padding(.horizontal)
+                .padding(.top, 20)
             
             writingTabView
         }
@@ -67,18 +61,24 @@ extension InputTicketView {
                 }
             } label: {
                 Image(systemName: "chevron.left")
+                    .font(.system(size: 20))
                     .foregroundColor(.white)
             }
             
             Spacer()
             
             Text("티켓 추가하기")
-                .bold()
+                .font(.system(size: 16))
                 .foregroundColor(.white)
             
             Spacer()
+            
+            Image(systemName: "chevron.left")
+                .font(.system(size: 20))
+                .opacity(0)
+            
         }
-        .padding(.horizontal)
+        .padding()
     }
     
     private var writingTabView: some View {
@@ -107,14 +107,21 @@ extension InputTicketView {
         .onAppear {
             UIScrollView.appearance().isScrollEnabled = false
         }
-        .padding()
+        .padding(.top, 42)
     }
     
     private var completeView: some View {
-        CompleteTicketView()
+        CompleteTicketView(currentStatus: $currentStatus, emotion: inputTicketViewModel.currentEmotion)
+    }
+    
+    private var showTicket: some View {
+        TicketView(moveTicketView: $moveTicketView, id: UUID(), animation: animation, data: inputTicketViewModel.getTicketData())
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
-                    currentStatus = .done
+                moveTicketView = true
+            }
+            .onChange(of: moveTicketView) { oldValue, newValue in
+                if oldValue, !newValue {
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
     }

@@ -14,10 +14,11 @@ struct FirstInputTicketView: View {
     @State private var isShowDatePicker = false
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 32) {
             inputDate
-            
+                .padding(.horizontal)
             inputPlace
+                .padding(.horizontal)
             
             Spacer()
             
@@ -45,9 +46,10 @@ struct FirstInputTicketView: View {
 
 extension FirstInputTicketView {
     private var inputDate: some View {
-        VStack {
-            Text("언제 경기를 봤나요?")
+        VStack(alignment: .leading) {
+            Text("언제 경기를 봤나요")
                 .foregroundColor(.white)
+                .font(.system(size: 16, weight: .semibold))
             
             Text(viewModel.date.dateToString())
                 .padding()
@@ -62,12 +64,14 @@ extension FirstInputTicketView {
                         }
                 }
         }
+        .padding(.leading, 4)
     }
     
     private var inputPlace: some View {
-        VStack {
-            Text("어디서 봤나요?")
+        VStack(alignment: .leading) {
+            Text("어디서 봤나요")
                 .foregroundColor(.white)
+                .font(.system(size: 16, weight: .semibold))
             
             TextField("고척돔", text: $viewModel.place)
                 .focused($isFocused)
@@ -77,6 +81,10 @@ extension FirstInputTicketView {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.gray.opacity(0.4))
                 }
+        }
+        .padding(.leading, 4)
+        .onTapGesture {
+            isShowDatePicker = false
         }
     }
     

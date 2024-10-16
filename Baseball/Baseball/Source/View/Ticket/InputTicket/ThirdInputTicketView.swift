@@ -15,8 +15,10 @@ struct ThirdInputTicketView: View {
     var body: some View {
         VStack(alignment: .leading) {
             titleText
+                .padding(.horizontal)
             
             teamsGrid
+                .padding(.horizontal)
             
             Spacer()
             
@@ -31,12 +33,15 @@ struct ThirdInputTicketView: View {
 
 extension ThirdInputTicketView {
     private var titleText: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text("어떤 팀과 경기를 했나요?")
+                .font(.system(size: 20, weight: .bold))
             
             Text("상대팀을 선택해주세요.")
+                .font(.system(size: 16))
         }
         .foregroundColor(.white)
+        .padding(.leading, 4)
     }
     
     private var teamsGrid: some View {
@@ -45,13 +50,17 @@ extension ThirdInputTicketView {
                 VStack {
                     Image(team.imageName)
                         .resizable()
-                        .scaledToFit()
-                        .padding()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(2)
                         .modifier(SelectedCircle(isSelected: viewModel.opponentTeam == team.teamName))
                     
                     Text(team.teamName)
                         .foregroundColor(.white)
+                        .font(.system(size: 12))
                 }
+                .aspectRatio(1, contentMode: .fit)
+                .padding(.bottom)
                 .onTapGesture {
                     if viewModel.opponentTeam == team.teamName {
                         viewModel.opponentTeam = ""
@@ -61,6 +70,7 @@ extension ThirdInputTicketView {
                 }
             }
         }
+        .padding(.top, 40)
     }
 }
 
