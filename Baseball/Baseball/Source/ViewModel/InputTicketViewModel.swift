@@ -49,6 +49,7 @@ class InputTicketViewModel: ObservableObject {
             ourTeamScore: Int(ourTeamScore) ?? 0,
             opponentTeamScore: Int(opponentTeamScore) ?? 0,
             feeling: currentEmotion,
+            result: setTodayResult(),
             title: todayTitle,
             review: todayComment
         )
