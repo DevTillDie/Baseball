@@ -12,7 +12,7 @@ struct TicketStroke: ViewModifier {
     var cutRadius: CGFloat
     var isShare: Bool
     var isRemoveTop = false
-    
+
     func body(content: Content) -> some View {
         if isShare, !isRemoveTop {
             content
@@ -26,8 +26,7 @@ struct TicketStroke: ViewModifier {
                 .clipShape(TicketShape(cornerRadius: cornerRadius, cutRadius: cutRadius))
                 .background {
                     if isShare, isRemoveTop {
-                        TicketShape(cornerRadius: cornerRadius, cutRadius: cutRadius)
-                            .trim(from: 0, to: 0.65)
+                        RemoveTopTicketShape(cornerRadius: cornerRadius, cutRadius: cutRadius)
                             .stroke(.white, lineWidth: 1)
                     } else {
                         TicketShape(cornerRadius: cornerRadius, cutRadius: cutRadius)

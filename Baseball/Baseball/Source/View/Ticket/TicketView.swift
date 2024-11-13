@@ -193,10 +193,9 @@ extension TicketView {
             Text(data.review)
                 .font(.system(size: 16))
                 .multilineTextAlignment(.leading)
-            
-            Spacer()
+                .lineLimit(3)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(28)
         .background {
             if isShare {
@@ -284,7 +283,7 @@ extension TicketView {
 extension TicketView {
     private func renderShareView() -> UIImage? {
         return ticket(isShare: true)
-            .frame(width: UIScreen.main.bounds.width * 0.9)
+            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.75)
             .foregroundColor(.text)
             .background(.clear)
             .render(scale: UIScreen.main.scale)
