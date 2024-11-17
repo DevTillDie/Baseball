@@ -141,7 +141,6 @@ extension MainView {
                         .frame(width: UIScreen.main.bounds.width * 0.44)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .padding(.top, 25)
-//                        .offset(x: UIScreen.main.bounds.width <= 375 ? 10 : 0)
                 }
                 .padding(.leading, 16)
                 .padding(.trailing, 12)
