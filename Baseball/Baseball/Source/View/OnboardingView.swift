@@ -92,7 +92,7 @@ extension OnboardingView {
             Spacer(minLength: 20)
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height - 60)
+        .frame(height: UIScreen.main.bounds.height * 0.98)
     }
     
     private var onboardingTags: some View {
