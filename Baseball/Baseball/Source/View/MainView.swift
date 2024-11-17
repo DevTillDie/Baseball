@@ -92,30 +92,35 @@ extension MainView {
     private var addTicketSection: some View {
         ZStack {
             ZStack {
-                Path { path in
-                    path.move(to: CGPoint(x: 15, y: 0))
+                GeometryReader { geometry in
+                    let width = geometry.size.width
+                    let height = geometry.size.height
                     
-                    path.addLine(to: CGPoint(x: 343, y: 0))
-                    path.addArc(center: CGPoint(x: 343, y: 15), radius: 15, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
-                    
-                    path.addLine(to: CGPoint(x: 358, y: 160))
-                    path.addArc(center: CGPoint(x: 343, y: 160), radius: 15, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
-                    
-                    path.addLine(to: CGPoint(x: 194, y: 175))
-                    path.addArc(center: CGPoint(x: 209, y: 160), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
-                    
-                    path.addLine(to: CGPoint(x: 194, y: 129))
-                    path.addArc(center: CGPoint(x: 167, y: 156), radius: 27, startAngle: .degrees(0), endAngle: .degrees(-90), clockwise: true)
-                    
-                    path.addLine(to: CGPoint(x: 15, y: 129))
-                    path.addArc(center: CGPoint(x: 15, y: 114), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
-                    
-                    path.addLine(to: CGPoint(x: 0, y: 15))
-                    path.addArc(center: CGPoint(x: 15, y: 15), radius: 15, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
-                    
-                    path.closeSubpath()
+                    Path { path in
+                        path.move(to: CGPoint(x: 15, y: 0))
+                        
+                        path.addLine(to: CGPoint(x: width * 0.95, y: 0))
+                        path.addArc(center: CGPoint(x: width * 0.95, y: 15), radius: 15, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+                        
+                        path.addLine(to: CGPoint(x: width * 0.95 + 15, y: 160))
+                        path.addArc(center: CGPoint(x: width * 0.95, y: 160), radius: 15, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+                        
+                        path.addLine(to: CGPoint(x: 194, y: 175))
+                        path.addArc(center: CGPoint(x: 209, y: 160), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+                        
+                        path.addLine(to: CGPoint(x: 194, y: 129))
+                        path.addArc(center: CGPoint(x: 167, y: 156), radius: 27, startAngle: .degrees(0), endAngle: .degrees(-90), clockwise: true)
+                        
+                        path.addLine(to: CGPoint(x: 15, y: 129))
+                        path.addArc(center: CGPoint(x: 15, y: 114), radius: 15, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+                        
+                        path.addLine(to: CGPoint(x: 0, y: 15))
+                        path.addArc(center: CGPoint(x: 15, y: 15), radius: 15, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+                        
+                        path.closeSubpath()
+                    }
+                    .fill(.box)
                 }
-                .fill(.box)
                 
                 ZStack {
                     VStack(spacing: 8) {
@@ -132,12 +137,14 @@ extension MainView {
                     
                     Image(.addTicket)
                         .resizable()
-                        .frame(maxWidth: 189, maxHeight: 137)
+                        .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width * 0.44)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .padding(.top, 25)
+//                        .offset(x: UIScreen.main.bounds.width <= 375 ? 10 : 0)
                 }
                 .padding(.leading, 16)
-                .padding(.trailing, 5)
+                .padding(.trailing, 12)
             }
             
             VStack {
