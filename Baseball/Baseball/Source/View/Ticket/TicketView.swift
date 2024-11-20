@@ -15,6 +15,7 @@ struct TicketView: View {
     let id: UUID
     let animation: Namespace.ID
     let data: Ticket
+    let paddingValue = UIScreen.main.bounds.width > 375 ? 0 : 4.0
     
     var body: some View {
         ZStack {
@@ -54,7 +55,7 @@ extension TicketView {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.bottom, 40)
+        .padding(.bottom, 40 - paddingValue)
     }
     
     @ViewBuilder
@@ -92,10 +93,10 @@ extension TicketView {
     private func resultview(_ isShare: Bool) -> some View {
         VStack(spacing: 6) {
             Text(data.date)
-                .font(.system(size: 15, weight: .medium))
+                .font(.system(size: 15 - paddingValue, weight: .medium))
             
             Text("\(data.ourTeamScore) : \(data.opponentTeamScore)")
-                .font(.system(size: 48, weight: .heavy))
+                .font(.system(size: 48 - paddingValue, weight: .heavy))
             
             teamInfoView
             
@@ -121,7 +122,7 @@ extension TicketView {
     private var teamInfoView: some View {
         HStack {
             Text(data.ourTeam)
-                .font(.system(size: 15, weight: .medium))
+                .font(.system(size: 15 - paddingValue, weight: .medium))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             
@@ -131,7 +132,7 @@ extension TicketView {
                 .frame(height: 1)
             
             Text(data.opponentTeam)
-                .font(.system(size: 15, weight: .medium))
+                .font(.system(size: 15 - paddingValue, weight: .medium))
                 .fontWeight(.semibold)
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
         }
@@ -187,11 +188,11 @@ extension TicketView {
     private func reviewView(_ isShare: Bool) -> some View {
         VStack(alignment: .leading) {
             Text(data.title)
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 16 - paddingValue, weight: .medium))
                 .padding(.bottom, 4)
             
             Text(data.review)
-                .font(.system(size: 16))
+                .font(.system(size: 16 - paddingValue))
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)
         }
@@ -216,24 +217,26 @@ extension TicketView {
         teamTitle: String, team: String, image: String,
         infoTitle: String, info: String
     ) -> some View {
+        let imageHeight = UIScreen.main.bounds.width > 375 ? 70.0 : 50.0
+        
         VStack(spacing: 6) {
             Text(teamTitle)
-                .font(.system(size: 20, weight: .semibold))
+                .font(.system(size: 20 - paddingValue, weight: .semibold))
             
             Text(team)
-                .font(.system(size: 16))
+                .font(.system(size: 16 - paddingValue))
             
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 70)
+                .frame(height: imageHeight)
                 .padding(.bottom)
             
             Text(infoTitle)
-                .font(.system(size: 20, weight: .semibold))
+                .font(.system(size: 20 - paddingValue, weight: .semibold))
             
             Text(info)
-                .font(.system(size: 16))
+                .font(.system(size: 16 - paddingValue))
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
