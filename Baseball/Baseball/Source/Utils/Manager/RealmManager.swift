@@ -32,11 +32,15 @@ class RealmManager {
     
     func loadTicketData() -> [Ticket] {
         let tickets = realm.objects(Ticket.self)
-        return Array(tickets)
+        let sortedTickets = tickets.sorted(byKeyPath: "date", ascending: false)
+        
+        return Array(sortedTickets)
     }
     
     func filterTicketData(item: String, condition: String) -> [Ticket] {
         let filteredTickets = realm.objects(Ticket.self).filter("\(item) == %@", condition)
-        return Array(filteredTickets)
+        let sortedFilteredTickets = filteredTickets.sorted(byKeyPath: "date", ascending: false)
+        
+        return Array(sortedFilteredTickets)
     }
 }
