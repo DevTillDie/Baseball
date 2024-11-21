@@ -12,8 +12,6 @@ struct OnboardingView: View {
     
     @Binding var isFirstLaunching: Bool
     @State private var isMoveToLast = false
-    @State private var isButtonVisible: Bool = true
-    @State private var timer: Timer?
     @State private var scrollOffset: CGFloat = 0
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
@@ -80,19 +78,19 @@ extension OnboardingView {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 74, height: 22)
-                .opacity(isButtonVisible ? 1 : 0)
+                .opacity(viewModel.isButtonVisible ? 1 : 0)
         }
         .onAppear {
-            startBlinking()
+            viewModel.startBlinking()
         }
         .onDisappear {
-            stopBlinking()
+            viewModel.stopBlinking()
         }
             
             Spacer(minLength: 20)
         }
         .foregroundStyle(.text)
-        .frame(height: UIScreen.main.bounds.height - 60)
+        .frame(height: UIScreen.main.bounds.height * 0.98)
     }
     
     private var onboardingTags: some View {
@@ -226,19 +224,6 @@ extension OnboardingView {
             .padding(.vertical, 4)
         }
         .padding(.horizontal, 33)
-    }
-    
-    private func startBlinking() {
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-            withAnimation(.easeInOut(duration: 0.5)) {
-                isButtonVisible.toggle()
-            }
-        }
-    }
-    
-    private func stopBlinking() {
-        timer?.invalidate()
-        timer = nil
     }
 }
 
