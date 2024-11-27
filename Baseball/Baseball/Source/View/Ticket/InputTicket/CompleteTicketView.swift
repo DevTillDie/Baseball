@@ -26,14 +26,13 @@ struct CompleteTicketView: View {
     
     private func getAnimationFile() -> String {
         if emotion == "화나요" {
-            return "angry.lottie"
+            return "bad.lottie"
         } else if emotion == "신나요" {
             return "happy.lottie"
         } else if emotion == "평범해요" {
             return "soso.lottie"
         } else {
-            //TODO: default lottie 변경
-            return "soso.lottie"
+            return "basic.lottie"
         }
     }
 }

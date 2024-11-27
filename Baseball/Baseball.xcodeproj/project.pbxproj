@@ -25,6 +25,7 @@
 		0E4AB25C2BD1252F00ADB623 /* CompleteTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */; };
 		0E4AB25E2BD12BE900ADB623 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AB25D2BD12BE900ADB623 /* TicketView.swift */; };
 		0E6F42602C9E9E0800D533CE /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F425F2C9E9E0300D533CE /* Font+.swift */; };
+		0E7B72D22CE4927F00B8C5C3 /* RemoveTopTicketShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B72D12CE4927F00B8C5C3 /* RemoveTopTicketShape.swift */; };
 		0E7EE5312B5F91F0004F6BAF /* BaseballApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */; };
 		0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */; };
 		0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E7EE5372B5F91F2004F6BAF /* Preview Assets.xcassets */; };
@@ -32,10 +33,11 @@
 		0E804A002C4625CE00582121 /* GradientProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */; };
 		0E804A052C46290000582121 /* SelectedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A042C46290000582121 /* SelectedCircle.swift */; };
 		0E804A072C46557200582121 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E804A062C46557200582121 /* TicketViewModel.swift */; };
-		0EAF0E102CB77C0B00030A13 /* soso.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0E0F2CB77C0A00030A13 /* soso.lottie.json */; };
-		0EAF0E112CB77C0B00030A13 /* angry.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0E0D2CB77C0A00030A13 /* angry.lottie.json */; };
-		0EAF0E122CB77C0B00030A13 /* happy.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAF0E0E2CB77C0A00030A13 /* happy.lottie.json */; };
 		0EAF0E152CB77D5F00030A13 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0EAF0E142CB77D5F00030A13 /* Lottie */; };
+		0ED5F8302CEDB924007EAD58 /* happy.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ED5F82E2CEDB924007EAD58 /* happy.lottie.json */; };
+		0ED5F8312CEDB924007EAD58 /* soso.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ED5F82F2CEDB924007EAD58 /* soso.lottie.json */; };
+		0ED5F8322CEDB924007EAD58 /* basic.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ED5F82D2CEDB924007EAD58 /* basic.lottie.json */; };
+		0ED5F8332CEDB924007EAD58 /* bad.lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ED5F82C2CEDB924007EAD58 /* bad.lottie.json */; };
 		0EDAC0502C60B56800B87437 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDAC04F2C60B56800B87437 /* RealmManager.swift */; };
 		0EDAC0602C60B74F00B87437 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDAC05F2C60B74F00B87437 /* Ticket.swift */; };
 		0EDCCE4D2C882E1A00483919 /* ShareTicketShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCCE4C2C882E1A00483919 /* ShareTicketShape.swift */; };
@@ -82,6 +84,7 @@
 		0E4AB25B2BD1252E00ADB623 /* CompleteTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteTicketView.swift; sourceTree = "<group>"; };
 		0E4AB25D2BD12BE900ADB623 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		0E6F425F2C9E9E0300D533CE /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		0E7B72D12CE4927F00B8C5C3 /* RemoveTopTicketShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTopTicketShape.swift; sourceTree = "<group>"; };
 		0E7EE52D2B5F91EF004F6BAF /* Baseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E7EE5302B5F91F0004F6BAF /* BaseballApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballApp.swift; sourceTree = "<group>"; };
 		0E7EE5342B5F91F2004F6BAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,9 +93,10 @@
 		0E8049FF2C4625CE00582121 /* GradientProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressStyle.swift; sourceTree = "<group>"; };
 		0E804A042C46290000582121 /* SelectedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCircle.swift; sourceTree = "<group>"; };
 		0E804A062C46557200582121 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
-		0EAF0E0D2CB77C0A00030A13 /* angry.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = angry.lottie.json; sourceTree = "<group>"; };
-		0EAF0E0E2CB77C0A00030A13 /* happy.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = happy.lottie.json; sourceTree = "<group>"; };
-		0EAF0E0F2CB77C0A00030A13 /* soso.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = soso.lottie.json; sourceTree = "<group>"; };
+		0ED5F82C2CEDB924007EAD58 /* bad.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bad.lottie.json; sourceTree = "<group>"; };
+		0ED5F82D2CEDB924007EAD58 /* basic.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = basic.lottie.json; sourceTree = "<group>"; };
+		0ED5F82E2CEDB924007EAD58 /* happy.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = happy.lottie.json; sourceTree = "<group>"; };
+		0ED5F82F2CEDB924007EAD58 /* soso.lottie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = soso.lottie.json; sourceTree = "<group>"; };
 		0EDAC04F2C60B56800B87437 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		0EDAC05F2C60B74F00B87437 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		0EDCCE4C2C882E1A00483919 /* ShareTicketShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTicketShape.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				5BE672792C5F691400D9F0E8 /* OnboardingTag.swift */,
 				0EDCCE4C2C882E1A00483919 /* ShareTicketShape.swift */,
 				0E1C262F2CA2F9B800E7745A /* BlurView.swift */,
+				0E7B72D12CE4927F00B8C5C3 /* RemoveTopTicketShape.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -282,9 +287,10 @@
 		0EAF0E0C2CB77BFB00030A13 /* lottie */ = {
 			isa = PBXGroup;
 			children = (
-				0EAF0E0D2CB77C0A00030A13 /* angry.lottie.json */,
-				0EAF0E0E2CB77C0A00030A13 /* happy.lottie.json */,
-				0EAF0E0F2CB77C0A00030A13 /* soso.lottie.json */,
+				0ED5F82C2CEDB924007EAD58 /* bad.lottie.json */,
+				0ED5F82D2CEDB924007EAD58 /* basic.lottie.json */,
+				0ED5F82E2CEDB924007EAD58 /* happy.lottie.json */,
+				0ED5F82F2CEDB924007EAD58 /* soso.lottie.json */,
 			);
 			path = lottie;
 			sourceTree = "<group>";
@@ -373,11 +379,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EAF0E102CB77C0B00030A13 /* soso.lottie.json in Resources */,
-				0EAF0E112CB77C0B00030A13 /* angry.lottie.json in Resources */,
-				0EAF0E122CB77C0B00030A13 /* happy.lottie.json in Resources */,
 				0E7EE5542B5F93CF004F6BAF /* .swiftlint.yml in Resources */,
 				5BE6727D2C5F76DF00D9F0E8 /* Pretendard-Bold.otf in Resources */,
+				0ED5F8302CEDB924007EAD58 /* happy.lottie.json in Resources */,
+				0ED5F8312CEDB924007EAD58 /* soso.lottie.json in Resources */,
+				0ED5F8322CEDB924007EAD58 /* basic.lottie.json in Resources */,
+				0ED5F8332CEDB924007EAD58 /* bad.lottie.json in Resources */,
 				0E7EE5382B5F91F2004F6BAF /* Preview Assets.xcassets in Resources */,
 				0E7EE5352B5F91F2004F6BAF /* Assets.xcassets in Resources */,
 			);
@@ -425,6 +432,7 @@
 				0E4AB2562BD1250E00ADB623 /* SecondInputTicketView.swift in Sources */,
 				0E4AB25A2BD1251F00ADB623 /* FourthInputTicketView.swift in Sources */,
 				5BC6F8642C956F5B005CA85C /* Color+.swift in Sources */,
+				0E7B72D22CE4927F00B8C5C3 /* RemoveTopTicketShape.swift in Sources */,
 				0E3028632C5A0D40008E038C /* TicketStroke.swift in Sources */,
 				0E804A052C46290000582121 /* SelectedCircle.swift in Sources */,
 				0E4AB2522BD124FB00ADB623 /* InputTicketView.swift in Sources */,
@@ -581,6 +589,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Baseball/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 저장하기 위해 권한 요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -616,6 +625,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Baseball/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 저장하기 위해 권한 요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

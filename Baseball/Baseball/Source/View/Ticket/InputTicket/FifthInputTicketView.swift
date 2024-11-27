@@ -13,6 +13,8 @@ struct FifthInputTicketView: View {
 
     @Binding var currentStatus: InputStatus
     
+    private let width = UIScreen.main.bounds.width
+    private let height = UIScreen.main.bounds.height
     private let titleLimit = 10
     private let commentLimit = 95
     private let titlePlaceholder = "오늘의 경기, 제목을 정해봐요 (10자 이내)"
@@ -48,7 +50,6 @@ struct FifthInputTicketView: View {
                 viewModel.saveData()
                 currentStatus = .saving
             }
-            
         }
         .contentShape(Rectangle())
         .onTapGesture {
@@ -124,7 +125,7 @@ extension FifthInputTicketView {
                     .foregroundColor(.white)
                     .padding()
             }
-            .frame(height: 300)
+            .frame(height: width > 375 ? 300 : height*0.25)
     }
 }
 
