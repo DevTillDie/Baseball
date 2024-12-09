@@ -178,7 +178,9 @@ extension OnboardingView {
             Spacer()
             
             Button {
-                isFirstLaunching = false
+                if !viewModel.myTeam.isEmpty {
+                    isFirstLaunching = false
+                }
             } label: {
                 Text("시작하기")
                     .fontWeight(.medium)
